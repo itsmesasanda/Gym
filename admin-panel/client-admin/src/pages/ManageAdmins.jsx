@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { ADMIN_API_URL } from '../config/api';
 
-const API_URL = 'http://localhost:5001/api';
+const API_URL = ADMIN_API_URL;
 
 const authHeaders = () => {
   const token = localStorage.getItem('adminToken');

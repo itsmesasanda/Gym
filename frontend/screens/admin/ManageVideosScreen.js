@@ -13,6 +13,11 @@ import {
   View,
 } from "react-native";
 import { api } from "../../services/adminApi";
+import {
+  isValidThumbnailUrl,
+  isValidYouTubeUrl,
+  resolveThumbnailUri,
+} from "../../utils/videoValidation";
 
 const GREEN  = "#C7F000";
 const BG     = "#0D0D0D";
@@ -25,27 +30,6 @@ const EDIT_GREEN = "#1A3A00";
 
 const CATEGORIES = ["All", "Chest", "Back", "Legs", "Arms"];
 const FORM_CATS  = ["Chest", "Back", "Legs", "Arms"];
-
-const extractYouTubeVideoId = (url) => {
-  const trimmed = (url || "").trim();
-  if (!trimmed) return null;
-  const match = trimmed.match(
-    /(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/
-  );
-  return match?.[1] ?? null;
-};
-
-const resolveThumbnailUri = (video) => {
-  const thumbnail = (video.thumbnail || "").trim();
-  if (thumbnail) {
-    const tid = extractYouTubeVideoId(thumbnail);
-    if (tid) return `https://img.youtube.com/vi/${tid}/hqdefault.jpg`;
-    if (/^https?:\/\//i.test(thumbnail)) return thumbnail;
-  }
-  const yid = extractYouTubeVideoId(video.youtubeUrl || "");
-  if (yid) return `https://img.youtube.com/vi/${yid}/hqdefault.jpg`;
-  return null;
-};
 
 const BLANK_FORM = { title: "", description: "", category: "Chest", thumbnail: "", youtubeUrl: "" };
 
@@ -104,14 +88,21 @@ export default function ManageVideosScreen() {
 
   const handleSave = async () => {
     if (!form.title.trim())      return Alert.alert("Required", "Please enter a video title.");
-    if (!form.youtubeUrl.trim()) return Alert.alert("Required", "Please enter the YouTube URL.");
     if (!form.description.trim()) return Alert.alert("Required", "Please enter a description.");
-    const thumbnailVal = form.thumbnail.trim() || form.youtubeUrl.trim();
+    if (!form.category.trim())   return Alert.alert("Required", "Please choose a category.");
+    if (!form.youtubeUrl.trim()) return Alert.alert("Required", "Please enter the YouTube URL.");
+    if (!isValidYouTubeUrl(form.youtubeUrl)) {
+      return Alert.alert("Invalid URL", "Please enter a valid YouTube video URL.");
+    }
+    if (!isValidThumbnailUrl(form.thumbnail)) {
+      return Alert.alert("Invalid Thumbnail", "Use a YouTube URL or a direct image URL ending in .jpg, .png, .webp, .gif, .bmp, or .svg.");
+    }
+
     const payload = {
       title:      form.title.trim(),
       description:form.description.trim(),
-      category:   form.category || "Chest",
-      thumbnail:  thumbnailVal,
+      category:   form.category.trim(),
+      thumbnail:  form.thumbnail.trim(),
       youtubeUrl: form.youtubeUrl.trim(),
     };
     try {

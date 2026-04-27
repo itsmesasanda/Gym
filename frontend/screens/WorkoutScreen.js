@@ -24,6 +24,12 @@ const RED    = "#FF3B30";
 const MUSCLE_GROUPS  = ["Chest", "Back", "Legs", "Arms", "Shoulders", "Biceps", "Triceps", "Core"];
 const QUICK_GROUPS   = ["Chest", "Back", "Legs", "Arms"];
 
+const parseNumberInput = (value) => {
+  if (value === "" || value === null || value === undefined) return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+};
+
 const getTodayStr = () =>
   new Date().toLocaleDateString("en-US", { month: "numeric", day: "numeric", year: "numeric" });
 
@@ -97,58 +103,129 @@ export default function WorkoutScreen() {
     setView("editWorkout");
   };
 
-  const addSet  = () => setSets((p) => [...p, { reps: "", weight: "" }]);
+  const addSet  = () => setSets((p) => {
+    if (p.length >= 4) {
+      Alert.alert("Set limit", "Maximum 4 sets allowed.");
+      return p;
+    }
+
+    return [...p, { reps: "", weight: "" }];
+  });
   const updSet  = (i, f, v) => setSets((p) => p.map((s, idx) => (idx === i ? { ...s, [f]: v } : s)));
+
+  const buildWorkoutPayload = (includeTimestamp = false) => {
+    const parsedDuration = parseNumberInput(duration);
+    return {
+      exerciseName: exerciseName.trim(),
+      muscleGroup,
+      duration: parsedDuration ?? 0,
+      notes: notes.trim(),
+      sets: sets.map((set) => ({
+        reps: parseNumberInput(set.reps),
+        weight: parseNumberInput(set.weight),
+      })),
+      ...(includeTimestamp ? { date: getTodayStr(), time: getTimeStr() } : {}),
+    };
+  };
+
+  const validateWorkoutPayload = (payload) => {
+    if (payload.exerciseName.length < 2 || payload.exerciseName.length > 50) {
+      return "Exercise name must be 2-50 characters.";
+    }
+
+    if (!MUSCLE_GROUPS.includes(payload.muscleGroup)) {
+      return "Please choose a valid muscle group.";
+    }
+
+    if (payload.sets.length < 1) {
+      return "At least one set is required.";
+    }
+
+    if (payload.sets.length > 4) {
+      return "Maximum 4 sets allowed.";
+    }
+
+    for (const [index, set] of payload.sets.entries()) {
+      if (set.reps === null || set.weight === null) {
+        return `Set ${index + 1} must include reps and weight.`;
+      }
+
+      if (set.reps < 6 || set.reps > 15) {
+        return `Set ${index + 1} reps must be between 6 and 15.`;
+      }
+
+      if (set.weight < 0) {
+        return `Set ${index + 1} weight cannot be negative.`;
+      }
+    }
+
+    if (payload.duration === null || payload.duration < 0) {
+      return "Duration must be a non-negative number.";
+    }
+
+    if (payload.duration > 0 && payload.duration < 5) {
+      return "Duration must be 0 or at least 5 minutes.";
+    }
+
+    if (payload.notes.length > 500) {
+      return "Notes cannot exceed 500 characters.";
+    }
+
+    return null;
+  };
+
+  const parseErrorMessage = async (response, fallback) => {
+    try {
+      const data = await response.json();
+      return data?.error || data?.message || fallback;
+    } catch {
+      return fallback;
+    }
+  };
 
   // ── CRUD ────────────────────────────────────────────────
   const saveWorkout = async () => {
-    if (!exerciseName.trim()) {
-      Alert.alert("Missing field", "Please enter an exercise name.");
+    const payload = buildWorkoutPayload(true);
+    const validationError = validateWorkoutPayload(payload);
+    if (validationError) {
+      Alert.alert("Invalid workout", validationError);
       return;
     }
-    const payload = {
-      exerciseName: exerciseName.trim(),
-      muscleGroup,
-      duration: duration ? Number(duration) : undefined,
-      notes,
-      sets: sets.map((s) => ({ reps: Number(s.reps || 0), weight: Number(s.weight || 0) })),
-      date: getTodayStr(),
-      time: getTimeStr(),
-    };
+
     try {
       const r = await fetch(`${API}/api/workouts`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      if (!r.ok) throw new Error("Save failed");
+      if (!r.ok) throw new Error(await parseErrorMessage(r, "Save failed"));
       await fetchWorkouts();
       setView("home");
-    } catch {
-      Alert.alert("Error", "Could not save workout.");
+    } catch (error) {
+      Alert.alert("Error", error.message || "Could not save workout.");
     }
   };
 
   const updateWorkout = async () => {
     if (!selected) return;
-    const payload = {
-      exerciseName: exerciseName.trim(),
-      muscleGroup,
-      duration: duration ? Number(duration) : undefined,
-      notes,
-      sets: sets.map((s) => ({ reps: Number(s.reps || 0), weight: Number(s.weight || 0) })),
-    };
+    const payload = buildWorkoutPayload(false);
+    const validationError = validateWorkoutPayload(payload);
+    if (validationError) {
+      Alert.alert("Invalid workout", validationError);
+      return;
+    }
+
     try {
       const r = await fetch(`${API}/api/workouts/${selected._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      if (!r.ok) throw new Error("Update failed");
+      if (!r.ok) throw new Error(await parseErrorMessage(r, "Update failed"));
       await fetchWorkouts();
       setView("home");
-    } catch {
-      Alert.alert("Error", "Could not update workout.");
+    } catch (error) {
+      Alert.alert("Error", error.message || "Could not update workout.");
     }
   };
 
@@ -512,6 +589,27 @@ export default function WorkoutScreen() {
         <View style={s.exerciseDisplay}>
           <Text style={s.exerciseDisplayText}>{exerciseName}</Text>
         </View>
+      </View>
+
+      <View style={s.formCard}>
+        <Text style={s.formLabel}>Duration (minutes)</Text>
+        <TextInput
+          style={s.formInput}
+          placeholder="e.g. 45"
+          placeholderTextColor={MUTED}
+          keyboardType="numeric"
+          value={duration}
+          onChangeText={setDuration}
+        />
+        <Text style={[s.formLabel, { marginTop: 14 }]}>Notes (optional)</Text>
+        <TextInput
+          style={[s.formInput, s.notesInput]}
+          placeholder="e.g. Good form, felt strong"
+          placeholderTextColor={MUTED}
+          multiline
+          value={notes}
+          onChangeText={setNotes}
+        />
       </View>
 
       <Text style={[s.sectionTitle, { color: GREEN }]}>Sets</Text>

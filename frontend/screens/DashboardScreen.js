@@ -137,6 +137,7 @@ export default function DashboardScreen({ navigation }) {
   const handleMenuNavigate = (key) => {
     if (key === "profile") navigation.navigate("Profile");
     else if (key === "calories") navigation.navigate("CalorieLog");
+    else if (key === "workouts") navigation.navigate("WorkoutLog");
     else if (key === "videos") navigation.navigate("VideoLib");
   };
 

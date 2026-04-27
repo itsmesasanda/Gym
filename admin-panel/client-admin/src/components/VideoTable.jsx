@@ -6,7 +6,7 @@ const VideoTable = ({ videos, onEdit, onDelete }) => (
     <table style={styles.table}>
       <thead>
         <tr>
-          {['Title', 'Description', 'Link', 'Priority', 'Pinned', 'Date', 'Actions'].map((h) => (
+          {['Title', 'Description', 'Category', 'YouTube', 'Thumbnail', 'Date', 'Actions'].map((h) => (
             <th key={h} style={styles.th}>{h}</th>
           ))}
         </tr>
@@ -20,15 +20,17 @@ const VideoTable = ({ videos, onEdit, onDelete }) => (
               <td style={styles.td}>{v.title}</td>
               <td style={{ ...styles.td, maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{v.description || '—'}</td>
               <td style={styles.td}>
-                {v.videoLink ? <a href={v.videoLink} target="_blank" rel="noreferrer" style={{ color: 'var(--accent-primary)', textDecoration: 'none' }}>Link</a> : '—'}
-              </td>
-              <td style={styles.td}>
-                <span style={{ ...styles.badge, background: v.priority === 'high' ? '#7f1d1d' : '#1e3a5f', color: v.priority === 'high' ? '#fca5a5' : '#93c5fd' }}>
-                  {v.priority || 'normal'}
+                <span style={{ ...styles.badge, background: '#1e3a5f', color: '#93c5fd' }}>
+                  {v.category || 'General'}
                 </span>
               </td>
-              <td style={styles.td}>{v.pinned ? '📌 Yes' : 'No'}</td>
-              <td style={styles.td}>{formatDate(v.uploadedDate || v.createdAt)}</td>
+              <td style={styles.td}>
+                {v.youtubeUrl ? <a href={v.youtubeUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--accent-primary)', textDecoration: 'none' }}>Open</a> : '—'}
+              </td>
+              <td style={styles.td}>
+                {v.thumbnail ? <a href={v.thumbnail} target="_blank" rel="noreferrer" style={{ color: 'var(--accent-primary)', textDecoration: 'none' }}>Open</a> : 'Auto'}
+              </td>
+              <td style={styles.td}>{formatDate(v.createdAt)}</td>
               <td style={styles.td}>
                 <button style={styles.editBtn} onClick={() => onEdit(v)}>Edit</button>
                 <button style={styles.delBtn}  onClick={() => onDelete(v._id)}>Delete</button>

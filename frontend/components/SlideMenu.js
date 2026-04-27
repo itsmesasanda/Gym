@@ -24,6 +24,7 @@ const RED    = "#FF3B30";
 const menuItems = [
   { key: "profile",      label: "Profile",       icon: "P" },
   { key: "calories",     label: "Calorie Log",   icon: "C" },
+  { key: "workouts",     label: "Log Exercises", icon: "E" },
   { key: "videos",       label: "Video Library",  icon: "V" },
 ];
 
