@@ -1,10 +1,11 @@
 import { BASE_URL } from "../config";
 import { FOOD_DATABASE } from "./foodDatabase";
+import { fetchWithTimeout, parseJsonSafe } from "./http";
 
 const USER_ID_FALLBACK = "demo-user-001";
 
 const request = async (path, options = {}) => {
-  const response = await fetch(`${BASE_URL}/api/logs${path}`, {
+  const response = await fetchWithTimeout(`${BASE_URL}/api/logs${path}`, {
     headers: {
       "Content-Type": "application/json",
       ...(options.headers || {}),
@@ -12,9 +13,9 @@ const request = async (path, options = {}) => {
     ...options,
   });
 
-  const data = await response.json();
+  const data = await parseJsonSafe(response);
   if (!response.ok) {
-    throw new Error(data.message || data.error || "Calorie request failed");
+    throw new Error(data?.message || data?.error || "Calorie request failed");
   }
 
   return data;

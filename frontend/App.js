@@ -3,19 +3,16 @@ import { ActivityIndicator, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-// User screens
 import LoginScreen        from "./screens/LoginScreen";
 import RegisterScreen     from "./screens/RegisterScreen";
 import GoalScreen         from "./screens/GoalScreen";
 import MeasurementsScreen from "./screens/MeasurementsScreen";
 import DailyTargetsScreen from "./screens/DailyTargetsScreen";
+import ProfileScreen      from "./screens/ProfileScreen";
+import CaloriesScreen     from "./screens/CaloriesScreen";
+import VideoLibraryScreen from "./screens/VideoLibraryScreen";
 
 import TabNavigator       from "./navigation/TabNavigator";
-
-// ── Admin imports temporarily disabled (broken code in screens/admin/*) ──
-// import AdminLoginScreen   from "./screens/AdminLoginScreen";
-// import AdminTabNavigator  from "./navigation/AdminTabNavigator";
-// import { AdminAuthProvider } from "./context/AdminAuthContext";
 
 import { hydrateSession, getUserEmail } from "./utils/session";
 
@@ -33,14 +30,15 @@ const linking = {
       Tabs: {
         screens: {
           Dashboard: "dashboard",
-          Workouts: "workouts",
-          "AI Plans": "ai-plans",
-          "Vedio Library": "video-library",
-          "Progress Tracking": "progress",
-          Profile: "profile",
-          Goal: "goal-tab",
+          AIWorkouts: "ai-workouts",
+          AIMeals: "ai-meals",
+          Progress: "progress",
         },
       },
+      Profile: "profile",
+      CalorieLog: "calorie-log",
+      VideoLib: "video-library",
+      MeasurementsPage: "measurements-page",
     },
   },
 };
@@ -71,13 +69,18 @@ export default function App() {
         screenOptions={{ headerShown: false }}
         initialRouteName={hasSession ? "Tabs" : "Login"}
       >
-        {/* User (mobile) flow */}
         <Stack.Screen name="Login"        component={LoginScreen} />
         <Stack.Screen name="Register"     component={RegisterScreen} />
         <Stack.Screen name="Goal"         component={GoalScreen} />
         <Stack.Screen name="Measurements" component={MeasurementsScreen} />
         <Stack.Screen name="DailyTargets" component={DailyTargetsScreen} />
-        <Stack.Screen name="Tabs"         component={TabNavigator} />
+
+        <Stack.Screen name="Tabs" component={TabNavigator} />
+
+        <Stack.Screen name="Profile"          component={ProfileScreen} />
+        <Stack.Screen name="CalorieLog"       component={CaloriesScreen} />
+        <Stack.Screen name="VideoLib"         component={VideoLibraryScreen} />
+        <Stack.Screen name="MeasurementsPage" component={MeasurementsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

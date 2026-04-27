@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from "react-native";
 
-import { setUserEmail } from "../utils/session";
+import { getUserToken, setUserEmail } from "../utils/session";
 import { BASE_URL } from "../config";
 
 export default function DailyTargetsScreen({ navigation, route }) {
@@ -42,14 +42,15 @@ export default function DailyTargetsScreen({ navigation, route }) {
 
   const handleSave = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/api/users/profile?email=${email}`,
+      const token = getUserToken();
+      const response = await fetch(`${BASE_URL}/api/users/profile${token ? "" : `?email=${encodeURIComponent(email)}`}`,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
           },
           body: JSON.stringify({
-            email,
             goal,
             targetWeight,
             height,

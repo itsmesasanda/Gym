@@ -73,6 +73,7 @@ export default function CaloriesScreen({ initialView = "dashboard" }) {
 
   const loadLogs = async () => {
     try {
+      setLoading(true);
       setError("");
       const todayResponse = await getTodayLogs(userId);
       setDailyStats(todayResponse.data);
@@ -180,6 +181,18 @@ export default function CaloriesScreen({ initialView = "dashboard" }) {
       <View style={styles.center}>
         <ActivityIndicator color="#C7F000" />
         <Text style={styles.muted}>Loading calorie log...</Text>
+      </View>
+    );
+  }
+
+  if (error && !dailyStats) {
+    return (
+      <View style={styles.center}>
+        <Text style={styles.error}>Could not load calorie log</Text>
+        <Text style={styles.muted}>{error}</Text>
+        <TouchableOpacity style={styles.searchTopButton} onPress={loadLogs}>
+          <Text style={styles.searchTopText}>Retry</Text>
+        </TouchableOpacity>
       </View>
     );
   }

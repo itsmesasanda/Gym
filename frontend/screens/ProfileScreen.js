@@ -8,13 +8,16 @@ import {
   TextInput,
 } from "react-native";
 
-import { clearUserEmail, getUserEmail } from "../utils/session";
+import { clearUserEmail, getUserEmail, getUserToken } from "../utils/session";
 import { BASE_URL } from "../config";
+import { fetchWithTimeout, parseJsonSafe } from "../services/http";
 
 export default function ProfileScreen({ navigation }) {
 
   const [isEditing, setIsEditing] = useState(false);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const email = getUserEmail();
 
@@ -23,32 +26,47 @@ export default function ProfileScreen({ navigation }) {
     navigation.replace("Login");
   };
 
+  const fetchUser = async () => {
+    try {
+      setLoading(true);
+      setError("");
+
+      const token = getUserToken();
+      const url = token
+        ? `${BASE_URL}/api/users/profile`
+        : `${BASE_URL}/api/users/profile?email=${encodeURIComponent(email)}`;
+      const response = await fetchWithTimeout(url, token ? {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      } : {});
+
+      const data = await parseJsonSafe(response);
+
+      if (!response.ok) {
+        setError(data?.message || "Could not load profile.");
+        return;
+      }
+
+      setUser(data);
+
+    } catch (error) {
+      console.log("Profile fetch error:", error);
+      setError(error.message || "Could not load profile.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // =========================
   // FETCH USER
   // =========================
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await fetch(
-          `${BASE_URL}/api/users/profile?email=${email}`
-        );
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          console.log("Profile fetch error:", data.message);
-          return;
-        }
-
-        setUser(data);
-
-      } catch (error) {
-        console.log("Profile fetch error:", error);
-      }
-    };
-
     if (email) {
       fetchUser();
+    } else {
+      setError("No signed-in user found.");
+      setLoading(false);
     }
   }, [email]);
 
@@ -57,15 +75,20 @@ export default function ProfileScreen({ navigation }) {
   // =========================
   const handleSave = async () => {
     try {
-      const response = await fetch(
-        `${BASE_URL}/api/users/profile`,
+      const token = getUserToken();
+      const requestUrl = token
+        ? `${BASE_URL}/api/users/profile`
+        : `${BASE_URL}/api/users/profile?email=${encodeURIComponent(email)}`;
+
+      const response = await fetchWithTimeout(
+        requestUrl,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
           },
           body: JSON.stringify({
-            email: user.email,
             goal: user.goal,
             targetWeight: user.targetWeight,
             height: user.height,
@@ -77,10 +100,10 @@ export default function ProfileScreen({ navigation }) {
         }
       );
 
-      const data = await response.json();
+      const data = await parseJsonSafe(response);
 
       if (!response.ok) {
-        alert(data.message || "Update failed");
+        alert(data?.message || "Update failed");
         return;
       }
 
@@ -93,10 +116,21 @@ export default function ProfileScreen({ navigation }) {
     }
   };
 
-  if (!user) {
+  if (loading) {
     return (
       <View style={styles.container}>
         <Text style={{ color: "white" }}>Loading...</Text>
+      </View>
+    );
+  }
+
+  if (error || !user) {
+    return (
+      <View style={styles.container}>
+        <Text style={{ color: "#FF6B6B", marginBottom: 12 }}>{error || "Could not load profile."}</Text>
+        <TouchableOpacity style={styles.logoutButton} onPress={fetchUser}>
+          <Text style={styles.logoutText}>Retry</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -129,47 +163,17 @@ export default function ProfileScreen({ navigation }) {
       {/* SUMMARY CARDS */}
       <View style={styles.statsRow}>
         <View style={styles.statCard}>
-          {isEditing ? (
-            <TextInput
-              style={styles.input}
-              value={String(user.height || "")}
-              onChangeText={(text) =>
-                setUser({ ...user, height: text })
-              }
-            />
-          ) : (
-            <Text style={styles.statValue}>{user.height}cm</Text>
-          )}
+          <Text style={styles.statValue}>{user.height}cm</Text>
           <Text style={styles.statLabel}>Height</Text>
         </View>
 
         <View style={styles.statCard}>
-          {isEditing ? (
-            <TextInput
-              style={styles.input}
-              value={String(user.weight || "")}
-              onChangeText={(text) =>
-                setUser({ ...user, weight: text })
-              }
-            />
-          ) : (
-            <Text style={styles.statValue}>{user.weight}kg</Text>
-          )}
+          <Text style={styles.statValue}>{user.weight}kg</Text>
           <Text style={styles.statLabel}>Weight</Text>
         </View>
 
         <View style={styles.statCard}>
-          {isEditing ? (
-            <TextInput
-              style={styles.input}
-              value={user.goal || ""}
-              onChangeText={(text) =>
-                setUser({ ...user, goal: text })
-              }
-            />
-          ) : (
-            <Text style={styles.statValue}>{user.goal}</Text>
-          )}
+          <Text style={styles.statValue}>{user.goal}</Text>
           <Text style={styles.statLabel}>Goal</Text>
         </View>
       </View>

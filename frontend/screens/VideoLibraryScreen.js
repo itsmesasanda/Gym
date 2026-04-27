@@ -11,6 +11,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { BASE_URL } from "../config";
+import { fetchWithTimeout, parseJsonSafe } from "../services/http";
 
 const GREEN  = "#C7F000";
 const BG     = "#0D0D0D";
@@ -47,18 +48,21 @@ export default function VideoLibraryScreen() {
   const [searchQuery,      setSearchQuery]      = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [loading,          setLoading]          = useState(false);
+  const [error,            setError]            = useState("");
 
   useEffect(() => { loadVideos(); }, []);
 
   const loadVideos = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${BASE_URL}/api/videos`);
-      if (!response.ok) throw new Error("Failed to fetch videos");
-      const data = await response.json();
+      setError("");
+      const response = await fetchWithTimeout(`${BASE_URL}/api/videos`);
+      const data = await parseJsonSafe(response);
+      if (!response.ok) throw new Error(data?.message || "Failed to fetch videos");
       setVideos(Array.isArray(data.videos) ? data.videos : []);
     } catch (e) {
-      Alert.alert("Error", e.message || "Could not load videos from server.");
+      setError(e.message || "Could not load videos from server.");
+      setVideos([]);
     } finally {
       setLoading(false);
     }
@@ -118,7 +122,17 @@ export default function VideoLibraryScreen() {
           <Text style={s.loadingText}>Loading videos...</Text>
         )}
 
-        {!loading && filteredVideos.length === 0 && (
+        {!loading && error ? (
+          <View style={s.emptyContainer}>
+            <Text style={s.emptyText}>Could not load videos</Text>
+            <Text style={s.emptySubtext}>{error}</Text>
+            <TouchableOpacity style={s.retryBtn} onPress={loadVideos}>
+              <Text style={s.retryText}>Retry</Text>
+            </TouchableOpacity>
+          </View>
+        ) : null}
+
+        {!loading && !error && filteredVideos.length === 0 && (
           <View style={s.emptyContainer}>
             <Text style={s.emptyIcon}>🎬</Text>
             <Text style={s.emptyText}>No videos found</Text>
@@ -199,6 +213,8 @@ const s = StyleSheet.create({
   emptyIcon:      { fontSize: 48, marginBottom: 12 },
   emptyText:      { color: WHITE, fontSize: 16, fontWeight: "600", marginBottom: 6 },
   emptySubtext:   { color: MUTED, fontSize: 13, textAlign: "center", paddingHorizontal: 20 },
+  retryBtn:       { marginTop: 14, backgroundColor: GREEN, paddingHorizontal: 14, paddingVertical: 8, borderRadius: 8 },
+  retryText:      { color: "#111", fontSize: 13, fontWeight: "800" },
 
   videoCard:      { backgroundColor: CARD, borderRadius: 16, marginBottom: 20, overflow: "hidden", borderWidth: 1, borderColor: BORDER },
 
