@@ -1,0 +1,9 @@
+{
+  "name": "admin-panel-root",
+  "version": "1.0.0",
+  "scripts": {
+    "start:client": "cd client-admin && npm start",
+    "start:server": "cd server-admin && npm run dev",
+    "start": "echo \"Please run 'npm run start:client' and 'npm run start:server' in separate terminals.\""
+  }
+}

@@ -1,0 +1,3001 @@
+doc_id,title,calories,protein,fat,sodium,carbohydrates,fibre,rating,text_chunk
+doc_00000,Sri Lankan Chicken Curry Variant 1,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Sri Lankan Chicken Curry Variant 1.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00001,Sri Lankan Chicken Curry Variant 2,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Sri Lankan Chicken Curry Variant 2.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00002,Sri Lankan Chicken Curry Variant 3,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Sri Lankan Chicken Curry Variant 3.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00003,Sri Lankan Chicken Curry Variant 4,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Sri Lankan Chicken Curry Variant 4.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00004,Sri Lankan Chicken Curry Variant 5,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Sri Lankan Chicken Curry Variant 5.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00005,Sri Lankan Chicken Curry Variant 6,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Sri Lankan Chicken Curry Variant 6.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00006,Sri Lankan Chicken Curry Variant 7,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Sri Lankan Chicken Curry Variant 7.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00007,Sri Lankan Chicken Curry Variant 8,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Sri Lankan Chicken Curry Variant 8.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00008,Sri Lankan Chicken Curry Variant 9,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Sri Lankan Chicken Curry Variant 9.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00009,Sri Lankan Chicken Curry Variant 10,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Sri Lankan Chicken Curry Variant 10.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00010,Sri Lankan Chicken Curry Variant 11,200.0,10.0,5.0,200.0,20.0,2.0,4.2,"Recipe: Sri Lankan Chicken Curry Variant 11.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00011,Sri Lankan Chicken Curry Variant 12,250.0,15.0,8.0,300.0,30.0,3.0,4.4,"Recipe: Sri Lankan Chicken Curry Variant 12.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00012,Sri Lankan Chicken Curry Variant 13,300.0,20.0,11.0,400.0,40.0,4.0,4.0,"Recipe: Sri Lankan Chicken Curry Variant 13.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00013,Sri Lankan Chicken Curry Variant 14,350.0,25.0,14.0,500.0,50.0,5.0,4.2,"Recipe: Sri Lankan Chicken Curry Variant 14.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00014,Sri Lankan Chicken Curry Variant 15,400.0,30.0,17.0,600.0,60.0,6.0,4.4,"Recipe: Sri Lankan Chicken Curry Variant 15.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00015,Sri Lankan Chicken Curry Variant 16,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Sri Lankan Chicken Curry Variant 16.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00016,Sri Lankan Chicken Curry Variant 17,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Sri Lankan Chicken Curry Variant 17.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00017,Sri Lankan Chicken Curry Variant 18,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Sri Lankan Chicken Curry Variant 18.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00018,Sri Lankan Chicken Curry Variant 19,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Sri Lankan Chicken Curry Variant 19.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00019,Sri Lankan Chicken Curry Variant 20,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Sri Lankan Chicken Curry Variant 20.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00020,Sri Lankan Chicken Curry Variant 21,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Sri Lankan Chicken Curry Variant 21.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00021,Sri Lankan Chicken Curry Variant 22,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Sri Lankan Chicken Curry Variant 22.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00022,Sri Lankan Chicken Curry Variant 23,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Sri Lankan Chicken Curry Variant 23.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00023,Sri Lankan Chicken Curry Variant 24,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Sri Lankan Chicken Curry Variant 24.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00024,Sri Lankan Chicken Curry Variant 25,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Sri Lankan Chicken Curry Variant 25.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00025,Sri Lankan Dhal Curry Variant 1,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Sri Lankan Dhal Curry Variant 1.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00026,Sri Lankan Dhal Curry Variant 2,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Sri Lankan Dhal Curry Variant 2.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00027,Sri Lankan Dhal Curry Variant 3,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Sri Lankan Dhal Curry Variant 3.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00028,Sri Lankan Dhal Curry Variant 4,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Sri Lankan Dhal Curry Variant 4.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00029,Sri Lankan Dhal Curry Variant 5,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Sri Lankan Dhal Curry Variant 5.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00030,Sri Lankan Dhal Curry Variant 6,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Sri Lankan Dhal Curry Variant 6.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00031,Sri Lankan Dhal Curry Variant 7,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Sri Lankan Dhal Curry Variant 7.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00032,Sri Lankan Dhal Curry Variant 8,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Sri Lankan Dhal Curry Variant 8.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00033,Sri Lankan Dhal Curry Variant 9,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Sri Lankan Dhal Curry Variant 9.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00034,Sri Lankan Dhal Curry Variant 10,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Sri Lankan Dhal Curry Variant 10.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00035,Sri Lankan Dhal Curry Variant 11,200.0,10.0,5.0,200.0,20.0,2.0,4.2,"Recipe: Sri Lankan Dhal Curry Variant 11.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00036,Sri Lankan Dhal Curry Variant 12,250.0,15.0,8.0,300.0,30.0,3.0,4.4,"Recipe: Sri Lankan Dhal Curry Variant 12.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00037,Sri Lankan Dhal Curry Variant 13,300.0,20.0,11.0,400.0,40.0,4.0,4.0,"Recipe: Sri Lankan Dhal Curry Variant 13.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00038,Sri Lankan Dhal Curry Variant 14,350.0,25.0,14.0,500.0,50.0,5.0,4.2,"Recipe: Sri Lankan Dhal Curry Variant 14.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00039,Sri Lankan Dhal Curry Variant 15,400.0,30.0,17.0,600.0,60.0,6.0,4.4,"Recipe: Sri Lankan Dhal Curry Variant 15.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00040,Sri Lankan Dhal Curry Variant 16,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Sri Lankan Dhal Curry Variant 16.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00041,Sri Lankan Dhal Curry Variant 17,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Sri Lankan Dhal Curry Variant 17.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00042,Sri Lankan Dhal Curry Variant 18,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Sri Lankan Dhal Curry Variant 18.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00043,Sri Lankan Dhal Curry Variant 19,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Sri Lankan Dhal Curry Variant 19.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00044,Sri Lankan Dhal Curry Variant 20,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Sri Lankan Dhal Curry Variant 20.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00045,Sri Lankan Dhal Curry Variant 21,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Sri Lankan Dhal Curry Variant 21.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00046,Sri Lankan Dhal Curry Variant 22,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Sri Lankan Dhal Curry Variant 22.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00047,Sri Lankan Dhal Curry Variant 23,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Sri Lankan Dhal Curry Variant 23.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00048,Sri Lankan Dhal Curry Variant 24,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Sri Lankan Dhal Curry Variant 24.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00049,Sri Lankan Dhal Curry Variant 25,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Sri Lankan Dhal Curry Variant 25.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00050,Kottu Roti Chicken Variant 1,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Kottu Roti Chicken Variant 1.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00051,Kottu Roti Chicken Variant 2,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Kottu Roti Chicken Variant 2.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00052,Kottu Roti Chicken Variant 3,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Kottu Roti Chicken Variant 3.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00053,Kottu Roti Chicken Variant 4,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Kottu Roti Chicken Variant 4.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00054,Kottu Roti Chicken Variant 5,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Kottu Roti Chicken Variant 5.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00055,Kottu Roti Chicken Variant 6,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Kottu Roti Chicken Variant 6.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00056,Kottu Roti Chicken Variant 7,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Kottu Roti Chicken Variant 7.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00057,Kottu Roti Chicken Variant 8,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Kottu Roti Chicken Variant 8.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00058,Kottu Roti Chicken Variant 9,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Kottu Roti Chicken Variant 9.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00059,Kottu Roti Chicken Variant 10,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Kottu Roti Chicken Variant 10.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00060,Kottu Roti Chicken Variant 11,200.0,10.0,5.0,200.0,20.0,2.0,4.2,"Recipe: Kottu Roti Chicken Variant 11.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00061,Kottu Roti Chicken Variant 12,250.0,15.0,8.0,300.0,30.0,3.0,4.4,"Recipe: Kottu Roti Chicken Variant 12.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00062,Kottu Roti Chicken Variant 13,300.0,20.0,11.0,400.0,40.0,4.0,4.0,"Recipe: Kottu Roti Chicken Variant 13.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00063,Kottu Roti Chicken Variant 14,350.0,25.0,14.0,500.0,50.0,5.0,4.2,"Recipe: Kottu Roti Chicken Variant 14.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00064,Kottu Roti Chicken Variant 15,400.0,30.0,17.0,600.0,60.0,6.0,4.4,"Recipe: Kottu Roti Chicken Variant 15.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00065,Kottu Roti Chicken Variant 16,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Kottu Roti Chicken Variant 16.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00066,Kottu Roti Chicken Variant 17,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Kottu Roti Chicken Variant 17.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00067,Kottu Roti Chicken Variant 18,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Kottu Roti Chicken Variant 18.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00068,Kottu Roti Chicken Variant 19,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Kottu Roti Chicken Variant 19.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00069,Kottu Roti Chicken Variant 20,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Kottu Roti Chicken Variant 20.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00070,Kottu Roti Chicken Variant 21,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Kottu Roti Chicken Variant 21.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00071,Kottu Roti Chicken Variant 22,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Kottu Roti Chicken Variant 22.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00072,Kottu Roti Chicken Variant 23,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Kottu Roti Chicken Variant 23.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00073,Kottu Roti Chicken Variant 24,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Kottu Roti Chicken Variant 24.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00074,Kottu Roti Chicken Variant 25,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Kottu Roti Chicken Variant 25.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00075,Pol Roti Variant 1,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Pol Roti Variant 1.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00076,Pol Roti Variant 2,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Pol Roti Variant 2.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00077,Pol Roti Variant 3,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Pol Roti Variant 3.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00078,Pol Roti Variant 4,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Pol Roti Variant 4.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00079,Pol Roti Variant 5,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Pol Roti Variant 5.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00080,Pol Roti Variant 6,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Pol Roti Variant 6.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00081,Pol Roti Variant 7,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Pol Roti Variant 7.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00082,Pol Roti Variant 8,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Pol Roti Variant 8.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00083,Pol Roti Variant 9,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Pol Roti Variant 9.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00084,Pol Roti Variant 10,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Pol Roti Variant 10.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00085,Pol Roti Variant 11,200.0,10.0,5.0,200.0,20.0,2.0,4.2,"Recipe: Pol Roti Variant 11.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00086,Pol Roti Variant 12,250.0,15.0,8.0,300.0,30.0,3.0,4.4,"Recipe: Pol Roti Variant 12.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00087,Pol Roti Variant 13,300.0,20.0,11.0,400.0,40.0,4.0,4.0,"Recipe: Pol Roti Variant 13.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00088,Pol Roti Variant 14,350.0,25.0,14.0,500.0,50.0,5.0,4.2,"Recipe: Pol Roti Variant 14.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00089,Pol Roti Variant 15,400.0,30.0,17.0,600.0,60.0,6.0,4.4,"Recipe: Pol Roti Variant 15.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00090,Pol Roti Variant 16,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Pol Roti Variant 16.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00091,Pol Roti Variant 17,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Pol Roti Variant 17.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00092,Pol Roti Variant 18,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Pol Roti Variant 18.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00093,Pol Roti Variant 19,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Pol Roti Variant 19.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00094,Pol Roti Variant 20,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Pol Roti Variant 20.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00095,Pol Roti Variant 21,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Pol Roti Variant 21.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00096,Pol Roti Variant 22,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Pol Roti Variant 22.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00097,Pol Roti Variant 23,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Pol Roti Variant 23.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00098,Pol Roti Variant 24,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Pol Roti Variant 24.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00099,Pol Roti Variant 25,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Pol Roti Variant 25.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00100,Fish Curry Variant 1,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Fish Curry Variant 1.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00101,Fish Curry Variant 2,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Fish Curry Variant 2.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00102,Fish Curry Variant 3,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Fish Curry Variant 3.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00103,Fish Curry Variant 4,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Fish Curry Variant 4.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00104,Fish Curry Variant 5,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Fish Curry Variant 5.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00105,Fish Curry Variant 6,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Fish Curry Variant 6.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00106,Fish Curry Variant 7,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Fish Curry Variant 7.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00107,Fish Curry Variant 8,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Fish Curry Variant 8.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00108,Fish Curry Variant 9,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Fish Curry Variant 9.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00109,Fish Curry Variant 10,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Fish Curry Variant 10.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00110,Fish Curry Variant 11,200.0,10.0,5.0,200.0,20.0,2.0,4.2,"Recipe: Fish Curry Variant 11.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00111,Fish Curry Variant 12,250.0,15.0,8.0,300.0,30.0,3.0,4.4,"Recipe: Fish Curry Variant 12.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00112,Fish Curry Variant 13,300.0,20.0,11.0,400.0,40.0,4.0,4.0,"Recipe: Fish Curry Variant 13.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00113,Fish Curry Variant 14,350.0,25.0,14.0,500.0,50.0,5.0,4.2,"Recipe: Fish Curry Variant 14.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00114,Fish Curry Variant 15,400.0,30.0,17.0,600.0,60.0,6.0,4.4,"Recipe: Fish Curry Variant 15.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00115,Fish Curry Variant 16,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Fish Curry Variant 16.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00116,Fish Curry Variant 17,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Fish Curry Variant 17.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00117,Fish Curry Variant 18,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Fish Curry Variant 18.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00118,Fish Curry Variant 19,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Fish Curry Variant 19.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00119,Fish Curry Variant 20,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Fish Curry Variant 20.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00120,Fish Curry Variant 21,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Fish Curry Variant 21.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00121,Fish Curry Variant 22,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Fish Curry Variant 22.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00122,Fish Curry Variant 23,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Fish Curry Variant 23.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00123,Fish Curry Variant 24,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Fish Curry Variant 24.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00124,Fish Curry Variant 25,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Fish Curry Variant 25.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00125,Egg Curry Variant 1,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Egg Curry Variant 1.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00126,Egg Curry Variant 2,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Egg Curry Variant 2.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00127,Egg Curry Variant 3,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Egg Curry Variant 3.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00128,Egg Curry Variant 4,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Egg Curry Variant 4.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00129,Egg Curry Variant 5,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Egg Curry Variant 5.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00130,Egg Curry Variant 6,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Egg Curry Variant 6.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00131,Egg Curry Variant 7,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Egg Curry Variant 7.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00132,Egg Curry Variant 8,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Egg Curry Variant 8.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00133,Egg Curry Variant 9,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Egg Curry Variant 9.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00134,Egg Curry Variant 10,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Egg Curry Variant 10.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00135,Egg Curry Variant 11,200.0,10.0,5.0,200.0,20.0,2.0,4.2,"Recipe: Egg Curry Variant 11.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00136,Egg Curry Variant 12,250.0,15.0,8.0,300.0,30.0,3.0,4.4,"Recipe: Egg Curry Variant 12.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00137,Egg Curry Variant 13,300.0,20.0,11.0,400.0,40.0,4.0,4.0,"Recipe: Egg Curry Variant 13.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00138,Egg Curry Variant 14,350.0,25.0,14.0,500.0,50.0,5.0,4.2,"Recipe: Egg Curry Variant 14.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00139,Egg Curry Variant 15,400.0,30.0,17.0,600.0,60.0,6.0,4.4,"Recipe: Egg Curry Variant 15.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00140,Egg Curry Variant 16,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Egg Curry Variant 16.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00141,Egg Curry Variant 17,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Egg Curry Variant 17.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00142,Egg Curry Variant 18,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Egg Curry Variant 18.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00143,Egg Curry Variant 19,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Egg Curry Variant 19.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00144,Egg Curry Variant 20,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Egg Curry Variant 20.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00145,Egg Curry Variant 21,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Egg Curry Variant 21.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00146,Egg Curry Variant 22,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Egg Curry Variant 22.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00147,Egg Curry Variant 23,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Egg Curry Variant 23.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00148,Egg Curry Variant 24,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Egg Curry Variant 24.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00149,Egg Curry Variant 25,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Egg Curry Variant 25.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00150,String Hoppers Variant 1,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: String Hoppers Variant 1.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00151,String Hoppers Variant 2,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: String Hoppers Variant 2.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00152,String Hoppers Variant 3,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: String Hoppers Variant 3.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00153,String Hoppers Variant 4,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: String Hoppers Variant 4.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00154,String Hoppers Variant 5,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: String Hoppers Variant 5.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00155,String Hoppers Variant 6,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: String Hoppers Variant 6.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00156,String Hoppers Variant 7,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: String Hoppers Variant 7.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00157,String Hoppers Variant 8,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: String Hoppers Variant 8.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00158,String Hoppers Variant 9,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: String Hoppers Variant 9.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00159,String Hoppers Variant 10,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: String Hoppers Variant 10.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00160,String Hoppers Variant 11,200.0,10.0,5.0,200.0,20.0,2.0,4.2,"Recipe: String Hoppers Variant 11.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00161,String Hoppers Variant 12,250.0,15.0,8.0,300.0,30.0,3.0,4.4,"Recipe: String Hoppers Variant 12.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00162,String Hoppers Variant 13,300.0,20.0,11.0,400.0,40.0,4.0,4.0,"Recipe: String Hoppers Variant 13.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00163,String Hoppers Variant 14,350.0,25.0,14.0,500.0,50.0,5.0,4.2,"Recipe: String Hoppers Variant 14.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00164,String Hoppers Variant 15,400.0,30.0,17.0,600.0,60.0,6.0,4.4,"Recipe: String Hoppers Variant 15.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00165,String Hoppers Variant 16,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: String Hoppers Variant 16.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00166,String Hoppers Variant 17,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: String Hoppers Variant 17.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00167,String Hoppers Variant 18,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: String Hoppers Variant 18.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00168,String Hoppers Variant 19,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: String Hoppers Variant 19.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00169,String Hoppers Variant 20,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: String Hoppers Variant 20.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00170,String Hoppers Variant 21,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: String Hoppers Variant 21.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00171,String Hoppers Variant 22,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: String Hoppers Variant 22.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00172,String Hoppers Variant 23,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: String Hoppers Variant 23.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00173,String Hoppers Variant 24,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: String Hoppers Variant 24.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00174,String Hoppers Variant 25,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: String Hoppers Variant 25.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00175,Hoppers Variant 1,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Hoppers Variant 1.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00176,Hoppers Variant 2,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Hoppers Variant 2.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00177,Hoppers Variant 3,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Hoppers Variant 3.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00178,Hoppers Variant 4,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Hoppers Variant 4.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00179,Hoppers Variant 5,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Hoppers Variant 5.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00180,Hoppers Variant 6,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Hoppers Variant 6.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00181,Hoppers Variant 7,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Hoppers Variant 7.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00182,Hoppers Variant 8,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Hoppers Variant 8.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00183,Hoppers Variant 9,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Hoppers Variant 9.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00184,Hoppers Variant 10,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Hoppers Variant 10.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00185,Hoppers Variant 11,200.0,10.0,5.0,200.0,20.0,2.0,4.2,"Recipe: Hoppers Variant 11.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00186,Hoppers Variant 12,250.0,15.0,8.0,300.0,30.0,3.0,4.4,"Recipe: Hoppers Variant 12.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00187,Hoppers Variant 13,300.0,20.0,11.0,400.0,40.0,4.0,4.0,"Recipe: Hoppers Variant 13.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00188,Hoppers Variant 14,350.0,25.0,14.0,500.0,50.0,5.0,4.2,"Recipe: Hoppers Variant 14.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00189,Hoppers Variant 15,400.0,30.0,17.0,600.0,60.0,6.0,4.4,"Recipe: Hoppers Variant 15.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00190,Hoppers Variant 16,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Hoppers Variant 16.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00191,Hoppers Variant 17,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Hoppers Variant 17.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00192,Hoppers Variant 18,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Hoppers Variant 18.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00193,Hoppers Variant 19,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Hoppers Variant 19.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00194,Hoppers Variant 20,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Hoppers Variant 20.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00195,Hoppers Variant 21,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Hoppers Variant 21.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00196,Hoppers Variant 22,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Hoppers Variant 22.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00197,Hoppers Variant 23,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Hoppers Variant 23.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00198,Hoppers Variant 24,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Hoppers Variant 24.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00199,Hoppers Variant 25,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Hoppers Variant 25.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00200,Pittu Variant 1,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Pittu Variant 1.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00201,Pittu Variant 2,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Pittu Variant 2.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00202,Pittu Variant 3,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Pittu Variant 3.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00203,Pittu Variant 4,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Pittu Variant 4.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00204,Pittu Variant 5,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Pittu Variant 5.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00205,Pittu Variant 6,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Pittu Variant 6.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00206,Pittu Variant 7,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Pittu Variant 7.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00207,Pittu Variant 8,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Pittu Variant 8.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00208,Pittu Variant 9,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Pittu Variant 9.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00209,Pittu Variant 10,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Pittu Variant 10.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00210,Pittu Variant 11,200.0,10.0,5.0,200.0,20.0,2.0,4.2,"Recipe: Pittu Variant 11.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00211,Pittu Variant 12,250.0,15.0,8.0,300.0,30.0,3.0,4.4,"Recipe: Pittu Variant 12.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00212,Pittu Variant 13,300.0,20.0,11.0,400.0,40.0,4.0,4.0,"Recipe: Pittu Variant 13.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00213,Pittu Variant 14,350.0,25.0,14.0,500.0,50.0,5.0,4.2,"Recipe: Pittu Variant 14.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00214,Pittu Variant 15,400.0,30.0,17.0,600.0,60.0,6.0,4.4,"Recipe: Pittu Variant 15.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00215,Pittu Variant 16,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Pittu Variant 16.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00216,Pittu Variant 17,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Pittu Variant 17.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00217,Pittu Variant 18,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Pittu Variant 18.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00218,Pittu Variant 19,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Pittu Variant 19.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00219,Pittu Variant 20,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Pittu Variant 20.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00220,Pittu Variant 21,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Pittu Variant 21.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00221,Pittu Variant 22,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Pittu Variant 22.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00222,Pittu Variant 23,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Pittu Variant 23.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00223,Pittu Variant 24,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Pittu Variant 24.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00224,Pittu Variant 25,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Pittu Variant 25.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00225,Gotukola Sambol Variant 1,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Gotukola Sambol Variant 1.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00226,Gotukola Sambol Variant 2,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Gotukola Sambol Variant 2.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00227,Gotukola Sambol Variant 3,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Gotukola Sambol Variant 3.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00228,Gotukola Sambol Variant 4,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Gotukola Sambol Variant 4.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00229,Gotukola Sambol Variant 5,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Gotukola Sambol Variant 5.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00230,Gotukola Sambol Variant 6,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Gotukola Sambol Variant 6.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00231,Gotukola Sambol Variant 7,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Gotukola Sambol Variant 7.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00232,Gotukola Sambol Variant 8,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Gotukola Sambol Variant 8.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00233,Gotukola Sambol Variant 9,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Gotukola Sambol Variant 9.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00234,Gotukola Sambol Variant 10,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Gotukola Sambol Variant 10.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00235,Gotukola Sambol Variant 11,200.0,10.0,5.0,200.0,20.0,2.0,4.2,"Recipe: Gotukola Sambol Variant 11.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00236,Gotukola Sambol Variant 12,250.0,15.0,8.0,300.0,30.0,3.0,4.4,"Recipe: Gotukola Sambol Variant 12.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00237,Gotukola Sambol Variant 13,300.0,20.0,11.0,400.0,40.0,4.0,4.0,"Recipe: Gotukola Sambol Variant 13.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00238,Gotukola Sambol Variant 14,350.0,25.0,14.0,500.0,50.0,5.0,4.2,"Recipe: Gotukola Sambol Variant 14.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00239,Gotukola Sambol Variant 15,400.0,30.0,17.0,600.0,60.0,6.0,4.4,"Recipe: Gotukola Sambol Variant 15.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00240,Gotukola Sambol Variant 16,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Gotukola Sambol Variant 16.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00241,Gotukola Sambol Variant 17,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Gotukola Sambol Variant 17.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00242,Gotukola Sambol Variant 18,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Gotukola Sambol Variant 18.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00243,Gotukola Sambol Variant 19,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Gotukola Sambol Variant 19.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00244,Gotukola Sambol Variant 20,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Gotukola Sambol Variant 20.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00245,Gotukola Sambol Variant 21,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Gotukola Sambol Variant 21.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00246,Gotukola Sambol Variant 22,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Gotukola Sambol Variant 22.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00247,Gotukola Sambol Variant 23,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Gotukola Sambol Variant 23.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00248,Gotukola Sambol Variant 24,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Gotukola Sambol Variant 24.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00249,Gotukola Sambol Variant 25,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Gotukola Sambol Variant 25.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00250,Wattalappam Variant 1,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Wattalappam Variant 1.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00251,Wattalappam Variant 2,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Wattalappam Variant 2.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00252,Wattalappam Variant 3,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Wattalappam Variant 3.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00253,Wattalappam Variant 4,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Wattalappam Variant 4.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00254,Wattalappam Variant 5,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Wattalappam Variant 5.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00255,Wattalappam Variant 6,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Wattalappam Variant 6.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00256,Wattalappam Variant 7,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Wattalappam Variant 7.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00257,Wattalappam Variant 8,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Wattalappam Variant 8.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00258,Wattalappam Variant 9,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Wattalappam Variant 9.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00259,Wattalappam Variant 10,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Wattalappam Variant 10.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00260,Wattalappam Variant 11,200.0,10.0,5.0,200.0,20.0,2.0,4.2,"Recipe: Wattalappam Variant 11.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00261,Wattalappam Variant 12,250.0,15.0,8.0,300.0,30.0,3.0,4.4,"Recipe: Wattalappam Variant 12.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00262,Wattalappam Variant 13,300.0,20.0,11.0,400.0,40.0,4.0,4.0,"Recipe: Wattalappam Variant 13.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00263,Wattalappam Variant 14,350.0,25.0,14.0,500.0,50.0,5.0,4.2,"Recipe: Wattalappam Variant 14.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00264,Wattalappam Variant 15,400.0,30.0,17.0,600.0,60.0,6.0,4.4,"Recipe: Wattalappam Variant 15.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00265,Wattalappam Variant 16,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Wattalappam Variant 16.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00266,Wattalappam Variant 17,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Wattalappam Variant 17.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00267,Wattalappam Variant 18,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Wattalappam Variant 18.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00268,Wattalappam Variant 19,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Wattalappam Variant 19.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00269,Wattalappam Variant 20,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Wattalappam Variant 20.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00270,Wattalappam Variant 21,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Wattalappam Variant 21.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00271,Wattalappam Variant 22,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Wattalappam Variant 22.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00272,Wattalappam Variant 23,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Wattalappam Variant 23.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00273,Wattalappam Variant 24,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Wattalappam Variant 24.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00274,Wattalappam Variant 25,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Wattalappam Variant 25.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00275,Milk Rice Variant 1,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Milk Rice Variant 1.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00276,Milk Rice Variant 2,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Milk Rice Variant 2.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00277,Milk Rice Variant 3,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Milk Rice Variant 3.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00278,Milk Rice Variant 4,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Milk Rice Variant 4.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00279,Milk Rice Variant 5,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Milk Rice Variant 5.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00280,Milk Rice Variant 6,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Milk Rice Variant 6.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00281,Milk Rice Variant 7,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Milk Rice Variant 7.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00282,Milk Rice Variant 8,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Milk Rice Variant 8.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00283,Milk Rice Variant 9,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Milk Rice Variant 9.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00284,Milk Rice Variant 10,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Milk Rice Variant 10.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00285,Milk Rice Variant 11,200.0,10.0,5.0,200.0,20.0,2.0,4.2,"Recipe: Milk Rice Variant 11.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00286,Milk Rice Variant 12,250.0,15.0,8.0,300.0,30.0,3.0,4.4,"Recipe: Milk Rice Variant 12.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00287,Milk Rice Variant 13,300.0,20.0,11.0,400.0,40.0,4.0,4.0,"Recipe: Milk Rice Variant 13.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00288,Milk Rice Variant 14,350.0,25.0,14.0,500.0,50.0,5.0,4.2,"Recipe: Milk Rice Variant 14.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00289,Milk Rice Variant 15,400.0,30.0,17.0,600.0,60.0,6.0,4.4,"Recipe: Milk Rice Variant 15.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00290,Milk Rice Variant 16,200.0,10.0,5.0,200.0,20.0,2.0,4.0,"Recipe: Milk Rice Variant 16.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00291,Milk Rice Variant 17,250.0,15.0,8.0,300.0,30.0,3.0,4.2,"Recipe: Milk Rice Variant 17.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00292,Milk Rice Variant 18,300.0,20.0,11.0,400.0,40.0,4.0,4.4,"Recipe: Milk Rice Variant 18.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00293,Milk Rice Variant 19,350.0,25.0,14.0,500.0,50.0,5.0,4.0,"Recipe: Milk Rice Variant 19.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00294,Milk Rice Variant 20,400.0,30.0,17.0,600.0,60.0,6.0,4.2,"Recipe: Milk Rice Variant 20.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00295,Milk Rice Variant 21,200.0,10.0,5.0,200.0,20.0,2.0,4.4,"Recipe: Milk Rice Variant 21.
+Nutrition per serving: 200 kcal | 10 g protein | 5 g fat | 200 mg sodium | 20 g carbs | 2 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00296,Milk Rice Variant 22,250.0,15.0,8.0,300.0,30.0,3.0,4.0,"Recipe: Milk Rice Variant 22.
+Nutrition per serving: 250 kcal | 15 g protein | 8 g fat | 300 mg sodium | 30 g carbs | 3 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00297,Milk Rice Variant 23,300.0,20.0,11.0,400.0,40.0,4.0,4.2,"Recipe: Milk Rice Variant 23.
+Nutrition per serving: 300 kcal | 20 g protein | 11 g fat | 400 mg sodium | 40 g carbs | 4 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.2/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00298,Milk Rice Variant 24,350.0,25.0,14.0,500.0,50.0,5.0,4.4,"Recipe: Milk Rice Variant 24.
+Nutrition per serving: 350 kcal | 25 g protein | 14 g fat | 500 mg sodium | 50 g carbs | 5 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.4/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
+doc_00299,Milk Rice Variant 25,400.0,30.0,17.0,600.0,60.0,6.0,4.0,"Recipe: Milk Rice Variant 25.
+Nutrition per serving: 400 kcal | 30 g protein | 17 g fat | 600 mg sodium | 60 g carbs | 6 g fibre.
+Nutrition profile: moderate-calorie, moderate-protein, moderate-fat, moderate-sodium, moderate-carb, moderate-fibre.
+User rating: 4.0/5 — very good.
+Diet suitability: balanced.
+Cuisine / style: sri lankan.
+Meal type: main.
+Main protein source: mixed.
+Cooking method: traditional.
+Additional attributes: dataset-generated."
