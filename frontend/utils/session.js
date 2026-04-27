@@ -2,6 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Source of truth — kept in memory, persisted to AsyncStorage on the side.
 let currentUserEmail = null;
+let currentUserToken = null;
 
 /**
  * Read the persisted email from AsyncStorage into memory.
@@ -12,6 +13,9 @@ export const hydrateSession = async () => {
   try {
     const stored = await AsyncStorage.getItem("userEmail");
     if (stored) currentUserEmail = stored;
+
+    const token = await AsyncStorage.getItem("userToken");
+    if (token) currentUserToken = token;
   } catch (e) {
     console.error("hydrateSession:", e);
   }
@@ -35,9 +39,30 @@ export const getUserEmail = () => {
   return currentUserEmail;
 };
 
+export const setUserToken = (token) => {
+  currentUserToken = token;
+  if (token) {
+    AsyncStorage.setItem("userToken", token).catch((e) =>
+      console.error("setUserToken persist:", e)
+    );
+  } else {
+    AsyncStorage.removeItem("userToken").catch((e) =>
+      console.error("setUserToken remove:", e)
+    );
+  }
+};
+
+export const getUserToken = () => {
+  return currentUserToken;
+};
+
 export const clearUserEmail = () => {
   currentUserEmail = null;
+  currentUserToken = null;
   AsyncStorage.removeItem("userEmail").catch((e) =>
     console.error("clearUserEmail:", e)
+  );
+  AsyncStorage.removeItem("userToken").catch((e) =>
+    console.error("clearUserEmail token:", e)
   );
 };
