@@ -12,3 +12,7 @@ __pycache__/
 
 # env files
 .env
+
+frontend/node_modules/
+backend/node_modules/
+admin-panel/server-admin/node_modules/
