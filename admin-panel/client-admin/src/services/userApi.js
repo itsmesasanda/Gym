@@ -1,9 +1,11 @@
-const API_URL = 'http://localhost:5001/api';
+import { PUBLIC_API_URL } from '../config/api';
+
+const API_URL = PUBLIC_API_URL;
 
 const parseResponse = async (res) => {
   const contentType = res.headers.get('content-type');
   if (!contentType || !contentType.includes('application/json')) {
-    throw new Error('Server is not responding correctly. Please ensure backend is running on http://localhost:5001');
+    throw new Error('Server is not responding correctly. Please ensure backend is running on http://127.0.0.1:5050');
   }
   return res.json();
 };

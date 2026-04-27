@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import React, { useCallback, useEffect, useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import {
   ActivityIndicator,
   Alert,
@@ -35,7 +35,7 @@ export default function ManageCalorieLogsScreen() {
       setLoading(false);
       setRefreshing(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     loadData();

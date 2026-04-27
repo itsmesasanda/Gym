@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import WorkoutTable from '../components/WorkoutTable';
 import { workoutService } from '../services/workoutService';
-import { clone } from '../utils/adminHelpers';
 
-const EMPTY = { title: '', date: '', time: '', location: '', description: '' };
+const EMPTY = { exerciseName: '', muscleGroup: 'Chest', reps: '6', weight: '0', duration: '0', notes: '' };
+const MUSCLE_GROUPS = ['Chest', 'Back', 'Legs', 'Arms', 'Shoulders', 'Biceps', 'Triceps', 'Core'];
 
 const ManageWorkouts = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -28,6 +28,22 @@ const ManageWorkouts = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (form.exerciseName.trim().length < 2 || form.exerciseName.trim().length > 50) {
+      return flash('Exercise name must be 2-50 characters', true);
+    }
+    if (!MUSCLE_GROUPS.includes(form.muscleGroup)) {
+      return flash('Choose a valid muscle group', true);
+    }
+    const reps = Number(form.reps);
+    const weight = Number(form.weight);
+    const duration = Number(form.duration || 0);
+    if (!Number.isFinite(reps) || reps < 6 || reps > 15) return flash('Reps must be between 6 and 15', true);
+    if (!Number.isFinite(weight) || weight < 0) return flash('Weight cannot be negative', true);
+    if (!Number.isFinite(duration) || duration < 0 || (duration > 0 && duration < 5)) {
+      return flash('Duration must be 0 or at least 5 minutes', true);
+    }
+    if (form.notes.length > 500) return flash('Notes cannot exceed 500 characters', true);
+
     setLoading(true);
     try {
       if (editId) { await workoutService.update(editId, form); flash('Workout updated'); }
@@ -37,7 +53,17 @@ const ManageWorkouts = () => {
     finally { setLoading(false); }
   };
 
-  const handleEdit = (w) => { setForm(clone(w)); setEditId(w._id); };
+  const handleEdit = (w) => {
+    setForm({
+      exerciseName: w.exerciseName || '',
+      muscleGroup: w.muscleGroup || 'Chest',
+      reps: String(w.sets?.[0]?.reps ?? '6'),
+      weight: String(w.sets?.[0]?.weight ?? '0'),
+      duration: String(w.duration ?? '0'),
+      notes: w.notes || '',
+    });
+    setEditId(w._id);
+  };
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this workout?')) return;
     try { await workoutService.remove(id); flash('Deleted'); load(); }
@@ -45,8 +71,11 @@ const ManageWorkouts = () => {
   };
 
   const fields = [
-    ['title','Title','text',true],['date','Date','date',false],
-    ['time','Time','time',false],['location','Location','text',false],['description','Description','text',false],
+    ['exerciseName','Exercise Name','text',true],
+    ['reps','Reps','number',true],
+    ['weight','Weight','number',true],
+    ['duration','Duration','number',false],
+    ['notes','Notes','text',false],
   ];
 
   return (
@@ -57,6 +86,12 @@ const ManageWorkouts = () => {
       <form onSubmit={handleSubmit} style={s.form}>
         <h3 style={s.formTitle}>{editId ? 'Edit Workout' : 'Add New Workout'}</h3>
         <div style={s.grid}>
+          <div style={s.field}>
+            <label style={s.label}>Muscle Group</label>
+            <select style={s.input} name="muscleGroup" value={form.muscleGroup} onChange={handleChange} required>
+              {MUSCLE_GROUPS.map((group) => <option key={group}>{group}</option>)}
+            </select>
+          </div>
           {fields.map(([name, label, type, req]) => (
             <div key={name} style={s.field}>
               <label style={s.label}>{label}</label>

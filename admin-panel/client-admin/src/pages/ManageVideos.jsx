@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import VideoTable from '../components/VideoTable';
 import { api } from '../services/adminApi';
-import { clone } from '../utils/adminHelpers';
+import { isValidThumbnailUrl, isValidYouTubeUrl } from '../utils/videoValidation';
 
-const EMPTY = { title: '', description: '', videoLink: '', uploadedDate: '', pinned: false, priority: 'normal' };
+const EMPTY = { title: '', description: '', category: 'Chest', thumbnail: '', youtubeUrl: '' };
+const CATEGORIES = ['Chest', 'Back', 'Legs', 'Arms'];
 
 const ManageVideos = () => {
   const [videos,  setVideos]  = useState([]);
@@ -31,16 +32,42 @@ const ManageVideos = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!form.title.trim()) return flash('Title is required', true);
+    if (!form.description.trim()) return flash('Description is required', true);
+    if (!form.category.trim()) return flash('Category is required', true);
+    if (!form.youtubeUrl.trim()) return flash('YouTube URL is required', true);
+    if (!isValidYouTubeUrl(form.youtubeUrl)) return flash('Enter a valid YouTube video URL', true);
+    if (!isValidThumbnailUrl(form.thumbnail)) {
+      return flash('Thumbnail must be a YouTube URL or a direct image URL ending in .jpg, .png, .webp, .gif, .bmp, or .svg', true);
+    }
+
+    const payload = {
+      title: form.title.trim(),
+      description: form.description.trim(),
+      category: form.category.trim(),
+      thumbnail: form.thumbnail.trim(),
+      youtubeUrl: form.youtubeUrl.trim(),
+    };
+
     setLoading(true);
     try {
-      if (editId) { await api.videos.update(editId, form); flash('Video updated'); }
-      else        { await api.videos.create(form);          flash('Video added'); }
+      if (editId) { await api.videos.update(editId, payload); flash('Video updated'); }
+      else        { await api.videos.create(payload);          flash('Video added'); }
       setForm(EMPTY); setEditId(null); load();
     } catch (err) { flash(err.message, true); }
     finally { setLoading(false); }
   };
 
-  const handleEdit = (v) => { setForm(clone(v)); setEditId(v._id); };
+  const handleEdit = (v) => {
+    setForm({
+      title: v.title || '',
+      description: v.description || '',
+      category: v.category || 'Chest',
+      thumbnail: v.thumbnail || '',
+      youtubeUrl: v.youtubeUrl || '',
+    });
+    setEditId(v._id);
+  };
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this video?')) return;
     try { await api.videos.delete(id); flash('Deleted'); load(); }
@@ -56,19 +83,15 @@ const ManageVideos = () => {
         <h3 style={s.formTitle}>{editId ? 'Edit Video' : 'Add New Video'}</h3>
         <div style={s.grid}>
           <div style={s.field}><label style={s.label}>Title</label><input style={s.input} name="title" placeholder="Title" value={form.title} onChange={handleChange} required /></div>
-          <div style={s.field}><label style={s.label}>Description</label><input style={s.input} name="description" placeholder="Description" value={form.description} onChange={handleChange} /></div>
-          <div style={s.field}><label style={s.label}>Video Link</label><input style={s.input} name="videoLink" placeholder="URL" value={form.videoLink} onChange={handleChange} required /></div>
-          <div style={s.field}><label style={s.label}>Uploaded Date</label><input style={s.input} name="uploadedDate" type="date" value={form.uploadedDate} onChange={handleChange} /></div>
+          <div style={s.field}><label style={s.label}>Description</label><input style={s.input} name="description" placeholder="Description" value={form.description} onChange={handleChange} required /></div>
           <div style={s.field}>
-            <label style={s.label}>Priority</label>
-            <select style={s.input} name="priority" value={form.priority} onChange={handleChange}>
-              {['normal','high'].map((p) => <option key={p}>{p}</option>)}
+            <label style={s.label}>Category</label>
+            <select style={s.input} name="category" value={form.category} onChange={handleChange} required>
+              {CATEGORIES.map((category) => <option key={category}>{category}</option>)}
             </select>
           </div>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '20px' }}>
-          <input type="checkbox" id="pinned" name="pinned" checked={form.pinned} onChange={handleChange} style={{ width: '16px', height: '16px', cursor: 'pointer' }} />
-          <label htmlFor="pinned" style={{ ...s.label, margin: 0, cursor: 'pointer' }}>Pinned</label>
+          <div style={s.field}><label style={s.label}>YouTube URL</label><input style={s.input} name="youtubeUrl" placeholder="https://www.youtube.com/watch?v=..." value={form.youtubeUrl} onChange={handleChange} required /></div>
+          <div style={s.field}><label style={s.label}>Thumbnail URL (optional)</label><input style={s.input} name="thumbnail" placeholder="YouTube URL or direct image URL" value={form.thumbnail} onChange={handleChange} /></div>
         </div>
         <div style={s.btnRow}>
           <button style={s.submitBtn} type="submit" disabled={loading}>{loading ? 'Saving…' : editId ? 'Update' : 'Add Video'}</button>

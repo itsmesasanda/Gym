@@ -1,4 +1,6 @@
-const API_URL = 'http://localhost:5001/api';
+import { PUBLIC_API_URL } from '../config/api';
+
+const API_URL = PUBLIC_API_URL;
 
 const getHeaders = () => {
   const token = localStorage.getItem('adminToken');

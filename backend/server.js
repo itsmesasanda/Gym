@@ -11,11 +11,12 @@ import mealManagementRoutes from "./routes/mealManagementRoutes.js";
 import mealLogRoutes from "./routes/mealLogRoutes.js";
 import adminMealLogRoutes from "./routes/adminMealLogRoutes.js";
 import reportRoutes from "./routes/reportRoutes.js";
-import progressRoutes from "./routes/progressRoutes.js";
 import workoutPlanRoutes from "./routes/workoutPlanRoutes.js";
+import progressTrackingRoutes from "./routes/progressTrackingRoutes.js";
 import mealPlanRoutes from "./routes/mealPlanRoutes.js";
-import { getVideos } from "./controllers/videoController.js";
+import { createVideo, deleteVideo, getVideos, updateVideo } from "./controllers/videoController.js";
 import { getAllWorkouts, createWorkout, updateWorkout, deleteWorkout } from "./controllers/workoutController.js";
+import adminAuthMiddleware from "./middleware/adminAuthMiddleware.js";
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use(express.json());
 app.use("/api/users", userRoutes);
 app.use("/api/logs",  mealLogRoutes);
 
+
 // ── User workout routes (no auth) ────────────────────────
 app.get("/api/workouts",      getAllWorkouts);
 app.post("/api/workouts",     createWorkout);
@@ -37,10 +39,12 @@ app.use("/api/workout-plans", workoutPlanRoutes);
 app.use("/api/meal-plans", mealPlanRoutes);
 
 // ── Progress tracking routes ──────────────────────────────
-app.use("/api/progress", progressRoutes);
-
+app.use("/api/progress", progressTrackingRoutes);
 // ── Public video library route (read-only for mobile app) ─
 app.get("/api/videos", getVideos);
+app.post("/api/videos", adminAuthMiddleware, createVideo);
+app.put("/api/videos/:id", adminAuthMiddleware, updateVideo);
+app.delete("/api/videos/:id", adminAuthMiddleware, deleteVideo);
 
 // ── Admin routes ─────────────────────────────────────────
 app.use("/api/admin/auth",      adminAuthRoutes);

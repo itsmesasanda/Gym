@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { VideoView, useVideoPlayer } from "expo-video";
 
-import { setUserEmail } from "../utils/session";
+import { setUserEmail, setUserToken } from "../utils/session";
 import { BASE_URL } from "../config";
 
 export default function LoginScreen({ navigation }) {
@@ -65,6 +65,7 @@ export default function LoginScreen({ navigation }) {
 
       // 🔥 Store email globally
       setUserEmail(data.email);
+      setUserToken(data.token || null);
 
       // 🔥 Navigate to main app
       navigation.replace("Tabs");

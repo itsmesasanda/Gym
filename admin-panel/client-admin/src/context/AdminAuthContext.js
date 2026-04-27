@@ -11,10 +11,21 @@ export const AdminAuthProvider = ({ children }) => {
   useEffect(() => {
     const storedToken = localStorage.getItem('adminToken');
     const storedAdmin = localStorage.getItem('adminUser');
-    if (storedToken && storedAdmin) {
+    if (!storedToken || !storedAdmin) {
+      localStorage.removeItem('adminToken');
+      localStorage.removeItem('adminUser');
+      setLoading(false);
+      return;
+    }
+
+    try {
       setToken(storedToken);
       setAdmin(JSON.parse(storedAdmin));
+    } catch (_) {
+      localStorage.removeItem('adminToken');
+      localStorage.removeItem('adminUser');
     }
+
     setLoading(false);
   }, []);
 

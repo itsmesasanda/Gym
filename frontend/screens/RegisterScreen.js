@@ -7,6 +7,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { BASE_URL } from "../config";
+import { setUserEmail, setUserToken } from "../utils/session";
 
 export default function RegisterScreen({ navigation }) {
   const [name, setName] = useState("");
@@ -47,6 +48,9 @@ export default function RegisterScreen({ navigation }) {
         alert(data.message);
         return;
       }
+
+      setUserEmail(data.email);
+      setUserToken(data.token || null);
 
       navigation.navigate("Goal", {
         email: data.email,
