@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAdminAuth } from '../context/AdminAuthContext';
-
-const API_URL = 'http://localhost:5001/api';
+import { ADMIN_API_URL } from '../config/api';
 
 const AdminLogin = () => {
   const { login } = useAdminAuth();
@@ -20,7 +19,7 @@ const AdminLogin = () => {
     setError('');
     setLoading(true);
     try {
-      const res  = await fetch(`${API_URL}/auth/login`, {
+      const res  = await fetch(`${ADMIN_API_URL}/auth/login`, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify(form),
@@ -29,7 +28,7 @@ const AdminLogin = () => {
       // Check if response is JSON
       const contentType = res.headers.get('content-type');
       if (!contentType || !contentType.includes('application/json')) {
-        throw new Error('Server is not responding. Make sure backend is running on port 5000.');
+        throw new Error('Server is not responding. Make sure backend is running on port 5050.');
       }
       
       const data = await res.json();

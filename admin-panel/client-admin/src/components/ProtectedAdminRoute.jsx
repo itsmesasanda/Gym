@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { useAdminAuth } from '../context/AdminAuthContext';
 
 const ProtectedAdminRoute = ({ children }) => {
-  const { admin, loading } = useAdminAuth();
+  const { admin, token, loading } = useAdminAuth();
 
   if (loading) {
     return (
@@ -14,7 +14,7 @@ const ProtectedAdminRoute = ({ children }) => {
     );
   }
 
-  if (!admin) {
+  if (!admin || !token) {
     return <Navigate to="/login" replace />;
   }
 

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import {
   ActivityIndicator,
   ScrollView,
@@ -16,7 +17,6 @@ export default function AdminDashboardScreen({ navigation }) {
   const [summary, setSummary] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
   const loadSummary = useCallback(async () => {
     try {
       const [reportSummary, mealLogSummary] = await Promise.all([
@@ -40,21 +40,6 @@ export default function AdminDashboardScreen({ navigation }) {
       loadSummary();
     }, [loadSummary])
   );
-      try {
-        const [reportSummary, mealLogSummary] = await Promise.all([
-          api.reports.getSummary(),
-          api.mealLogs.getSummary(),
-        ]);
-        setSummary({ ...reportSummary, mealLogSummary });
-      } catch (err) {
-        console.log("Admin summary error:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadSummary();
-  }, [];
 
   const handleLogout = async () => {
     await logout();

@@ -1,4 +1,6 @@
-const API_URL = 'http://localhost:5001/api';
+import { ADMIN_API_URL } from '../config/api';
+
+const API_URL = ADMIN_API_URL;
 
 const getHeaders = () => {
   const token = localStorage.getItem('adminToken');
@@ -6,6 +8,11 @@ const getHeaders = () => {
     'Content-Type': 'application/json',
     ...(token ? { 'Authorization': `Bearer ${token}` } : {})
   };
+};
+
+const clearStaleAdminSession = () => {
+  localStorage.removeItem('adminToken');
+  localStorage.removeItem('adminUser');
 };
 
 /**
@@ -17,11 +24,36 @@ const parseResponse = async (res, endpoint) => {
   
   if (!contentType || !contentType.includes('application/json')) {
     throw new Error(
-      'Server is not responding correctly. Please ensure backend is running on http://localhost:5001'
+      'Server is not responding correctly. Please ensure backend is running on http://127.0.0.1:5050'
     );
   }
   
-  return res.json();
+  const data = await res.json();
+  if (!res.ok) {
+    if (res.status === 401) {
+      clearStaleAdminSession();
+      if (window.location.pathname !== '/login') {
+        window.location.assign('/login');
+      }
+    }
+    throw new Error(data.error || data.message || `Request failed for ${endpoint}`);
+  }
+  return data;
+};
+
+const normalizeWorkoutPayload = (data) => {
+  if (Array.isArray(data?.sets)) return data;
+
+  return {
+    exerciseName: data.exerciseName,
+    muscleGroup: data.muscleGroup || 'Chest',
+    duration: Number(data.duration || 0),
+    notes: data.notes || '',
+    sets: [{
+      reps: Number(data.reps || 0),
+      weight: Number(data.weight || 0),
+    }],
+  };
 };
 
 export const api = {
@@ -61,25 +93,22 @@ export const api = {
   workouts: {
     getAll: async () => {
       const r = await fetch(`${API_URL}/workouts`, { headers: getHeaders() });
-      if (!r.ok) throw new Error('Failed to fetch workouts');
       return parseResponse(r, '/workouts');
     },
     create: async (data) => {
       const r = await fetch(`${API_URL}/workouts`, {
         method: 'POST',
         headers: getHeaders(),
-        body: JSON.stringify(data),
+        body: JSON.stringify(normalizeWorkoutPayload(data)),
       });
-      if (!r.ok) throw new Error('Failed to create workout');
       return parseResponse(r, '/workouts');
     },
     update: async (id, data) => {
       const r = await fetch(`${API_URL}/workouts/${id}`, {
         method: 'PUT',
         headers: getHeaders(),
-        body: JSON.stringify(data),
+        body: JSON.stringify(normalizeWorkoutPayload(data)),
       });
-      if (!r.ok) throw new Error('Failed to update workout');
       return parseResponse(r, `/workouts/${id}`);
     },
     delete: async (id) => {
@@ -87,7 +116,6 @@ export const api = {
         method: 'DELETE',
         headers: getHeaders()
       });
-      if (!r.ok) throw new Error('Failed to delete workout');
       return parseResponse(r, `/workouts/${id}`);
     },
   },
@@ -193,8 +221,8 @@ export const api = {
   videos: {
     getAll: async () => {
       const r = await fetch(`${API_URL}/videos`, { headers: getHeaders() });
-      if (!r.ok) throw new Error('Failed to fetch videos');
-      return parseResponse(r, '/videos');
+      const data = await parseResponse(r, '/videos');
+      return Array.isArray(data.videos) ? data.videos : data;
     },
     create: async (data) => {
       const r = await fetch(`${API_URL}/videos`, {
@@ -202,7 +230,6 @@ export const api = {
         headers: getHeaders(),
         body: JSON.stringify(data),
       });
-      if (!r.ok) throw new Error('Failed to create video');
       return parseResponse(r, '/videos');
     },
     update: async (id, data) => {
@@ -211,7 +238,6 @@ export const api = {
         headers: getHeaders(),
         body: JSON.stringify(data),
       });
-      if (!r.ok) throw new Error('Failed to update video');
       return parseResponse(r, `/videos/${id}`);
     },
     delete: async (id) => {
@@ -219,7 +245,6 @@ export const api = {
         method: 'DELETE',
         headers: getHeaders()
       });
-      if (!r.ok) throw new Error('Failed to delete video');
       return parseResponse(r, `/videos/${id}`);
     },
   },
@@ -290,4 +315,3 @@ export const api = {
     return parseResponse(r, endpoint);
   }
 };
-

@@ -6,7 +6,7 @@ const WorkoutTable = ({ workouts, onEdit, onDelete }) => (
     <table style={styles.table}>
       <thead>
         <tr>
-          {['Title', 'Date', 'Time', 'Location', 'Description', 'Actions'].map((h) => (
+          {['Exercise', 'Muscle Group', 'Sets', 'Duration', 'Notes', 'Actions'].map((h) => (
             <th key={h} style={styles.th}>{h}</th>
           ))}
         </tr>
@@ -17,11 +17,11 @@ const WorkoutTable = ({ workouts, onEdit, onDelete }) => (
         ) : (
           workouts.map((w) => (
             <tr key={w._id}>
-              <td style={styles.td}>{w.title}</td>
-              <td style={styles.td}>{formatDate(w.date || w.createdAt)}</td>
-              <td style={styles.td}>{w.time || '—'}</td>
-              <td style={styles.td}>{w.location || '—'}</td>
-              <td style={{ ...styles.td, maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{w.description || '—'}</td>
+              <td style={styles.td}>{w.exerciseName}</td>
+              <td style={styles.td}>{w.muscleGroup}</td>
+              <td style={styles.td}>{w.sets?.map((set, index) => `S${index + 1}: ${set.reps} x ${set.weight}kg`).join(', ') || '—'}</td>
+              <td style={styles.td}>{w.duration ? `${w.duration} min` : '—'}</td>
+              <td style={{ ...styles.td, maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{w.notes || formatDate(w.date || w.createdAt)}</td>
               <td style={styles.td}>
                 <button style={styles.editBtn} onClick={() => onEdit(w)}>Edit</button>
                 <button style={styles.delBtn}  onClick={() => onDelete(w._id)}>Delete</button>

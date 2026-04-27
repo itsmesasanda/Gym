@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import { BASE_URL } from "../config";
 import { fetchWithTimeout, parseJsonSafe } from "../services/http";
+import { resolveThumbnailUri } from "../utils/videoValidation";
 
 const GREEN  = "#C7F000";
 const BG     = "#0D0D0D";
@@ -21,27 +22,6 @@ const MUTED  = "#888888";
 const WHITE  = "#FFFFFF";
 
 const CATEGORIES = ["All", "Chest", "Back", "Legs", "Arms"];
-
-const extractYouTubeVideoId = (url) => {
-  const trimmed = (url || "").trim();
-  if (!trimmed) return null;
-  const match = trimmed.match(
-    /(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/
-  );
-  return match?.[1] ?? null;
-};
-
-const resolveThumbnailUri = (video) => {
-  const thumbnail = (video.thumbnail || "").trim();
-  if (thumbnail) {
-    const tid = extractYouTubeVideoId(thumbnail);
-    if (tid) return `https://img.youtube.com/vi/${tid}/hqdefault.jpg`;
-    if (/^https?:\/\//i.test(thumbnail)) return thumbnail;
-  }
-  const yid = extractYouTubeVideoId(video.youtubeUrl || "");
-  if (yid) return `https://img.youtube.com/vi/${yid}/hqdefault.jpg`;
-  return null;
-};
 
 export default function VideoLibraryScreen() {
   const [videos,           setVideos]           = useState([]);

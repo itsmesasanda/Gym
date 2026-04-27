@@ -22,11 +22,11 @@ import { getUserEmail } from "../utils/session";
 
 const ACTIVE_VIEW_KEY = "calories_active_view";
 
-const readPersistedView = (fallback) => {
-  if (typeof window !== "undefined" && window.localStorage) {
-    return window.localStorage.getItem(ACTIVE_VIEW_KEY) || fallback;
+const normalizeInitialView = (view) => {
+  if (view === "dashboard" || view === "log" || view === "search") {
+    return view;
   }
-  return fallback;
+  return "log";
 };
 
 const persistView = (view) => {
@@ -54,7 +54,7 @@ const toNumber = (value) => Number(value || 0);
 const round = (value) => Math.round(Number(value || 0));
 
 export default function CaloriesScreen({ initialView = "dashboard" }) {
-  const [activeView, setActiveViewState] = useState(() => readPersistedView(initialView));
+  const [activeView, setActiveViewState] = useState(() => normalizeInitialView(initialView));
   const [form, setForm] = useState(emptyForm);
 
   const setActiveView = (view) => {
@@ -89,7 +89,7 @@ export default function CaloriesScreen({ initialView = "dashboard" }) {
   }, []);
 
   useEffect(() => {
-    const view = initialView === "progress" ? "dashboard" : initialView;
+    const view = normalizeInitialView(initialView);
     persistView(view);
     setActiveViewState(view);
   }, [initialView]);
@@ -250,10 +250,10 @@ export default function CaloriesScreen({ initialView = "dashboard" }) {
         <View style={styles.header}>
           <View>
             <Text style={styles.eyebrow}>
-              {activeView === "dashboard" ? "Good evening" : activeView === "search" ? "Nutrition Database" : `Today - ${todayLabel}`}
+              {activeView === "dashboard" ? "Nutrition Summary" : activeView === "search" ? "Nutrition Database" : `Today - ${todayLabel}`}
             </Text>
             <Text style={styles.title}>
-              {activeView === "dashboard" ? "Dashboard" : activeView === "search" ? "Search Food" : "Log Calories"}
+              {activeView === "dashboard" ? "Calorie Summary" : activeView === "search" ? "Search Food" : "Log Calories"}
             </Text>
           </View>
           <TouchableOpacity style={styles.searchTopButton} onPress={() => setActiveView("search")}>
@@ -266,7 +266,7 @@ export default function CaloriesScreen({ initialView = "dashboard" }) {
       </ScrollView>
 
       <View style={styles.bottomNav}>
-        <NavButton label="Dashboard" active={activeView === "dashboard"} onPress={() => setActiveView("dashboard")} />
+        <NavButton label="Summary" active={activeView === "dashboard"} onPress={() => setActiveView("dashboard")} />
         <NavButton label="Log" active={activeView === "log"} onPress={() => setActiveView("log")} />
         <NavButton label="Search" active={activeView === "search"} onPress={() => setActiveView("search")} />
       </View>

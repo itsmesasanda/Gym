@@ -14,8 +14,9 @@ import reportRoutes from "./routes/reportRoutes.js";
 import workoutPlanRoutes from "./routes/workoutPlanRoutes.js";
 import progressTrackingRoutes from "./routes/progressTrackingRoutes.js";
 import mealPlanRoutes from "./routes/mealPlanRoutes.js";
-import { getVideos } from "./controllers/videoController.js";
+import { createVideo, deleteVideo, getVideos, updateVideo } from "./controllers/videoController.js";
 import { getAllWorkouts, createWorkout, updateWorkout, deleteWorkout } from "./controllers/workoutController.js";
+import adminAuthMiddleware from "./middleware/adminAuthMiddleware.js";
 
 dotenv.config();
 
@@ -41,6 +42,9 @@ app.use("/api/meal-plans", mealPlanRoutes);
 app.use("/api/progress", progressTrackingRoutes);
 // ── Public video library route (read-only for mobile app) ─
 app.get("/api/videos", getVideos);
+app.post("/api/videos", adminAuthMiddleware, createVideo);
+app.put("/api/videos/:id", adminAuthMiddleware, updateVideo);
+app.delete("/api/videos/:id", adminAuthMiddleware, deleteVideo);
 
 // ── Admin routes ─────────────────────────────────────────
 app.use("/api/admin/auth",      adminAuthRoutes);

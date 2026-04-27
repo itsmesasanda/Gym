@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { isValidThumbnailUrl, isValidYouTubeUrl } from "../utils/videoValidation.js";
 
 const VideoSchema = new mongoose.Schema(
   {
@@ -20,13 +21,21 @@ const VideoSchema = new mongoose.Schema(
     },
     thumbnail: {
       type: String,
-      required: true,
+      default: "",
       trim: true,
+      validate: {
+        validator: isValidThumbnailUrl,
+        message: "Thumbnail must be a YouTube URL or a direct image URL",
+      },
     },
     youtubeUrl: {
       type: String,
       required: true,
       trim: true,
+      validate: {
+        validator: isValidYouTubeUrl,
+        message: "YouTube URL must be a valid YouTube video URL",
+      },
     },
   },
   { timestamps: true }

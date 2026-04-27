@@ -1,12 +1,51 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { BASE_URL } from '../config';
 
-const API_URL = 'http://127.0.0.1:5050/api/admin';
+const API_URL = `${BASE_URL}/api/admin`;
+const VIDEO_API_URL = `${BASE_URL}/api/videos`;
 
 const getHeaders = async () => {
   const token = await AsyncStorage.getItem('adminToken');
   return {
     'Content-Type': 'application/json',
     ...(token ? { Authorization: `Bearer ${token}` } : {}),
+  };
+};
+
+const parseJsonSafe = async (response) => {
+  const text = await response.text();
+  if (!text) return null;
+
+  try {
+    return JSON.parse(text);
+  } catch {
+    return null;
+  }
+};
+
+const requestJson = async (url, options, fallbackMessage) => {
+  const response = await fetch(url, options);
+  const data = await parseJsonSafe(response);
+
+  if (!response.ok) {
+    throw new Error(data?.error || data?.message || fallbackMessage);
+  }
+
+  return data;
+};
+
+const normalizeWorkoutPayload = (data) => {
+  if (Array.isArray(data?.sets)) return data;
+
+  return {
+    exerciseName: data.exerciseName,
+    muscleGroup: data.muscleGroup || 'Chest',
+    duration: Number(data.duration || 0),
+    notes: data.notes || '',
+    sets: [{
+      reps: Number(data.reps || 0),
+      weight: Number(data.weight || 0),
+    }],
   };
 };
 
@@ -35,46 +74,62 @@ export const api = {
   },
   workouts: {
     getAll: async () => {
-      const r = await fetch(`${API_URL}/workouts`, { headers: await getHeaders() });
-      if (!r.ok) throw new Error('Failed to fetch workouts');
-      return r.json();
+      return requestJson(
+        `${API_URL}/workouts`,
+        { headers: await getHeaders() },
+        'Failed to fetch workouts'
+      );
     },
     create: async (data) => {
-      const r = await fetch(`${API_URL}/workouts`, { method: 'POST', headers: await getHeaders(), body: JSON.stringify(data) });
-      if (!r.ok) throw new Error('Failed to create workout');
-      return r.json();
+      return requestJson(
+        `${API_URL}/workouts`,
+        { method: 'POST', headers: await getHeaders(), body: JSON.stringify(normalizeWorkoutPayload(data)) },
+        'Failed to create workout'
+      );
     },
     update: async (id, data) => {
-      const r = await fetch(`${API_URL}/workouts/${id}`, { method: 'PUT', headers: await getHeaders(), body: JSON.stringify(data) });
-      if (!r.ok) throw new Error('Failed to update workout');
-      return r.json();
+      return requestJson(
+        `${API_URL}/workouts/${id}`,
+        { method: 'PUT', headers: await getHeaders(), body: JSON.stringify(normalizeWorkoutPayload(data)) },
+        'Failed to update workout'
+      );
     },
     delete: async (id) => {
-      const r = await fetch(`${API_URL}/workouts/${id}`, { method: 'DELETE', headers: await getHeaders() });
-      if (!r.ok) throw new Error('Failed to delete workout');
-      return r.json();
+      return requestJson(
+        `${API_URL}/workouts/${id}`,
+        { method: 'DELETE', headers: await getHeaders() },
+        'Failed to delete workout'
+      );
     },
   },
   videos: {
     getAll: async () => {
-      const r = await fetch(`${API_URL}/videos`, { headers: await getHeaders() });
-      if (!r.ok) throw new Error('Failed to fetch videos');
-      return r.json();
+      return requestJson(
+        VIDEO_API_URL,
+        { headers: await getHeaders() },
+        'Failed to fetch videos'
+      );
     },
     create: async (data) => {
-      const r = await fetch(`${API_URL}/videos`, { method: 'POST', headers: await getHeaders(), body: JSON.stringify(data) });
-      if (!r.ok) throw new Error('Failed to create video');
-      return r.json();
+      return requestJson(
+        VIDEO_API_URL,
+        { method: 'POST', headers: await getHeaders(), body: JSON.stringify(data) },
+        'Failed to create video'
+      );
     },
     update: async (id, data) => {
-      const r = await fetch(`${API_URL}/videos/${id}`, { method: 'PUT', headers: await getHeaders(), body: JSON.stringify(data) });
-      if (!r.ok) throw new Error('Failed to update video');
-      return r.json();
+      return requestJson(
+        `${VIDEO_API_URL}/${id}`,
+        { method: 'PUT', headers: await getHeaders(), body: JSON.stringify(data) },
+        'Failed to update video'
+      );
     },
     delete: async (id) => {
-      const r = await fetch(`${API_URL}/videos/${id}`, { method: 'DELETE', headers: await getHeaders() });
-      if (!r.ok) throw new Error('Failed to delete video');
-      return r.json();
+      return requestJson(
+        `${VIDEO_API_URL}/${id}`,
+        { method: 'DELETE', headers: await getHeaders() },
+        'Failed to delete video'
+      );
     },
   },
   meals: {
