@@ -1,7 +1,21 @@
 import mongoose from "mongoose";
 import MealLog from "../models/MealLog.js";
+import User from "../models/User.js";
 
-const DAILY_CALORIE_GOAL = 2200;
+const DAILY_CALORIE_GOAL   = 2200;
+const DAILY_PROTEIN_GOAL   = 150;
+
+const getUserGoals = async (userId) => {
+  try {
+    const user = await User.findOne({ email: userId }).select("calories protein");
+    return {
+      calorieGoal: user?.calories || DAILY_CALORIE_GOAL,
+      proteinGoal: user?.protein  || DAILY_PROTEIN_GOAL,
+    };
+  } catch {
+    return { calorieGoal: DAILY_CALORIE_GOAL, proteinGoal: DAILY_PROTEIN_GOAL };
+  }
+};
 
 const getDayRange = (date = new Date()) => {
   const start = new Date(date);
@@ -52,15 +66,44 @@ const getTotals = (meals) => meals.reduce((acc, meal) => ({
   fats: acc.fats + meal.fats,
 }), { calories: 0, protein: 0, carbs: 0, fats: 0 });
 
+const groupMeals = (meals) => {
+  const map = new Map();
+  const order = [];
+  for (const meal of meals) {
+    const plain = meal.toObject ? meal.toObject() : meal;
+    plain._id  = plain._id.toString();
+    const key  = plain.mealGroupId || plain._id;
+    if (!map.has(key)) {
+      map.set(key, {
+        groupId: key,
+        mealName: plain.mealName || plain.foodName,
+        foods: [],
+        totalCalories: 0,
+        totalProtein: 0,
+        timestamp: plain.timestamp,
+      });
+      order.push(key);
+    }
+    const g = map.get(key);
+    g.foods.push(plain);
+    g.totalCalories += plain.calories;
+    g.totalProtein  += plain.protein;
+  }
+  return order.map(k => map.get(k));
+};
+
 export const createMealLog = async (req, res) => {
   try {
+    // userId is always sourced from the authenticated token — never from the request body
+    const userId = req.user.email;
     const {
-      userId = "demo-user-001",
       foodName,
       calories,
       protein = 0,
       carbs = 0,
       fats = 0,
+      mealGroupId = null,
+      mealName = null,
     } = req.body;
 
     if (!foodName || !String(foodName).trim()) {
@@ -79,6 +122,8 @@ export const createMealLog = async (req, res) => {
       protein: Number(protein || 0),
       carbs: Number(carbs || 0),
       fats: Number(fats || 0),
+      mealGroupId: mealGroupId || null,
+      mealName: mealName ? String(mealName).trim() : null,
     });
 
     res.status(201).json({
@@ -87,45 +132,42 @@ export const createMealLog = async (req, res) => {
       data: mealLog,
     });
   } catch (err) {
-    res.status(500).json({
-      success: false,
-      message: "Server error while creating meal log",
-      error: err.message,
-    });
+    console.error("[createMealLog] error:", err);
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
 
 export const getTodayLogs = async (req, res) => {
   try {
-    const { userId } = req.params;
+    if (!req.user?.email) return res.status(401).json({ success: false, message: "Unauthorized" });
+    const userId = req.user.email;
     const { start, end } = getDayRange();
 
-    const meals = await MealLog.find({
-      userId,
-      timestamp: { $gte: start, $lte: end },
-    }).sort({ timestamp: -1 });
+    const [meals, { calorieGoal, proteinGoal }] = await Promise.all([
+      MealLog.find({ userId, timestamp: { $gte: start, $lte: end } }).sort({ timestamp: -1 }),
+      getUserGoals(userId),
+    ]);
 
     const totals = getTotals(meals);
-    const progressPercentage = Math.min(Math.round((totals.calories / DAILY_CALORIE_GOAL) * 100), 100);
-    const remainingCalories = Math.max(DAILY_CALORIE_GOAL - totals.calories, 0);
+    const progressPercentage = Math.min(Math.round((totals.calories / calorieGoal) * 100), 100);
+    const remainingCalories  = Math.max(calorieGoal - totals.calories, 0);
 
     res.json({
       success: true,
       data: {
         meals,
+        groupedMeals: groupMeals(meals),
         totals,
-        goal: DAILY_CALORIE_GOAL,
+        goal: calorieGoal,
+        proteinGoal,
         progressPercentage,
         remainingCalories,
         date: new Date().toISOString().split("T")[0],
       },
     });
   } catch (err) {
-    res.status(500).json({
-      success: false,
-      message: "Server error while fetching logs",
-      error: err.message,
-    });
+    console.error("[getTodayLogs] error:", err);
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
 
@@ -143,6 +185,14 @@ export const updateMealLog = async (req, res) => {
       return res.status(400).json({ success: false, message: nutritionError });
     }
 
+    const existing = await MealLog.findById(id);
+    if (!existing) {
+      return res.status(404).json({ success: false, message: "Meal not found" });
+    }
+    if (existing.userId !== req.user.email) {
+      return res.status(403).json({ success: false, message: "Forbidden" });
+    }
+
     const updatedMeal = await MealLog.findByIdAndUpdate(
       id,
       {
@@ -155,21 +205,14 @@ export const updateMealLog = async (req, res) => {
       { new: true, runValidators: true }
     );
 
-    if (!updatedMeal) {
-      return res.status(404).json({ success: false, message: "Meal not found" });
-    }
-
     res.json({
       success: true,
       message: "Meal updated successfully",
       data: updatedMeal,
     });
   } catch (err) {
-    res.status(500).json({
-      success: false,
-      message: "Server error while updating meal",
-      error: err.message,
-    });
+    console.error("[updateMealLog] error:", err);
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
 
@@ -181,28 +224,27 @@ export const deleteMealLog = async (req, res) => {
       return res.status(400).json({ success: false, message: "Invalid meal ID format" });
     }
 
-    const deletedMeal = await MealLog.findByIdAndDelete(id);
-    if (!deletedMeal) {
+    const meal = await MealLog.findById(id);
+    if (!meal) {
       return res.status(404).json({ success: false, message: "Meal not found" });
     }
+    if (meal.userId !== req.user.email) {
+      return res.status(403).json({ success: false, message: "Forbidden" });
+    }
 
-    res.json({
-      success: true,
-      message: "Meal deleted successfully",
-      data: deletedMeal,
-    });
+    await meal.deleteOne();
+
+    res.json({ success: true, message: "Meal deleted successfully" });
   } catch (err) {
-    res.status(500).json({
-      success: false,
-      message: "Server error while deleting meal",
-      error: err.message,
-    });
+    console.error("[deleteMealLog] error:", err);
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
 
 export const getWeeklyLogs = async (req, res) => {
   try {
-    const { userId } = req.params;
+    if (!req.user?.email) return res.status(401).json({ success: false, message: "Unauthorized" });
+    const userId = req.user.email;
     const days = [];
 
     for (let i = 6; i >= 0; i--) {
@@ -225,17 +267,15 @@ export const getWeeklyLogs = async (req, res) => {
 
     res.json({ success: true, data: { days, goal: DAILY_CALORIE_GOAL } });
   } catch (err) {
-    res.status(500).json({
-      success: false,
-      message: "Server error while fetching weekly data",
-      error: err.message,
-    });
+    console.error("[getWeeklyLogs] error:", err);
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
 
 export const getMonthlyLogs = async (req, res) => {
   try {
-    const { userId } = req.params;
+    if (!req.user?.email) return res.status(401).json({ success: false, message: "Unauthorized" });
+    const userId = req.user.email;
     const weeks = [];
 
     for (let w = 3; w >= 0; w--) {
@@ -276,11 +316,8 @@ export const getMonthlyLogs = async (req, res) => {
 
     res.json({ success: true, data: { weeks, goal: DAILY_CALORIE_GOAL } });
   } catch (err) {
-    res.status(500).json({
-      success: false,
-      message: "Server error while fetching monthly data",
-      error: err.message,
-    });
+    console.error("[getMonthlyLogs] error:", err);
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
 
@@ -289,7 +326,8 @@ export const getAllMealLogs = async (req, res) => {
     const logs = await MealLog.find().sort({ timestamp: -1 }).limit(200);
     res.json(logs);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("[getAllMealLogs] error:", err);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -297,7 +335,7 @@ export const getMealLogSummary = async (req, res) => {
   try {
     const { start, end } = getDayRange();
     const todaysLogs = await MealLog.find({ timestamp: { $gte: start, $lte: end } });
-    const allLogs = await MealLog.find();
+    const allLogs = await MealLog.find().limit(10000);
     const uniqueUsers = new Set(allLogs.map((log) => log.userId));
 
     res.json({
@@ -312,6 +350,7 @@ export const getMealLogSummary = async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("[getMealLogSummary] error:", err);
+    res.status(500).json({ error: "Internal server error" });
   }
 };

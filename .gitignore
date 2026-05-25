@@ -10,9 +10,21 @@ __pycache__/
 .idea/
 .vscode/
 
-# env files
-.env
+# Dependencies — global catch-all
+node_modules/
 
+# env files — never commit real secrets
+.env
+**/.env
+ai-services/**/.env
+admin-panel/**/.env
+
+# Keep examples visible
+!.env.example
+**/.env.example
+
+# Per-directory node_modules (kept for clarity alongside global rule)
 frontend/node_modules/
 backend/node_modules/
 admin-panel/server-admin/node_modules/
+admin-panel/client-admin/node_modules/

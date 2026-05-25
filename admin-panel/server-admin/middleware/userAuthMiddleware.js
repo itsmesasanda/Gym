@@ -1,5 +1,9 @@
 const jwt = require('jsonwebtoken');
 
+if (!process.env.JWT_SECRET) {
+  throw new Error('FATAL: JWT_SECRET environment variable is not set');
+}
+
 const userAuthMiddleware = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
@@ -10,7 +14,7 @@ const userAuthMiddleware = (req, res, next) => {
   const token = authHeader.split(' ')[1];
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'REDACTED_SECRET');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     if (!decoded.role || decoded.role !== 'user') {
       return res.status(403).json({ error: 'Forbidden. User access required.' });

@@ -1,6 +1,10 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
+if (!process.env.JWT_SECRET) {
+  throw new Error('FATAL: JWT_SECRET environment variable is not set');
+}
+
 const escapeRegExp = (str = '') => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 // POST /api/user-auth/login
@@ -34,7 +38,7 @@ exports.loginUser = async (req, res) => {
 
     const token = jwt.sign(
       { id: user._id, email: user.email, role: 'user' },
-      process.env.JWT_SECRET || 'REDACTED_SECRET',
+      process.env.JWT_SECRET,
       { expiresIn: '12h' }
     );
 

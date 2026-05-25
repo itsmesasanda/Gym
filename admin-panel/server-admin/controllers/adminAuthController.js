@@ -2,6 +2,10 @@ const bcrypt = require('bcryptjs');
 const jwt    = require('jsonwebtoken');
 const Admin  = require('../models/Admin');
 
+if (!process.env.JWT_SECRET) {
+  throw new Error('FATAL: JWT_SECRET environment variable is not set');
+}
+
 // POST /api/auth/register (protected — only existing admins can create new ones)
 exports.registerAdmin = async (req, res) => {
   try {
@@ -39,7 +43,7 @@ exports.loginAdmin = async (req, res) => {
 
     const token = jwt.sign(
       { id: admin._id, email: admin.email, role: admin.role },
-      process.env.JWT_SECRET || 'REDACTED_SECRET',
+      process.env.JWT_SECRET,
       { expiresIn: '8h' }
     );
 

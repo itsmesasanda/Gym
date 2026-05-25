@@ -1,13 +1,19 @@
 import { BASE_URL } from "../config";
+import { getUserToken } from "../utils/session";
 import { FOOD_DATABASE } from "./foodDatabase";
 import { fetchWithTimeout, parseJsonSafe } from "./http";
 
-const USER_ID_FALLBACK = "demo-user-001";
+const requireUserId = (email) => {
+  if (!email) throw new Error("User not authenticated");
+  return email;
+};
 
 const request = async (path, options = {}) => {
+  const token = getUserToken();
   const response = await fetchWithTimeout(`${BASE_URL}/api/logs${path}`, {
     headers: {
       "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
       ...(options.headers || {}),
     },
     ...options,
@@ -21,18 +27,18 @@ const request = async (path, options = {}) => {
   return data;
 };
 
-export const getCalorieUserId = (email) => email || USER_ID_FALLBACK;
+export const getCalorieUserId = (email) => requireUserId(email);
 
 export const createMealLog = (userId, mealData) => request("/", {
   method: "POST",
-  body: JSON.stringify({ userId: userId || USER_ID_FALLBACK, ...mealData }),
+  body: JSON.stringify({ ...mealData }),
 });
 
-export const getTodayLogs = (userId) => request(`/${encodeURIComponent(userId || USER_ID_FALLBACK)}`);
+export const getTodayLogs = (userId) => request(`/${encodeURIComponent(requireUserId(userId))}`);
 
-export const getWeeklyLogs = (userId) => request(`/${encodeURIComponent(userId || USER_ID_FALLBACK)}/weekly`);
+export const getWeeklyLogs = (userId) => request(`/${encodeURIComponent(requireUserId(userId))}/weekly`);
 
-export const getMonthlyLogs = (userId) => request(`/${encodeURIComponent(userId || USER_ID_FALLBACK)}/monthly`);
+export const getMonthlyLogs = (userId) => request(`/${encodeURIComponent(requireUserId(userId))}/monthly`);
 
 export const updateMealLog = (id, mealData) => request(`/${id}`, {
   method: "PUT",
