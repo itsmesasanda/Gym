@@ -154,6 +154,7 @@ export const getTodayLogs = async (req, res) => {
     const progressPercentage = Math.min(Math.round((totals.calories / calorieGoal) * 100), 100);
     const remainingCalories  = Math.max(calorieGoal - totals.calories, 0);
 
+    res.set("Cache-Control", "no-store");
     res.json({
       success: true,
       data: {

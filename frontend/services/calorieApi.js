@@ -36,7 +36,8 @@ export const createMealLog = (userId, mealData) => request("/", {
 
 export const getTodayLogs = (userId) => {
   const localDate = new Date().toISOString().split("T")[0];
-  return request(`/${encodeURIComponent(requireUserId(userId))}?date=${localDate}`);
+  const bust = Date.now();
+  return request(`/${encodeURIComponent(requireUserId(userId))}?date=${localDate}&_=${bust}`);
 };
 
 export const getWeeklyLogs = (userId) => request(`/${encodeURIComponent(requireUserId(userId))}/weekly`);
