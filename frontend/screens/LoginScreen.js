@@ -1,250 +1,155 @@
 import React, { useState } from "react";
 import {
-  View,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
+  View,
 } from "react-native";
-import { VideoView, useVideoPlayer } from "expo-video";
-
-import { setUserEmail, setUserToken } from "../utils/session";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Feather } from "@expo/vector-icons";
+import { setUserEmail, setUserToken, setUserName } from "../utils/session";
 import { BASE_URL } from "../config";
 
+const GREEN  = "#C7F000";
+const BG     = "#000000";
+const CARD   = "#1C1C1E";
+const BORDER = "#2C2C2E";
+const MUTED  = "#A1A1A6";
+const WHITE  = "#FFFFFF";
+const RED    = "#FF453A";
+
 export default function LoginScreen({ navigation }) {
-
-  // =========================
-  // STATE
-  // =========================
-  const [email, setEmail] = useState("");
+  const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
+  const [showPass, setShowPass] = useState(false);
+  const [error, setError]       = useState("");
 
-  // =========================
-  // VIDEO PLAYER
-  // =========================
-  const player = useVideoPlayer(
-    require("../assets/login.mp4"),
-    (player) => {
-      player.loop = true;
-      player.muted = true;
-      player.play();
-    }
-  );
-
-  // =========================
-  // LOGIN FUNCTION
-  // =========================
   const handleLogin = async () => {
-
-    if (!email || !password) {
-      alert("Please enter email and password");
-      return;
-    }
-
+    if (!email || !password) { setError("Please fill in all fields."); return; }
     try {
-      const response = await fetch(
-        `${BASE_URL}/api/users/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        alert(data.message || "Login failed");
-        return;
-      }
-
-      // 🔥 Store email globally
+      const res = await fetch(`${BASE_URL}/api/users/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setError(data.message || "Login failed"); return; }
       setUserEmail(data.email);
       setUserToken(data.token || null);
-
-      // 🔥 Navigate to main app
+      setUserName(data.name || null);
       navigation.replace("Tabs");
-
-    } catch (error) {
-      console.log("Login error:", error);
-      alert("Network error. Check backend connection.");
+    } catch {
+      setError("Network error. Check backend connection.");
     }
   };
 
-  // =========================
-  // UI (UNCHANGED)
-  // =========================
   return (
-    <View style={styles.container}>
-      
-      <VideoView
-        style={styles.video}
-        player={player}
-        contentFit="cover"
-        nativeControls={false}
-      />
+    <SafeAreaView style={s.container} edges={["top", "bottom"]}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : undefined}>
+        <ScrollView contentContainerStyle={s.scroll} keyboardShouldPersistTaps="handled">
 
-      <View style={styles.overlay} />
+          <View style={s.body}>
+            {/* Logo */}
+            <View style={s.logoWrap}>
+              <View style={s.logoBox}>
+                <Feather name="zap" size={32} color="#000" />
+              </View>
+              <Text style={s.title}>Welcome back</Text>
+              <Text style={s.subtitle}>Sign in to continue your journey</Text>
+            </View>
 
-      <View style={styles.card}>
-        <Text style={styles.title}>Welcome Back</Text>
-        <Text style={styles.subtitle}>
-          Sign in to continue your journey
-        </Text>
+            {/* Form */}
+            <View style={s.form}>
+              <View style={s.fieldWrap}>
+                <Text style={s.label}>Email</Text>
+                <TextInput
+                  style={s.input}
+                  value={email}
+                  onChangeText={t => { setEmail(t); setError(""); }}
+                  placeholder="you@email.com"
+                  placeholderTextColor="#555"
+                  keyboardType="email-address"
+                  autoCapitalize="none"
+                />
+              </View>
+              <View style={s.fieldWrap}>
+                <Text style={s.label}>Password</Text>
+                <View style={s.inputWrap}>
+                  <TextInput
+                    style={[s.input, { paddingRight: 48 }]}
+                    value={password}
+                    onChangeText={t => { setPassword(t); setError(""); }}
+                    placeholder="••••••••"
+                    placeholderTextColor="#555"
+                    secureTextEntry={!showPass}
+                  />
+                  <TouchableOpacity style={s.eyeBtn} onPress={() => setShowPass(v => !v)}>
+                    <Feather name={showPass ? "eye-off" : "eye"} size={18} color={MUTED} />
+                  </TouchableOpacity>
+                </View>
+              </View>
 
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="#aaa"
-          value={email}
-          onChangeText={setEmail}
-        />
+              {error ? <Text style={s.errorText}>{error}</Text> : null}
 
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          placeholderTextColor="#aaa"
-          secureTextEntry
-          value={password}
-          onChangeText={setPassword}
-        />
+              <TouchableOpacity style={s.primaryBtn} onPress={handleLogin} activeOpacity={0.8}>
+                <Text style={s.primaryBtnText}>Sign In</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
 
-        <TouchableOpacity
-          style={styles.outlineButton}
-          onPress={handleLogin}
-        >
-          <Text style={styles.outlineText}>Login</Text>
-        </TouchableOpacity>
+          {/* Footer */}
+          <View style={s.footer}>
+            <View style={s.dividerRow}>
+              <View style={s.dividerLine} />
+              <Text style={s.dividerText}>or</Text>
+              <View style={s.dividerLine} />
+            </View>
+            <TouchableOpacity style={s.outlineBtn} onPress={() => navigation.navigate("Register")} activeOpacity={0.8}>
+              <Text style={s.outlineBtnText}>Get Started</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={s.adminBtn} onPress={() => navigation.navigate("AdminLogin")}>
+              <Text style={s.adminBtnText}>Admin Panel →</Text>
+            </TouchableOpacity>
+          </View>
 
-        <View style={styles.dividerContainer}>
-          <View style={styles.line} />
-          <Text style={styles.dividerText}>OR</Text>
-          <View style={styles.line} />
-        </View>
-
-        <TouchableOpacity
-          style={styles.primaryButton}
-          onPress={() => navigation.navigate("Register")}
-        >
-          <Text style={styles.primaryText}>Get Started</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.adminButton}
-          onPress={() => navigation.navigate("AdminLogin")}
-        >
-          <Text style={styles.adminText}>Admin Panel →</Text>
-        </TouchableOpacity>
-
-      </View>
-    </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
 
-// =========================
-// STYLES (UNCHANGED)
-// =========================
+const s = StyleSheet.create({
+  container: { flex: 1, backgroundColor: BG },
+  scroll:    { flexGrow: 1, paddingHorizontal: 24, paddingTop: 12, paddingBottom: 32 },
 
-const styles = StyleSheet.create({
-  container: { flex: 1 },
+  body:     { flex: 1, justifyContent: "center", paddingTop: 40 },
+  logoWrap: { marginBottom: 40 },
+  logoBox:  { width: 64, height: 64, borderRadius: 18, backgroundColor: GREEN, alignItems: "center", justifyContent: "center", marginBottom: 24 },
+  title:    { color: WHITE, fontSize: 30, fontWeight: "700", marginBottom: 4 },
+  subtitle: { color: MUTED, fontSize: 15 },
 
-  video: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-  },
+  form:      { gap: 16 },
+  fieldWrap: { gap: 6 },
+  label:     { color: MUTED, fontSize: 12 },
+  input:     { backgroundColor: CARD, borderWidth: 1, borderColor: BORDER, borderRadius: 16, color: WHITE, paddingHorizontal: 16, paddingVertical: 14, fontSize: 15 },
+  inputWrap: { position: "relative" },
+  eyeBtn:    { position: "absolute", right: 14, top: 0, bottom: 0, justifyContent: "center" },
 
-  overlay: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0,0,0,0.6)",
-  },
+  errorText: { color: RED, fontSize: 13 },
 
-  card: {
-    flex: 1,
-    justifyContent: "center",
-    padding: 20,
-  },
+  primaryBtn:     { backgroundColor: GREEN, paddingVertical: 16, borderRadius: 16, alignItems: "center", marginTop: 4 },
+  primaryBtnText: { color: "#000", fontSize: 15, fontWeight: "700" },
 
-  title: {
-    fontSize: 30,
-    color: "#ffffff",
-    textAlign: "center",
-    fontWeight: "bold",
-  },
-
-  subtitle: {
-    fontSize: 12,
-    color: "#ffffff",
-    textAlign: "center",
-    opacity: 0.6,
-    marginBottom: 30,
-  },
-
-  input: {
-    backgroundColor: "rgba(255,255,255,0.1)",
-    padding: 15,
-    borderRadius: 12,
-    color: "white",
-    marginBottom: 15,
-  },
-
-  primaryButton: {
-    backgroundColor: "#C7F000",
-    padding: 15,
-    borderRadius: 12,
-    alignItems: "center",
-  },
-
-  primaryText: {
-    color: "#000",
-    fontWeight: "bold",
-  },
-
-  outlineButton: {
-    borderColor: "#C7F000",
-    borderWidth: 2,
-    padding: 15,
-    borderRadius: 12,
-    alignItems: "center",
-  },
-
-  outlineText: {
-    color: "#ffffff",
-    fontWeight: "bold",
-  },
-
-  dividerContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginVertical: 20,
-  },
-
-  line: {
-    flex: 1,
-    height: 1,
-    backgroundColor: "#444",
-  },
-
-  dividerText: {
-    marginHorizontal: 10,
-    color: "#aaa",
-    fontSize: 14,
-  },
-
-  adminButton: {
-    marginTop: 12,
-    alignItems: "center",
-    padding: 10,
-  },
-
-  adminText: {
-    color: "#6366f1",
-    fontSize: 13,
-    fontWeight: "600",
-  },
+  footer:       { marginTop: 32 },
+  dividerRow:   { flexDirection: "row", alignItems: "center", gap: 12, marginBottom: 20 },
+  dividerLine:  { flex: 1, height: 1, backgroundColor: BORDER },
+  dividerText:  { color: MUTED, fontSize: 13 },
+  outlineBtn:      { borderWidth: 1.5, borderColor: GREEN, paddingVertical: 16, borderRadius: 16, alignItems: "center", marginBottom: 12 },
+  outlineBtnText:  { color: GREEN, fontSize: 15, fontWeight: "600" },
+  adminBtn:        { alignItems: "center", paddingVertical: 10 },
+  adminBtnText:    { color: "#6366f1", fontSize: 13, fontWeight: "600" },
 });

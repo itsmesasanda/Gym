@@ -1,210 +1,142 @@
 import React, { useState } from "react";
 import {
-  View,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
+  View,
 } from "react-native";
-import { BASE_URL } from "../config";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Feather } from "@expo/vector-icons";
 import { setUserEmail, setUserToken } from "../utils/session";
+import { BASE_URL } from "../config";
+
+const GREEN  = "#C7F000";
+const BG     = "#000000";
+const CARD   = "#1C1C1E";
+const BORDER = "#2C2C2E";
+const MUTED  = "#A1A1A6";
+const WHITE  = "#FFFFFF";
+const RED    = "#FF453A";
 
 export default function RegisterScreen({ navigation }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName]         = useState("");
+  const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirm, setConfirm]   = useState("");
+  const [showPass, setShowPass] = useState(false);
+  const [error, setError]       = useState("");
 
   const handleRegister = async () => {
-    if (!name || !email || !password || !confirmPassword) {
-      alert("Please fill all fields");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
-
+    if (!name || !email || !password || !confirm) { setError("Please fill in all fields."); return; }
+    if (password !== confirm)   { setError("Passwords do not match."); return; }
+    if (password.length < 6)    { setError("Password must be at least 6 characters."); return; }
     try {
-      const response = await fetch(
-        `${BASE_URL}/api/users/register`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            password,
-          }),
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        alert(data.message);
-        return;
-      }
-
+      const res = await fetch(`${BASE_URL}/api/users/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
+      const data = await res.json();
+      if (!res.ok) { setError(data.message || "Registration failed"); return; }
       setUserEmail(data.email);
       setUserToken(data.token || null);
-
-      navigation.navigate("Goal", {
-        email: data.email,
-      });
-
-    } catch (error) {
-      console.log(error);
-      alert("Registration failed");
+      navigation.navigate("Goal", { email: data.email });
+    } catch {
+      setError("Network error. Try again.");
     }
   };
 
   return (
-    <View style={styles.container}>
-      
-      {/* Back Button */}
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Text style={styles.back}>← Back</Text>
-      </TouchableOpacity>
+    <SafeAreaView style={s.container} edges={["top", "bottom"]}>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : undefined}>
+        <ScrollView contentContainerStyle={s.scroll} keyboardShouldPersistTaps="handled">
 
-      {/* Header */}
-      <Text style={styles.title}>Create Account</Text>
-      <Text style={styles.subtitle}>
-        Start your fitness journey today
-      </Text>
+          <TouchableOpacity style={s.backBtn} onPress={() => navigation.goBack()}>
+            <Feather name="arrow-left" size={20} color={MUTED} />
+            <Text style={s.backText}>Back</Text>
+          </TouchableOpacity>
 
-      {/* Inputs */}
-      <Text style={styles.label}>Full Name</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter full name"
-        placeholderTextColor="#777"
-        value={name}
-        onChangeText={setName}
-      />
+          <View style={s.logoWrap}>
+            <View style={s.logoBox}>
+              <Feather name="zap" size={24} color="#000" />
+            </View>
+            <Text style={s.title}>Create Account</Text>
+            <Text style={s.subtitle}>Start your fitness journey today</Text>
+          </View>
 
-      <Text style={styles.label}>Email</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="you@email.com"
-        placeholderTextColor="#777"
-        value={email}
-        onChangeText={setEmail}
-      />
+          <View style={s.form}>
+            {[
+              { label: "Full Name",         value: name,     setter: setName,     placeholder: "John Doe",            kb: "default",       secure: false },
+              { label: "Email",             value: email,    setter: setEmail,    placeholder: "you@email.com",       kb: "email-address", secure: false },
+              { label: "Password",          value: password, setter: setPassword, placeholder: "Min. 6 characters",   kb: "default",       secure: true  },
+              { label: "Confirm Password",  value: confirm,  setter: setConfirm,  placeholder: "Re-enter password",   kb: "default",       secure: true  },
+            ].map(({ label, value, setter, placeholder, kb, secure }, i) => (
+              <View key={label} style={s.fieldWrap}>
+                <Text style={s.label}>{label}</Text>
+                <View style={s.inputWrap}>
+                  <TextInput
+                    style={[s.input, secure && { paddingRight: 48 }]}
+                    value={value}
+                    onChangeText={t => { setter(t); setError(""); }}
+                    placeholder={placeholder}
+                    placeholderTextColor="#555"
+                    keyboardType={kb}
+                    autoCapitalize={kb === "email-address" ? "none" : "words"}
+                    secureTextEntry={secure && !showPass}
+                  />
+                  {secure && i === 2 && (
+                    <TouchableOpacity style={s.eyeBtn} onPress={() => setShowPass(v => !v)}>
+                      <Feather name={showPass ? "eye-off" : "eye"} size={18} color={MUTED} />
+                    </TouchableOpacity>
+                  )}
+                </View>
+              </View>
+            ))}
 
-      <Text style={styles.label}>Password</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Min. 6 characters"
-        placeholderTextColor="#777"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-      />
+            {error ? <Text style={s.errorText}>{error}</Text> : null}
 
-      <Text style={styles.label}>Confirm Password</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Re-enter password"
-        placeholderTextColor="#777"
-        secureTextEntry
-        value={confirmPassword}
-        onChangeText={setConfirmPassword}
-      />
+            <TouchableOpacity style={s.primaryBtn} onPress={handleRegister} activeOpacity={0.8}>
+              <Text style={s.primaryBtnText}>Create Account</Text>
+            </TouchableOpacity>
+          </View>
 
-      {/* Create Button */}
-      <TouchableOpacity style={styles.button} onPress={handleRegister}>
-        <Text style={styles.buttonText}>Create Account</Text>
-      </TouchableOpacity>
+          <TouchableOpacity style={s.footerBtn} onPress={() => navigation.navigate("Login")}>
+            <Text style={s.footerText}>Already have an account? <Text style={{ color: GREEN }}>Sign in</Text></Text>
+          </TouchableOpacity>
 
-      {/* Footer */}
-      <View style={styles.footerRow}>
-        <Text style={styles.footerText}>
-          Already have an account?
-        </Text>
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate("Goal", {
-              email: email,
-            })
-          }
-        >
-          <Text style={styles.signIn}> Sign in</Text>
-        </TouchableOpacity>
-      </View>
-
-    </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#000",
-    padding: 20,
-    justifyContent: "center",
-  },
+const s = StyleSheet.create({
+  container:  { flex: 1, backgroundColor: BG },
+  scroll:     { flexGrow: 1, paddingHorizontal: 24, paddingTop: 16, paddingBottom: 40 },
 
-  back: {
-    color: "#C7F000",
-    marginBottom: 20,
-    fontSize: 16,
-  },
+  backBtn:    { flexDirection: "row", alignItems: "center", gap: 8, marginBottom: 32 },
+  backText:   { color: MUTED, fontSize: 14 },
 
-  title: {
-    fontSize: 32,
-    color: "#fff",
-    fontWeight: "bold",
-    marginBottom: 5,
-  },
+  logoWrap:   { marginBottom: 32 },
+  logoBox:    { width: 48, height: 48, borderRadius: 14, backgroundColor: GREEN, alignItems: "center", justifyContent: "center", marginBottom: 20 },
+  title:      { color: WHITE, fontSize: 30, fontWeight: "700", marginBottom: 4 },
+  subtitle:   { color: MUTED, fontSize: 15 },
 
-  subtitle: {
-    color: "#777",
-    marginBottom: 30,
-  },
+  form:       { gap: 14 },
+  fieldWrap:  { gap: 6 },
+  label:      { color: MUTED, fontSize: 12 },
+  input:      { backgroundColor: CARD, borderWidth: 1, borderColor: BORDER, borderRadius: 16, color: WHITE, paddingHorizontal: 16, paddingVertical: 14, fontSize: 15 },
+  inputWrap:  { position: "relative" },
+  eyeBtn:     { position: "absolute", right: 14, top: 0, bottom: 0, justifyContent: "center" },
 
-  label: {
-    color: "#aaa",
-    marginBottom: 5,
-    marginTop: 10,
-  },
+  errorText:  { color: RED, fontSize: 13 },
+  primaryBtn: { backgroundColor: GREEN, paddingVertical: 16, borderRadius: 16, alignItems: "center", marginTop: 8 },
+  primaryBtnText: { color: "#000", fontSize: 15, fontWeight: "700" },
 
-  input: {
-    backgroundColor: "#1a1a1a",
-    padding: 15,
-    borderRadius: 14,
-    color: "#fff",
-  },
-
-  button: {
-    backgroundColor: "#C7F000",
-    padding: 18,
-    borderRadius: 20,
-    alignItems: "center",
-    marginTop: 30,
-  },
-
-  buttonText: {
-    color: "#000",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-
-  footerRow: {
-    flexDirection: "row",
-    justifyContent: "center",
-    marginTop: 20,
-  },
-
-  footerText: {
-    color: "#777",
-  },
-
-  signIn: {
-    color: "#C7F000",
-    fontWeight: "bold",
-  },
+  footerBtn:  { alignItems: "center", marginTop: 24 },
+  footerText: { color: MUTED, fontSize: 13 },
 });

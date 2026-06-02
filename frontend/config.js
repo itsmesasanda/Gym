@@ -1,8 +1,21 @@
 import { Platform } from "react-native";
 
-const EXPO_BASE_URL = process.env.EXPO_PUBLIC_API_URL?.trim();
-const WEB_LOCAL_URL = "http://127.0.0.1:5050";
-const DEFAULT_DEVICE_URL = "http://172.28.22.43:5050";
+const DEV_HOST = "localhost";
+const API_PORT = "5050";
 
-// Web uses 127.0.0.1 so it consistently targets the local backend process.
-export const BASE_URL = EXPO_BASE_URL || (Platform.OS === "web" ? WEB_LOCAL_URL : DEFAULT_DEVICE_URL);
+const getApiHost = () => {
+  if (
+    Platform.OS === "web" &&
+    typeof window !== "undefined" &&
+    window.location?.hostname
+  ) {
+    return window.location.hostname;
+  }
+  return DEV_HOST;
+};
+
+export const BASE_URL =
+  process.env.EXPO_PUBLIC_API_URL || `http://${getApiHost()}:${API_PORT}`;
+
+export const RAG_URL =
+  process.env.EXPO_PUBLIC_RAG_URL || `http://${getApiHost()}:8001`;

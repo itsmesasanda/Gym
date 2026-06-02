@@ -1,126 +1,111 @@
 import express from "express";
 import mongoose from "mongoose";
+import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// ── Goal Schema ───────────────────────────────────────────────────────────
+router.use(protect); // all progress routes require auth
+
+// ── Goal Schema ───────────────────────────────────────────────────
 const GoalSchema = new mongoose.Schema({
-  name: String,
-  target: String,
-  current: { weight: Number, reps: Number, sets: Number },
-  progress: Number,
-  email: { type: String, default: null },
+  userEmail: { type: String, required: true, index: true },
+  name:      String,
+  target:    String,
+  current:   { weight: Number, reps: Number, sets: Number },
+  progress:  Number,
 });
-GoalSchema.set('toJSON', {
-  virtuals: true,
-  versionKey: false,
-  transform: function (doc, ret) {
-    ret.id = ret._id.toString();
-    delete ret._id;
-  }
+GoalSchema.set("toJSON", {
+  virtuals: true, versionKey: false,
+  transform: (doc, ret) => { ret.id = ret._id.toString(); delete ret._id; },
 });
-const Goal = mongoose.models.Goal || mongoose.model('Goal', GoalSchema);
+const Goal = mongoose.models.Goal || mongoose.model("Goal", GoalSchema);
 
-// ── Body Measurement Schema ──────────────────────────────────────────────
+// ── Measurement Schema ────────────────────────────────────────────
 const BodyMeasurementSchema = new mongoose.Schema({
-  date: String,
-  weight: Number,
-  bodyFat: Number,
-  waist: Number,
-  height: Number,
-  bmi: Number,
-  email: { type: String, default: null },
+  userEmail: { type: String, required: true, index: true },
+  date:      String,
+  weight:    Number,
+  bodyFat:   Number,
+  waist:     Number,
+  height:    Number,
+  bmi:       Number,
 });
-BodyMeasurementSchema.set('toJSON', {
-  virtuals: true,
-  versionKey: false,
-  transform: function (doc, ret) {
-    ret.id = ret._id.toString();
-    delete ret._id;
-  }
+BodyMeasurementSchema.set("toJSON", {
+  virtuals: true, versionKey: false,
+  transform: (doc, ret) => { ret.id = ret._id.toString(); delete ret._id; },
 });
-const BodyMeasurement = mongoose.models.BodyMeasurement || mongoose.model('BodyMeasurement', BodyMeasurementSchema);
+const BodyMeasurement = mongoose.models.BodyMeasurement || mongoose.model("BodyMeasurement", BodyMeasurementSchema);
 
-// ── Goals Endpoints ──────────────────────────────────────────────────────
-
-router.get('/goals', async (req, res) => {
+// ── Goals ─────────────────────────────────────────────────────────
+router.get("/goals", async (req, res) => {
   try {
-    const filter = req.query.email ? { email: req.query.email } : {};
-    const goals = await Goal.find(filter);
+    const goals = await Goal.find({ userEmail: req.user.email });
     res.json(goals);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+  } catch { res.status(500).json({ message: "Could not retrieve goals" }); }
 });
 
-router.post('/goals', async (req, res) => {
+router.post("/goals", async (req, res) => {
   try {
-    const goal = new Goal(req.body);
+    const goal = new Goal({ ...req.body, userEmail: req.user.email });
     await goal.save();
     res.json(goal);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+  } catch { res.status(500).json({ message: "Could not save goal" }); }
 });
 
-router.put('/goals/:id', async (req, res) => {
+router.put("/goals/:id", async (req, res) => {
   try {
-    const goal = await Goal.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!goal) return res.status(404).json({ message: 'Goal not found' });
-    res.json(goal);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+    const goal = await Goal.findById(req.params.id);
+    if (!goal) return res.status(404).json({ message: "Goal not found" });
+    if (goal.userEmail !== req.user.email) return res.status(403).json({ message: "Forbidden" });
+    const updated = await Goal.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(updated);
+  } catch { res.status(500).json({ message: "Could not update goal" }); }
 });
 
-router.delete('/goals/:id', async (req, res) => {
+router.delete("/goals/:id", async (req, res) => {
   try {
-    await Goal.findByIdAndDelete(req.params.id);
+    const goal = await Goal.findById(req.params.id);
+    if (!goal) return res.status(404).json({ message: "Goal not found" });
+    if (goal.userEmail !== req.user.email) return res.status(403).json({ message: "Forbidden" });
+    await goal.deleteOne();
     res.json({ success: true });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+  } catch { res.status(500).json({ message: "Could not delete goal" }); }
 });
 
-// ── Measurements Endpoints ───────────────────────────────────────────────
-
-router.get('/measurements', async (req, res) => {
+// ── Measurements ──────────────────────────────────────────────────
+router.get("/measurements", async (req, res) => {
   try {
-    const filter = req.query.email ? { email: req.query.email } : {};
-    const measurements = await BodyMeasurement.find(filter).sort({ date: -1 });
+    const measurements = await BodyMeasurement.find({ userEmail: req.user.email }).sort({ date: -1 });
     res.json(measurements);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+  } catch { res.status(500).json({ message: "Could not retrieve measurements" }); }
 });
 
-router.post('/measurements', async (req, res) => {
+router.post("/measurements", async (req, res) => {
   try {
-    const measurement = new BodyMeasurement(req.body);
-    await measurement.save();
-    res.json(measurement);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+    const m = new BodyMeasurement({ ...req.body, userEmail: req.user.email });
+    await m.save();
+    res.json(m);
+  } catch { res.status(500).json({ message: "Could not save measurement" }); }
 });
 
-router.put('/measurements/:id', async (req, res) => {
+router.put("/measurements/:id", async (req, res) => {
   try {
-    const measurement = await BodyMeasurement.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!measurement) return res.status(404).json({ message: 'Measurement not found' });
-    res.json(measurement);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+    const m = await BodyMeasurement.findById(req.params.id);
+    if (!m) return res.status(404).json({ message: "Measurement not found" });
+    if (m.userEmail !== req.user.email) return res.status(403).json({ message: "Forbidden" });
+    const updated = await BodyMeasurement.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(updated);
+  } catch { res.status(500).json({ message: "Could not update measurement" }); }
 });
 
-router.delete('/measurements/:id', async (req, res) => {
+router.delete("/measurements/:id", async (req, res) => {
   try {
-    await BodyMeasurement.findByIdAndDelete(req.params.id);
+    const m = await BodyMeasurement.findById(req.params.id);
+    if (!m) return res.status(404).json({ message: "Measurement not found" });
+    if (m.userEmail !== req.user.email) return res.status(403).json({ message: "Forbidden" });
+    await m.deleteOne();
     res.json({ success: true });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+  } catch { res.status(500).json({ message: "Could not delete measurement" }); }
 });
 
 export default router;

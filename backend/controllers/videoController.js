@@ -28,11 +28,11 @@ const validateVideoInput = ({ title, description, youtubeUrl, thumbnail }) => {
 };
 
 const sendWriteError = (res, err) => {
+  console.error("[videoController] error:", err);
   if (err?.name === "ValidationError" || err?.name === "CastError") {
-    return res.status(400).json({ error: err.message });
+    return res.status(400).json({ error: "Invalid video data" });
   }
-
-  return res.status(500).json({ error: err.message });
+  return res.status(500).json({ error: "Internal server error" });
 };
 
 // ── Public — GET /api/videos ─────────────────────────────────────────────────
@@ -41,7 +41,8 @@ export const getVideos = async (req, res) => {
     const videos = await Video.find().sort({ createdAt: -1 });
     res.status(200).json({ count: videos.length, videos });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("[getVideos] error:", err);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 
@@ -51,7 +52,8 @@ export const getAllVideos = async (req, res) => {
     const videos = await Video.find().sort({ createdAt: -1 });
     res.status(200).json({ count: videos.length, videos });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("[getAllVideos] error:", err);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 

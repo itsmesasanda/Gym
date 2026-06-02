@@ -5,7 +5,6 @@ const MealLogSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    default: "demo-user-001",
   },
   foodName: {
     type: String,
@@ -31,6 +30,15 @@ const MealLogSchema = new mongoose.Schema({
     type: Number,
     default: 0,
     min: 0,
+  },
+  mealGroupId: {
+    type: String,
+    default: null,
+  },
+  mealName: {
+    type: String,
+    default: null,
+    trim: true,
   },
   timestamp: {
     type: Date,

@@ -42,6 +42,42 @@ const mapInjuryToCategory = (text) => {
   return "none"; // unrecognized → safer to assume no constraint
 };
 
+const buildFallbackPlan = (profile) => {
+  const injury = profile.injury || "none";
+  const avoidLegs = injury === "legs";
+  const avoidBack = injury === "back";
+  const avoidShoulders = injury === "shoulders";
+  const avoidChest = injury === "chest";
+  const avoidArms = injury === "arms";
+
+  const day = (day_number, focus, exercises) => ({ day_number, focus, exercises });
+  const ex = (name, sets = 3, reps = "10-12", notes = null) => ({ name, sets, reps, notes });
+
+  return {
+    title: "7-Day Workout Plan",
+    goal: profile.goal.replace(/_/g, " "),
+    days: [
+      day(1, avoidChest ? "Core and Cardio" : "Chest and Triceps", avoidChest
+        ? [ex("Plank", 3, "30-45 sec"), ex("Dead Bug", 3), ex("Incline Walk", 1, "20 min")]
+        : [ex("Push Ups"), ex("Dumbbell Press"), ex("Cable Fly"), ex("Tricep Pushdown")]),
+      day(2, avoidBack ? "Legs and Core" : "Back and Biceps", avoidBack
+        ? [ex("Leg Extension"), ex("Seated Leg Curl"), ex("Calf Raises"), ex("Side Plank", 3, "30 sec")]
+        : [ex("Lat Pulldown"), ex("Seated Row"), ex("Face Pull"), ex("Dumbbell Curl")]),
+      day(3, avoidLegs ? "Upper Body Mobility" : "Legs", avoidLegs
+        ? [ex("Band Pull Aparts"), ex("Wall Push Ups"), ex("Seated Shoulder External Rotation", 3, "12-15")]
+        : [ex("Goblet Squat"), ex("Leg Press"), ex("Romanian Deadlift"), ex("Calf Raises")]),
+      day(4, "Rest", []),
+      day(5, avoidShoulders ? "Lower Body and Core" : "Shoulders and Core", avoidShoulders
+        ? [ex("Leg Press"), ex("Glute Bridge"), ex("Cable Crunch"), ex("Bird Dog")]
+        : [ex("Dumbbell Shoulder Press"), ex("Lateral Raise"), ex("Rear Delt Fly"), ex("Cable Crunch")]),
+      day(6, avoidArms ? "Full Body Light" : "Arms and Conditioning", avoidArms
+        ? [ex("Bodyweight Squat"), ex("Incline Walk", 1, "20 min"), ex("Plank", 3, "30 sec")]
+        : [ex("Barbell Curl"), ex("Hammer Curl"), ex("Skull Crusher"), ex("Battle Ropes", 4, "30 sec")]),
+      day(7, "Rest", []),
+    ],
+  };
+};
+
 /**
  * POST /api/workout-plans/generate
  * Body: { email, injuryDescription? }
@@ -52,14 +88,12 @@ const mapInjuryToCategory = (text) => {
  * Maps injury text to a category for the RAG service.
  */
 export const generateAndSavePlan = async (req, res) => {
-  console.log("GENERATE PLAN ROUTE HIT");
-  console.log(req.body);
-
   try {
-    const { email, injuryDescription } = req.body;
+    const { injuryDescription } = req.body;
+    const email = req.user.email;
 
-    if (!email) {
-      return res.status(400).json({ message: "Email required" });
+    if (injuryDescription && String(injuryDescription).length > 500) {
+      return res.status(400).json({ message: "injuryDescription must be 500 characters or fewer" });
     }
 
     // 1. Load user profile
@@ -88,15 +122,24 @@ export const generateAndSavePlan = async (req, res) => {
       injury:       injuryCategory,
     };
 
-    console.log("[generateAndSavePlan] mapped profile:", profile);
+    // 3. Generate via Python service. Fall back rather than returning a dead 500.
+    let plan;
+    let validation;
+    try {
+      plan = await ragGenerate(profile);
+      validation = await ragValidate(plan, profile);
+    } catch (ragError) {
+      console.error("[generateAndSavePlan] RAG failed, using fallback:", ragError.message);
+      plan = buildFallbackPlan(profile);
+      validation = {
+        valid: null,
+        score: null,
+        errors: [],
+        warnings: [`AI generator unavailable: ${ragError.message}`],
+      };
+    }
 
-    // 3. Generate via Python service (~10s)
-    const plan = await ragGenerate(profile);
-
-    // 4. Validate (non-blocking)
-    const validation = await ragValidate(plan, profile);
-
-    // 5. Save to Mongo
+    // 4. Save to Mongo
     const saved = await WorkoutPlan.create({
       userEmail:          email,
       title:              plan.title,
@@ -109,8 +152,8 @@ export const generateAndSavePlan = async (req, res) => {
 
     return res.status(201).json(saved);
   } catch (err) {
-    console.error("GENERATE PLAN ERROR:", err.message);
-    return res.status(500).json({ message: err.message });
+    console.error("[generateAndSavePlan] error:", err);
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
@@ -119,17 +162,15 @@ export const generateAndSavePlan = async (req, res) => {
  */
 export const getUserPlans = async (req, res) => {
   try {
-    const { email } = req.query;
-    if (!email) return res.status(400).json({ message: "Email required" });
-
+    const email = req.user.email;
     const plans = await WorkoutPlan.find({ userEmail: email })
       .sort({ createdAt: -1 })
       .limit(50);
 
     return res.json(plans);
   } catch (err) {
-    console.error("GET PLANS ERROR:", err.message);
-    return res.status(500).json({ message: err.message });
+    console.error("[getUserPlans] error:", err);
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
@@ -140,10 +181,31 @@ export const getPlanById = async (req, res) => {
   try {
     const plan = await WorkoutPlan.findById(req.params.id);
     if (!plan) return res.status(404).json({ message: "Not found" });
+    if (plan.userEmail !== req.user.email) return res.status(403).json({ message: "Forbidden" });
     return res.json(plan);
-  } catch (err) {
-    console.error("GET PLAN ERROR:", err.message);
-    return res.status(500).json({ message: err.message });
+  } catch {
+    return res.status(500).json({ message: "Could not retrieve plan" });
+  }
+};
+
+/**
+ * PATCH /api/workout-plans/:id
+ * Body: { days } — replace the days array (used to edit individual exercises)
+ */
+export const patchPlan = async (req, res) => {
+  try {
+    const { days } = req.body;
+    if (!Array.isArray(days)) return res.status(400).json({ message: "days must be an array" });
+
+    const existing = await WorkoutPlan.findById(req.params.id);
+    if (!existing) return res.status(404).json({ message: "Not found" });
+    if (existing.userEmail !== req.user.email) return res.status(403).json({ message: "Forbidden" });
+
+    existing.days = days;
+    const saved = await existing.save();
+    return res.json(saved);
+  } catch {
+    return res.status(500).json({ message: "Could not update plan" });
   }
 };
 
@@ -152,11 +214,13 @@ export const getPlanById = async (req, res) => {
  */
 export const deletePlan = async (req, res) => {
   try {
-    const result = await WorkoutPlan.findByIdAndDelete(req.params.id);
-    if (!result) return res.status(404).json({ message: "Not found" });
+    const plan = await WorkoutPlan.findById(req.params.id);
+    if (!plan) return res.status(404).json({ message: "Not found" });
+    if (plan.userEmail !== req.user.email) return res.status(403).json({ message: "Forbidden" });
+
+    await plan.deleteOne();
     return res.json({ message: "Plan deleted" });
-  } catch (err) {
-    console.error("DELETE PLAN ERROR:", err.message);
-    return res.status(500).json({ message: err.message });
+  } catch {
+    return res.status(500).json({ message: "Could not delete plan" });
   }
 };

@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { BASE_URL } from "../config";
 import { getUserEmail } from "../utils/session";
+import { authFetch } from "../utils/authFetch";
 import { createMealLog, getCalorieUserId } from "../services/calorieApi";
 
 const API = BASE_URL;
@@ -52,7 +53,7 @@ export default function MealPlanScreen() {
     if (!email) return;
     setLoadingList(true);
     try {
-      const r = await fetch(`${API}/api/meal-plans?email=${encodeURIComponent(email)}`);
+      const r = await authFetch(`${API}/api/meal-plans`);
       if (!r.ok) throw new Error("Fetch failed");
       const data = await r.json();
       setPlans(Array.isArray(data) ? data : []);
@@ -80,14 +81,13 @@ export default function MealPlanScreen() {
 
     setView("generating");
     try {
-      const body = { email, calories: cal };
+      const body = { calories: cal };
       if (protein) body.protein = parseFloat(protein);
       if (carbs)   body.carbs = parseFloat(carbs);
       if (context.trim()) body.context = context.trim();
 
-      const r = await fetch(`${API}/api/meal-plans/recommend`, {
-        method:  "POST",
-        headers: { "Content-Type": "application/json" },
+      const r = await authFetch(`${API}/api/meal-plans/recommend`, {
+        method: "POST",
         body: JSON.stringify(body),
       });
 
@@ -118,7 +118,7 @@ export default function MealPlanScreen() {
         text: "Delete", style: "destructive",
         onPress: async () => {
           try {
-            await fetch(`${API}/api/meal-plans/${planId}`, { method: "DELETE" });
+            await authFetch(`${API}/api/meal-plans/${planId}`, { method: "DELETE" });
             await fetchPlans();
             setView("home");
             setSelectedPlan(null);

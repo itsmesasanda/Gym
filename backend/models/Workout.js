@@ -7,6 +7,7 @@ const SetSchema = new mongoose.Schema({
 }, { _id: false });
 
 const WorkoutSchema = new mongoose.Schema({
+  userEmail:    { type: String, required: true, index: true },
   exerciseName: { type: String, required: true, trim: true, minlength: 2, maxlength: 50 },
   muscleGroup:  {
     type: String,

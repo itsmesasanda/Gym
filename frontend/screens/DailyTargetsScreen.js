@@ -1,222 +1,131 @@
 import React from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
-
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { getUserToken, setUserEmail } from "../utils/session";
 import { BASE_URL } from "../config";
 
-export default function DailyTargetsScreen({ navigation, route }) {
+const GREEN  = "#C7F000";
+const BG     = "#000000";
+const CARD   = "#1C1C1E";
+const BORDER = "#2C2C2E";
+const MUTED  = "#A1A1A6";
+const WHITE  = "#FFFFFF";
+const BLUE   = "#4FC3F7";
+const ORANGE = "#FF9500";
 
-  const {
-    email,
-    goal,
-    targetWeight,
-    height,
-    weight,
-    activityLevel,
-  } = route.params;
+export default function DailyTargetsScreen({ navigation, route }) {
+  const { email, goal, targetWeight, height, weight, activityLevel } = route.params;
 
   setUserEmail(email);
 
-
-  const age = 21; 
+  const age = 21;
   const BMR = 10 * weight + 6.25 * height - 5 * age + 5;
-
-  let activityMultiplier = 1.55;
-
-  if (activityLevel === "low") activityMultiplier = 1.2;
-  if (activityLevel === "moderate") activityMultiplier = 1.55;
-  if (activityLevel === "high") activityMultiplier = 1.9;
-
+  const activityMultiplier = activityLevel === "low" ? 1.2 : activityLevel === "high" ? 1.9 : 1.55;
   let calories = Math.round(BMR * activityMultiplier);
-
-  if (goal === "muscle") calories += 300;
-  if (goal === "fat") calories -= 300;
-
+  if (goal === "muscle_gain") calories += 300;
+  if (goal === "fat_loss")    calories -= 300;
   const protein = Math.round(weight * 2);
 
+  const goalLabel = { muscle_gain: "Muscle Gain", fat_loss: "Fat Loss", maintenance: "Maintenance" }[goal] || goal;
+  const actLabel  = { low: "Low", moderate: "Moderate", high: "High" }[activityLevel] || activityLevel;
 
   const handleSave = async () => {
     try {
       const token = getUserToken();
-      const response = await fetch(`${BASE_URL}/api/users/profile${token ? "" : `?email=${encodeURIComponent(email)}`}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            ...(token ? { Authorization: `Bearer ${token}` } : {}),
-          },
-          body: JSON.stringify({
-            goal,
-            targetWeight,
-            height,
-            weight,
-            activityLevel,
-            calories,
-            protein,
-          }),
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        alert(data.message);
-        return;
-      }
-
-      console.log("Profile updated:", data);
-      console.log("EMAIL BEING PASSED:", email);
-
-      navigation.replace("Tabs", {
-  screen: "Dashboard",
-  params: { email },
-});
-
-    } catch (error) {
-      console.log("Update error:", error);
+      const url = token
+        ? `${BASE_URL}/api/users/profile`
+        : `${BASE_URL}/api/users/profile?email=${encodeURIComponent(email)}`;
+      const res = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify({ goal, targetWeight, height, weight, activityLevel, calories, protein }),
+      });
+      const data = await res.json();
+      if (!res.ok) { alert(data.message); return; }
+      navigation.replace("Tutorial");
+    } catch {
       alert("Failed to save profile");
     }
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={s.container} edges={["top", "bottom"]}>
+      <ScrollView contentContainerStyle={s.scroll}>
 
-      <Text style={styles.step}>Step 3 of 3</Text>
-      <Text style={styles.title}>Your Daily Targets</Text>
-      <Text style={styles.subtitle}>
-        Calculated based on your data
-      </Text>
-
-      {/* MAIN CARD */}
-      <View style={styles.mainCard}>
-        <Text style={styles.mainText}>
-          You should consume approximately
-        </Text>
-
-        <Text style={styles.calorieText}>
-          {calories.toLocaleString()}
-        </Text>
-
-        <Text style={styles.kcalText}>kcal per day</Text>
-      </View>
-
-      {/* SMALL CARDS */}
-      <View style={styles.row}>
-        <View style={styles.smallCard}>
-          <Text style={styles.cardTitle}>Daily Protein</Text>
-          <Text style={styles.cardBig}>{protein}g</Text>
-          <Text style={styles.greenText}>Protein target</Text>
+        {/* Progress bar — all 3 active */}
+        <View style={s.progressRow}>
+          {[1, 2, 3].map(i => (
+            <View key={i} style={[s.progressSeg, { backgroundColor: GREEN }]} />
+          ))}
         </View>
 
-        <View style={styles.smallCard}>
-          <Text style={styles.cardTitle}>Your Goal</Text>
-          <Text style={styles.cardBig}>{goal}</Text>
-          <Text style={styles.greenText}>{activityLevel}</Text>
+        <Text style={s.step}>Step 3 of 3</Text>
+        <Text style={s.title}>Your Daily Targets</Text>
+        <Text style={s.subtitle}>Calculated based on your data</Text>
+
+        {/* Calorie hero card */}
+        <View style={s.mainCard}>
+          <View style={s.calIconWrap}>
+            <Feather name="zap" size={20} color={GREEN} />
+          </View>
+          <Text style={s.mainCardLabel}>Daily Calories</Text>
+          <Text style={s.calorieNum}>{calories.toLocaleString()}</Text>
+          <Text style={s.calorieUnit}>kcal per day</Text>
         </View>
-      </View>
 
-      {/* SAVE BUTTON */}
-      <TouchableOpacity
-        style={styles.saveButton}
-        onPress={handleSave}
-      >
-        <Text style={styles.saveText}>Save & Continue</Text>
-      </TouchableOpacity>
+        {/* Stat cards */}
+        <View style={s.cardsRow}>
+          <View style={s.statCard}>
+            <MaterialCommunityIcons name="dumbbell" size={18} color={BLUE} style={{ marginBottom: 6 }} />
+            <Text style={s.statLabel}>Daily Protein</Text>
+            <Text style={s.statValue}>{protein}g</Text>
+            <Text style={s.statSub}>Protein target</Text>
+          </View>
+          <View style={s.statCard}>
+            <Feather name="target" size={18} color={ORANGE} style={{ marginBottom: 6 }} />
+            <Text style={s.statLabel}>Your Goal</Text>
+            <Text style={[s.statValue, { fontSize: 14 }]}>{goalLabel}</Text>
+            <Text style={s.statSub}>{actLabel} activity</Text>
+          </View>
+        </View>
 
-    </View>
+        <TouchableOpacity style={s.saveBtn} onPress={handleSave} activeOpacity={0.8}>
+          <Feather name="check" size={18} color="#000" />
+          <Text style={s.saveBtnText}>Save & Continue</Text>
+        </TouchableOpacity>
+
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#000",
-    padding: 20,
-    justifyContent: "center",
-  },
+const s = StyleSheet.create({
+  container: { flex: 1, backgroundColor: BG },
+  scroll:    { paddingHorizontal: 24, paddingTop: 16, paddingBottom: 40 },
 
-  step: {
-    color: "#C7F000",
-    marginBottom: 5,
-  },
+  progressRow: { flexDirection: "row", gap: 8, marginBottom: 24 },
+  progressSeg: { flex: 1, height: 4, borderRadius: 2 },
 
-  title: {
-    color: "white",
-    fontSize: 26,
-    fontWeight: "bold",
-  },
+  step:     { color: GREEN, fontSize: 13, marginBottom: 6 },
+  title:    { color: WHITE, fontSize: 24, fontWeight: "700", marginBottom: 4 },
+  subtitle: { color: MUTED, fontSize: 14, marginBottom: 24 },
 
-  subtitle: {
-    color: "#aaa",
-    marginBottom: 30,
-  },
+  mainCard: { backgroundColor: CARD, borderRadius: 24, padding: 28, alignItems: "center", marginBottom: 16, borderWidth: 1, borderColor: "rgba(200,255,0,0.12)" },
+  calIconWrap: { width: 44, height: 44, borderRadius: 22, backgroundColor: "rgba(200,255,0,0.1)", alignItems: "center", justifyContent: "center", marginBottom: 10 },
+  mainCardLabel: { color: MUTED, fontSize: 13, marginBottom: 6 },
+  calorieNum:    { color: WHITE, fontSize: 54, fontWeight: "900", lineHeight: 60 },
+  calorieUnit:   { color: GREEN, fontSize: 14, marginTop: 4 },
 
-  mainCard: {
-    backgroundColor: "#111",
-    borderRadius: 20,
-    padding: 25,
-    alignItems: "center",
-    marginBottom: 20,
-  },
+  cardsRow: { flexDirection: "row", gap: 12, marginBottom: 32 },
+  statCard:  { flex: 1, backgroundColor: CARD, borderRadius: 20, padding: 16, borderWidth: 1, borderColor: BORDER },
+  statLabel: { color: MUTED, fontSize: 11, marginBottom: 4 },
+  statValue: { color: WHITE, fontSize: 20, fontWeight: "800", marginBottom: 2 },
+  statSub:   { color: GREEN, fontSize: 11 },
 
-  mainText: {
-    color: "#aaa",
-    marginBottom: 10,
-  },
-
-  calorieText: {
-    fontSize: 40,
-    color: "white",
-    fontWeight: "bold",
-  },
-
-  kcalText: {
-    color: "#C7F000",
-    marginTop: 5,
-  },
-
-  row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 30,
-  },
-
-  smallCard: {
-    backgroundColor: "#111",
-    padding: 20,
-    borderRadius: 15,
-    width: "48%",
-  },
-
-  cardTitle: {
-    color: "#aaa",
-  },
-
-  cardBig: {
-    color: "white",
-    fontSize: 22,
-    fontWeight: "bold",
-    marginVertical: 5,
-  },
-
-  greenText: {
-    color: "#C7F000",
-  },
-
-  saveButton: {
-    backgroundColor: "#C7F000",
-    padding: 18,
-    borderRadius: 15,
-    alignItems: "center",
-  },
-
-  saveText: {
-    fontWeight: "bold",
-    color: "#000",
-  },
+  saveBtn:     { backgroundColor: GREEN, paddingVertical: 16, borderRadius: 16, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8 },
+  saveBtnText: { color: "#000", fontSize: 15, fontWeight: "700" },
 });

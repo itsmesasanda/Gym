@@ -13,40 +13,25 @@ const normalizeGoal = (goal) => {
 };
 
 /**
- * POST /api/meal-plans/recommend
- * Body: { email, calories?, protein?, carbs?, context? }
+ * POST /api/meal-plans/recommend  [protected]
+ * Body: { calories?, protein?, carbs?, context? }
+ * Email is always taken from the authenticated token — never from req.body.
  */
 export const recommendAndSave = async (req, res) => {
-  console.log("MEAL RECOMMEND ROUTE HIT");
-  console.log(req.body);
-
   try {
-    const { email, calories, protein, carbs, context } = req.body;
-
-    if (!email) {
-      return res.status(400).json({ message: "Email required" });
-    }
+    const email = req.user.email;
+    const { calories, protein, carbs, context } = req.body;
 
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // Use provided values or fall back to user profile
     const targetCalories = calories || user.calories || 2000;
     const targetProtein  = protein  || null;
     const targetCarbs    = carbs    || null;
     const goal           = normalizeGoal(user.goal);
 
-    console.log("[mealRecommend] targets:", {
-      calories: targetCalories,
-      protein: targetProtein,
-      carbs: targetCarbs,
-      goal,
-      context,
-    });
-
-    // Call Python meal RAG service
     const result = await getMealRecommendations({
       calories: targetCalories,
       protein:  targetProtein,
@@ -55,7 +40,6 @@ export const recommendAndSave = async (req, res) => {
       goal,
     });
 
-    // Save to Mongo
     const saved = await MealRecommendation.create({
       userEmail: email,
       calories:  targetCalories,
@@ -68,18 +52,18 @@ export const recommendAndSave = async (req, res) => {
 
     return res.status(201).json(saved);
   } catch (err) {
-    console.error("MEAL RECOMMEND ERROR:", err.message);
-    return res.status(500).json({ message: err.message });
+    console.error("[mealRecommend] error:", err);
+    return res.status(500).json({ message: "Recommendation service error" });
   }
 };
 
 /**
- * GET /api/meal-plans?email=...
+ * GET /api/meal-plans  [protected]
+ * Returns only the authenticated user's meal plans.
  */
 export const getUserMealPlans = async (req, res) => {
   try {
-    const { email } = req.query;
-    if (!email) return res.status(400).json({ message: "Email required" });
+    const email = req.user.email;
 
     const plans = await MealRecommendation.find({ userEmail: email })
       .sort({ createdAt: -1 })
@@ -87,21 +71,28 @@ export const getUserMealPlans = async (req, res) => {
 
     return res.json(plans);
   } catch (err) {
-    console.error("GET MEAL PLANS ERROR:", err.message);
-    return res.status(500).json({ message: err.message });
+    console.error("[getMealPlans] error:", err);
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
 /**
- * DELETE /api/meal-plans/:id
+ * DELETE /api/meal-plans/:id  [protected]
+ * Only the owning user may delete their meal plan.
  */
 export const deleteMealPlan = async (req, res) => {
   try {
-    const result = await MealRecommendation.findByIdAndDelete(req.params.id);
-    if (!result) return res.status(404).json({ message: "Not found" });
+    const plan = await MealRecommendation.findById(req.params.id);
+    if (!plan) return res.status(404).json({ message: "Not found" });
+
+    if (plan.userEmail !== req.user.email) {
+      return res.status(403).json({ message: "Forbidden" });
+    }
+
+    await plan.deleteOne();
     return res.json({ message: "Meal plan deleted" });
   } catch (err) {
-    console.error("DELETE MEAL PLAN ERROR:", err.message);
-    return res.status(500).json({ message: err.message });
+    console.error("[deleteMealPlan] error:", err);
+    return res.status(500).json({ message: "Internal server error" });
   }
 };

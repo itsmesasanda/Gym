@@ -21,6 +21,7 @@ import { LineChart } from 'react-native-chart-kit';
 import { BASE_URL } from '../config';
 import { fetchWithTimeout, parseJsonSafe } from '../services/http';
 import { getUserEmail } from '../utils/session';
+import { authFetch } from '../utils/authFetch';
 import { progressStyles as styles } from './progressStyles';
 import { bodyStatsStyles } from './bodyStatsStyles';
 import { overviewStyles } from './overviewStyles';
@@ -256,7 +257,7 @@ const BodyStatsTab = ({ refreshCallback }) => {
 
   const fetchMeasurements = async () => {
     try {
-      const response = await fetch(`${API}/api/progress/measurements${email ? `?email=${encodeURIComponent(email)}` : ''}`);
+      const response = await authFetch(`${API}/api/progress/measurements`);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       setMeasurements(data);
@@ -378,16 +379,16 @@ const BodyStatsTab = ({ refreshCallback }) => {
       if (editingMeasurementId) {
         const existing = measurements.find(m => m.id === editingMeasurementId);
         if (existing) newMeasurement.date = existing.date;
-        const response = await fetch(`${API}/api/progress/measurements/${editingMeasurementId}`, {
-          method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newMeasurement),
+        const response = await authFetch(`${API}/api/progress/measurements/${editingMeasurementId}`, {
+          method: 'PUT', body: JSON.stringify(newMeasurement),
         });
         const updated = await response.json();
         const updatedAll = measurements.map(m => m.id === editingMeasurementId ? updated : m);
         setMeasurements(updatedAll);
         setCurrentHeight(getDisplayHeight(updatedAll));
       } else {
-        const response = await fetch(`${API}/api/progress/measurements`, {
-          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newMeasurement),
+        const response = await authFetch(`${API}/api/progress/measurements`, {
+          method: 'POST', body: JSON.stringify(newMeasurement),
         });
         const created = await response.json();
         const allMeasurements = [created, ...measurements].sort((a, b) => b.date.localeCompare(a.date));
@@ -417,7 +418,7 @@ const BodyStatsTab = ({ refreshCallback }) => {
   const handleDeleteMeasurement = (id) => {
     const doDelete = async () => {
       try {
-        await fetch(`${API}/api/progress/measurements/${id}`, { method: 'DELETE' });
+        await authFetch(`${API}/api/progress/measurements/${id}`, { method: 'DELETE' });
         const updated = measurements.filter(m => m.id !== id);
         setMeasurements(updated); setCurrentHeight(getDisplayHeight(updated));
         if (refreshCallback) refreshCallback();
@@ -647,11 +648,11 @@ export default function ProgressScreen() {
 
     try {
       if (editingGoalId) {
-        const response = await fetch(`${API}/api/progress/goals/${editingGoalId}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newExercise) });
+        const response = await authFetch(`${API}/api/progress/goals/${editingGoalId}`, { method: 'PUT', body: JSON.stringify(newExercise) });
         const updated = await response.json();
         setExercises(exercises.map(ex => ex.id === editingGoalId ? updated : ex));
       } else {
-        const response = await fetch(`${API}/api/progress/goals`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(newExercise) });
+        const response = await authFetch(`${API}/api/progress/goals`, { method: 'POST', body: JSON.stringify(newExercise) });
         const created = await response.json();
         setExercises([...exercises, created]);
       }
@@ -667,7 +668,7 @@ export default function ProgressScreen() {
   const handleDeleteGoal = (id) => {
     const doDelete = async () => {
       try {
-        await fetch(`${API}/api/progress/goals/${id}`, { method: 'DELETE' });
+        await authFetch(`${API}/api/progress/goals/${id}`, { method: 'DELETE' });
         setExercises(exercises.filter(ex => ex.id !== id)); setRefreshCounter(prev => prev + 1);
         if (Platform.OS === 'web') window.alert('Goal deleted successfully');
         else Alert.alert('Success', 'Goal deleted successfully');

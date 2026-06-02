@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import { BASE_URL } from "../config";
 import { getUserEmail } from "../utils/session";
+import { authFetch } from "../utils/authFetch";
 
 const API = BASE_URL;
 
@@ -32,6 +33,7 @@ export default function WorkoutPlanScreen() {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [injuryText, setInjuryText]   = useState("");
   const [loadingList, setLoadingList] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const email = getUserEmail();
 
@@ -40,7 +42,7 @@ export default function WorkoutPlanScreen() {
     if (!email) return;
     setLoadingList(true);
     try {
-      const r = await fetch(`${API}/api/workout-plans?email=${encodeURIComponent(email)}`);
+      const r = await authFetch(`${API}/api/workout-plans`);
       if (!r.ok) throw new Error("Fetch failed");
       const data = await r.json();
       setPlans(Array.isArray(data) ? data : []);
@@ -60,13 +62,16 @@ export default function WorkoutPlanScreen() {
       return;
     }
 
+    setErrorMessage("");
     setView("generating");
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 60000);
+
     try {
-      const r = await fetch(`${API}/api/workout-plans/generate`, {
-        method:  "POST",
-        headers: { "Content-Type": "application/json" },
+      const r = await authFetch(`${API}/api/workout-plans/generate`, {
+        method: "POST",
+        signal: controller.signal,
         body: JSON.stringify({
-          email,
           injuryDescription: injuryText.trim(),
         }),
       });
@@ -82,8 +87,14 @@ export default function WorkoutPlanScreen() {
       await fetchPlans();
       setView("viewer");
     } catch (e) {
-      Alert.alert("Error", e.message || "Something went wrong.");
+      const message = e.name === "AbortError"
+        ? "The workout AI took too long to respond. Make sure the workout AI service is running on port 8000, then try again."
+        : e.message || "Something went wrong.";
+      setErrorMessage(message);
+      Alert.alert("Could not generate plan", message);
       setView("home");
+    } finally {
+      clearTimeout(timeoutId);
     }
   };
 
@@ -95,7 +106,7 @@ export default function WorkoutPlanScreen() {
         text: "Delete", style: "destructive",
         onPress: async () => {
           try {
-            await fetch(`${API}/api/workout-plans/${planId}`, { method: "DELETE" });
+            await authFetch(`${API}/api/workout-plans/${planId}`, { method: "DELETE" });
             await fetchPlans();
             setView("home");
             setSelectedPlan(null);
@@ -130,6 +141,13 @@ export default function WorkoutPlanScreen() {
         <ScrollView style={s.scroll} showsVerticalScrollIndicator={false}>
           <Text style={s.pageTitle}>AI Plans</Text>
           <Text style={s.pageSubtitle}>Generate a 7-day workout plan tailored to your profile.</Text>
+
+          {errorMessage ? (
+            <View style={s.errorCard}>
+              <Text style={s.errorTitle}>Could not generate plan</Text>
+              <Text style={s.errorText}>{errorMessage}</Text>
+            </View>
+          ) : null}
 
           {/* Generator card */}
           <View style={s.formCard}>
@@ -308,6 +326,17 @@ const s = StyleSheet.create({
   sectionTitle: { color: WHITE, fontSize: 16, fontWeight: "800", marginTop: 8, marginBottom: 12 },
 
   emptyText:    { color: MUTED, textAlign: "center", padding: 20, backgroundColor: CARD, borderRadius: 12 },
+
+  errorCard: {
+    backgroundColor: "rgba(255, 59, 48, 0.12)",
+    borderColor: RED,
+    borderRadius: 12,
+    borderWidth: 1,
+    padding: 14,
+    marginBottom: 14,
+  },
+  errorTitle: { color: WHITE, fontSize: 14, fontWeight: "800", marginBottom: 4 },
+  errorText: { color: "#ffb4ad", fontSize: 12, lineHeight: 17 },
 
   // Form card (generator)
   formCard: {

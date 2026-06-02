@@ -1,192 +1,110 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TextInput,
-  StyleSheet,
-} from "react-native";
+import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Feather } from "@expo/vector-icons";
+
+const GREEN  = "#C7F000";
+const BG     = "#000000";
+const CARD   = "#1C1C1E";
+const BORDER = "#2C2C2E";
+const MUTED  = "#A1A1A6";
+const WHITE  = "#FFFFFF";
+
+const GOALS = [
+  { id: "muscle_gain", label: "Muscle Gain",  desc: "Build strength & size",      emoji: "💪" },
+  { id: "fat_loss",    label: "Fat Loss",     desc: "Lean out & get shredded",    emoji: "🔥" },
+  { id: "maintenance", label: "Maintenance", desc: "Stay fit & healthy",          emoji: "⚖️" },
+];
 
 export default function GoalScreen({ navigation, route }) {
-
-  const [selectedGoal, setSelectedGoal] = useState("muscle");
+  const [goal, setGoal]               = useState("muscle_gain");
   const [targetWeight, setTargetWeight] = useState("");
 
-  const GoalOption = ({ id, title, subtitle }) => {
-    const active = selectedGoal === id;
-
-    return (
-      <TouchableOpacity
-        style={[
-          styles.option,
-          active && styles.optionActive,
-        ]}
-        onPress={() => setSelectedGoal(id)}
-      >
-        <View>
-          <Text style={styles.optionTitle}>
-            {title}
-          </Text>
-          <Text style={styles.optionSubtitle}>
-            {subtitle}
-          </Text>
-        </View>
-
-        <View style={active ? styles.radioActive : styles.radio} />
-      </TouchableOpacity>
-    );
-  };
-
   const handleNext = () => {
-    if (!targetWeight) {
-      alert("Enter target weight");
-      return;
-    }
-
-    navigation.navigate("Measurements", {
-      email: route.params.email,
-      goal: selectedGoal,
-      targetWeight: Number(targetWeight),
-    });
+    if (!targetWeight) { alert("Enter target weight"); return; }
+    navigation.navigate("Measurements", { email: route.params?.email, goal, targetWeight: Number(targetWeight) });
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={s.container} edges={["top", "bottom"]}>
+      <ScrollView contentContainerStyle={s.scroll} keyboardShouldPersistTaps="handled">
+        {/* Progress bar */}
+        <View style={s.progressRow}>
+          {[1, 2, 3].map(i => (
+            <View key={i} style={[s.progressSeg, { backgroundColor: i <= 1 ? GREEN : BORDER }]} />
+          ))}
+        </View>
 
-      <Text style={styles.step}>Step 1 of 3</Text>
-      <Text style={styles.title}>Let's Set Your Goal</Text>
-      <Text style={styles.subtitle}>
-        Choose what you want to achieve
-      </Text>
+        <Text style={s.step}>Step 1 of 3</Text>
+        <Text style={s.title}>Let's Set Your Goal</Text>
+        <Text style={s.subtitle}>Choose what you want to achieve</Text>
 
-      <GoalOption
-        id="muscle"
-        title="Muscle Gain"
-        subtitle="Build strength & size"
-      />
+        <View style={s.options}>
+          {GOALS.map(opt => (
+            <TouchableOpacity
+              key={opt.id}
+              style={[s.option, goal === opt.id && s.optionActive]}
+              onPress={() => setGoal(opt.id)}
+              activeOpacity={0.8}
+            >
+              <Text style={s.optionEmoji}>{opt.emoji}</Text>
+              <View style={{ flex: 1 }}>
+                <Text style={s.optionLabel}>{opt.label}</Text>
+                <Text style={s.optionDesc}>{opt.desc}</Text>
+              </View>
+              <View style={[s.radio, goal === opt.id && s.radioActive]}>
+                {goal === opt.id && <View style={s.radioDot} />}
+              </View>
+            </TouchableOpacity>
+          ))}
+        </View>
 
-      <GoalOption
-        id="fat"
-        title="Fat Loss"
-        subtitle="Lean out & get shredded"
-      />
+        <View style={s.fieldWrap}>
+          <Text style={s.label}>Target Weight (kg)</Text>
+          <TextInput
+            style={s.input}
+            value={targetWeight}
+            onChangeText={setTargetWeight}
+            placeholder="e.g. 75"
+            placeholderTextColor="#555"
+            keyboardType="numeric"
+          />
+        </View>
 
-      <GoalOption
-        id="maintenance"
-        title="Maintenance"
-        subtitle="Stay fit & healthy"
-      />
-
-      <Text style={styles.label}>Target Weight (kg)</Text>
-      <TextInput
-        style={styles.input}
-        keyboardType="numeric"
-        value={targetWeight}
-        onChangeText={setTargetWeight}
-        placeholder="Enter target weight"
-        placeholderTextColor="#777"
-      />
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleNext}
-      >
-        <Text style={styles.buttonText}>Next →</Text>
-      </TouchableOpacity>
-
-    </View>
+        <TouchableOpacity style={s.nextBtn} onPress={handleNext} activeOpacity={0.8}>
+          <Text style={s.nextBtnText}>Next</Text>
+          <Feather name="chevron-right" size={18} color="#000" />
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#000",
-    padding: 20,
-    justifyContent: "center",
-  },
+const s = StyleSheet.create({
+  container: { flex: 1, backgroundColor: BG },
+  scroll:    { paddingHorizontal: 24, paddingTop: 16, paddingBottom: 40 },
 
-  step: {
-    color: "#C7F000",
-    marginBottom: 5,
-  },
+  progressRow: { flexDirection: "row", gap: 8, marginBottom: 24 },
+  progressSeg: { flex: 1, height: 4, borderRadius: 2 },
 
-  title: {
-    color: "#fff",
-    fontSize: 28,
-    fontWeight: "bold",
-  },
+  step:     { color: GREEN, fontSize: 13, marginBottom: 6 },
+  title:    { color: WHITE, fontSize: 24, fontWeight: "700", marginBottom: 4 },
+  subtitle: { color: MUTED, fontSize: 14, marginBottom: 24 },
 
-  subtitle: {
-    color: "#777",
-    marginBottom: 25,
-  },
+  options:  { gap: 12, marginBottom: 24 },
+  option:   { backgroundColor: "#1C1C1E", borderWidth: 1.5, borderColor: BORDER, borderRadius: 16, padding: 16, flexDirection: "row", alignItems: "center", gap: 12 },
+  optionActive: { backgroundColor: "rgba(199,240,0,0.08)", borderColor: GREEN },
+  optionEmoji:  { fontSize: 22 },
+  optionLabel:  { color: WHITE, fontSize: 14, fontWeight: "600" },
+  optionDesc:   { color: MUTED, fontSize: 12, marginTop: 2 },
+  radio:        { width: 20, height: 20, borderRadius: 10, backgroundColor: BORDER, alignItems: "center", justifyContent: "center" },
+  radioActive:  { backgroundColor: GREEN },
+  radioDot:     { width: 8, height: 8, borderRadius: 4, backgroundColor: "#000" },
 
-  option: {
-    backgroundColor: "#1a1a1a",
-    padding: 20,
-    borderRadius: 20,
-    marginBottom: 15,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
+  fieldWrap: { marginBottom: 32 },
+  label:     { color: MUTED, fontSize: 12, marginBottom: 6 },
+  input:     { backgroundColor: "#1C1C1E", borderWidth: 1, borderColor: BORDER, borderRadius: 16, color: WHITE, paddingHorizontal: 16, paddingVertical: 14, fontSize: 15 },
 
-  optionActive: {
-    borderColor: "#C7F000",
-    borderWidth: 2,
-    backgroundColor: "#162000",
-  },
-
-  optionTitle: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-
-  optionSubtitle: {
-    color: "#aaa",
-    marginTop: 3,
-  },
-
-  radio: {
-    width: 22,
-    height: 22,
-    borderRadius: 11,
-    backgroundColor: "#333",
-  },
-
-  radioActive: {
-    width: 22,
-    height: 22,
-    borderRadius: 11,
-    backgroundColor: "#C7F000",
-  },
-
-  label: {
-    color: "#aaa",
-    marginTop: 15,
-  },
-
-  input: {
-    backgroundColor: "#1a1a1a",
-    padding: 15,
-    borderRadius: 14,
-    color: "#fff",
-    marginTop: 5,
-  },
-
-  button: {
-    backgroundColor: "#C7F000",
-    padding: 18,
-    borderRadius: 25,
-    alignItems: "center",
-    marginTop: 40,
-  },
-
-  buttonText: {
-    color: "#000",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
+  nextBtn:     { backgroundColor: GREEN, paddingVertical: 16, borderRadius: 16, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8 },
+  nextBtnText: { color: "#000", fontSize: 15, fontWeight: "700" },
 });
