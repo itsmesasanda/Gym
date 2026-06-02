@@ -129,7 +129,13 @@ app.use((err, _req, res, _next) => {
   res.status(500).json({ message: "Internal server error" });
 });
 
-mongoose.connect(process.env.MONGO_URI)
+const mongoUri = process.env.MONGO_URI || process.env.MONGO_URL || process.env.MONGODB_URL;
+if (!mongoUri) {
+  console.error("FATAL: No MongoDB URI found. Set MONGO_URI, MONGO_URL, or MONGODB_URL.");
+  process.exit(1);
+}
+
+mongoose.connect(mongoUri)
   .then(() => {
     console.log("MongoDB Connected");
     const port = process.env.PORT || 5050;
