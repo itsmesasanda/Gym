@@ -15,7 +15,8 @@
       },
       "env": {
         "EXPO_PUBLIC_API_URL": "https://gym-production-e3fb.up.railway.app",
-        "EXPO_PUBLIC_RAG_URL": "https://refreshing-energy.up.railway.app"
+        "EXPO_PUBLIC_RAG_URL": "https://refreshing-energy.up.railway.app",
+        "SENTRY_DSN": "https://9bf02b0e74a8868456e4b504bb77bb51@o4511497384230912.ingest.us.sentry.io/4511497404612608"
       }
     },
     "production": {

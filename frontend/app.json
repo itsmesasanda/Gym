@@ -19,6 +19,16 @@
       },
       "permissions": []
     },
+    "plugins": [
+      [
+        "sentry-expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "react-native-x2",
+          "organization": "sliit-s4"
+        }
+      ]
+    ],
     "extra": {
       "eas": {
         "projectId": "c06d5220-0456-4f5c-929c-3879ee330d6f"
