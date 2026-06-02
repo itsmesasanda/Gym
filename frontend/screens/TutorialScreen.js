@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React, { useRef, useState } from "react";
+import { PanResponder, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const GREEN = "#C7F000";
@@ -35,8 +35,22 @@ export default function TutorialScreen({ navigation }) {
     else setSlide(s => s + 1);
   };
 
+  const prev = () => {
+    if (slide > 0) setSlide(s => s - 1);
+  };
+
+  const pan = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (_, g) => Math.abs(g.dx) > 20 && Math.abs(g.dx) > Math.abs(g.dy),
+      onPanResponderRelease: (_, g) => {
+        if (g.dx < -60) next();
+        if (g.dx >  60) prev();
+      },
+    })
+  ).current;
+
   return (
-    <SafeAreaView style={s.container} edges={["top", "bottom"]}>
+    <SafeAreaView style={s.container} edges={["top", "bottom"]} {...pan.panHandlers}>
       {/* Skip */}
       <TouchableOpacity style={s.skipBtn} onPress={() => navigation.replace("Tabs")}>
         <Text style={s.skipText}>Skip</Text>
@@ -47,14 +61,13 @@ export default function TutorialScreen({ navigation }) {
         <View style={s.illustration}>
           <Text style={s.emoji}>{current.emoji}</Text>
         </View>
-
         <Text style={s.title}>{current.title}</Text>
         <Text style={s.desc}>{current.description}</Text>
+        <Text style={s.swipeHint}>Swipe to navigate</Text>
       </View>
 
       {/* Bottom */}
       <View style={s.bottom}>
-        {/* Dots */}
         <View style={s.dots}>
           {SLIDES.map((_, i) => (
             <View
@@ -63,13 +76,11 @@ export default function TutorialScreen({ navigation }) {
             />
           ))}
         </View>
-
         <TouchableOpacity style={s.nextBtn} onPress={next}>
           <Text style={s.nextBtnText}>{isLast ? "Let's Go" : "Next →"}</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Bottom glow */}
       <View style={s.bottomGlow} pointerEvents="none" />
     </SafeAreaView>
   );
@@ -91,9 +102,10 @@ const s = StyleSheet.create({
     shadowColor: GREEN, shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.15, shadowRadius: 40, elevation: 6,
   },
-  emoji: { fontSize: 60 },
-  title: { color: WHITE, fontSize: 24, fontWeight: "800", textAlign: "center", marginBottom: 14 },
-  desc:  { color: MUTED, fontSize: 14, textAlign: "center", lineHeight: 22 },
+  emoji:     { fontSize: 60 },
+  title:     { color: WHITE, fontSize: 24, fontWeight: "800", textAlign: "center", marginBottom: 14 },
+  desc:      { color: MUTED, fontSize: 14, textAlign: "center", lineHeight: 22, marginBottom: 16 },
+  swipeHint: { color: "#2a2a2a", fontSize: 12 },
 
   bottom:  { paddingHorizontal: 24, paddingBottom: 20 },
   dots:    { flexDirection: "row", justifyContent: "center", gap: 8, marginBottom: 20 },
@@ -101,8 +113,5 @@ const s = StyleSheet.create({
   nextBtn: { backgroundColor: GREEN, paddingVertical: 16, borderRadius: 20, alignItems: "center" },
   nextBtnText: { color: "#000", fontSize: 15, fontWeight: "700" },
 
-  bottomGlow: {
-    position: "absolute", bottom: 0, left: 0, right: 0, height: "30%",
-    backgroundColor: "transparent",
-  },
+  bottomGlow: { position: "absolute", bottom: 0, left: 0, right: 0, height: "30%", backgroundColor: "transparent" },
 });

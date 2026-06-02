@@ -1,5 +1,15 @@
-import React, { useState } from "react";
-import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import React, { useRef, useState } from "react";
+import {
+  KeyboardAvoidingView,
+  PanResponder,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather } from "@expo/vector-icons";
 
@@ -11,9 +21,9 @@ const MUTED  = "#A1A1A6";
 const WHITE  = "#FFFFFF";
 
 const GOALS = [
-  { id: "muscle_gain", label: "Muscle Gain",  desc: "Build strength & size",      emoji: "💪" },
-  { id: "fat_loss",    label: "Fat Loss",     desc: "Lean out & get shredded",    emoji: "🔥" },
-  { id: "maintenance", label: "Maintenance", desc: "Stay fit & healthy",          emoji: "⚖️" },
+  { id: "muscle_gain", label: "Muscle Gain",  desc: "Build strength & size",   emoji: "💪" },
+  { id: "fat_loss",    label: "Fat Loss",     desc: "Lean out & get shredded", emoji: "🔥" },
+  { id: "maintenance", label: "Maintenance", desc: "Stay fit & healthy",       emoji: "⚖️" },
 ];
 
 export default function GoalScreen({ navigation, route }) {
@@ -25,57 +35,79 @@ export default function GoalScreen({ navigation, route }) {
     navigation.navigate("Measurements", { email: route.params?.email, goal, targetWeight: Number(targetWeight) });
   };
 
+  const pan = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (_, g) => Math.abs(g.dx) > 20 && Math.abs(g.dx) > Math.abs(g.dy),
+      onPanResponderRelease: (_, g) => {
+        if (g.dx < -60) handleNext();
+      },
+    })
+  ).current;
+
   return (
     <SafeAreaView style={s.container} edges={["top", "bottom"]}>
-      <ScrollView contentContainerStyle={s.scroll} keyboardShouldPersistTaps="handled">
-        {/* Progress bar */}
-        <View style={s.progressRow}>
-          {[1, 2, 3].map(i => (
-            <View key={i} style={[s.progressSeg, { backgroundColor: i <= 1 ? GREEN : BORDER }]} />
-          ))}
-        </View>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
+      >
+        <ScrollView
+          contentContainerStyle={s.scroll}
+          keyboardShouldPersistTaps="handled"
+          {...pan.panHandlers}
+        >
+          {/* Progress */}
+          <View style={s.progressRow}>
+            {[1, 2, 3].map(i => (
+              <View key={i} style={[s.progressSeg, { backgroundColor: i <= 1 ? GREEN : BORDER }]} />
+            ))}
+          </View>
 
-        <Text style={s.step}>Step 1 of 3</Text>
-        <Text style={s.title}>Let's Set Your Goal</Text>
-        <Text style={s.subtitle}>Choose what you want to achieve</Text>
+          <Text style={s.step}>Step 1 of 3</Text>
+          <Text style={s.title}>Let's Set Your Goal</Text>
+          <Text style={s.subtitle}>Choose what you want to achieve</Text>
 
-        <View style={s.options}>
-          {GOALS.map(opt => (
-            <TouchableOpacity
-              key={opt.id}
-              style={[s.option, goal === opt.id && s.optionActive]}
-              onPress={() => setGoal(opt.id)}
-              activeOpacity={0.8}
-            >
-              <Text style={s.optionEmoji}>{opt.emoji}</Text>
-              <View style={{ flex: 1 }}>
-                <Text style={s.optionLabel}>{opt.label}</Text>
-                <Text style={s.optionDesc}>{opt.desc}</Text>
-              </View>
-              <View style={[s.radio, goal === opt.id && s.radioActive]}>
-                {goal === opt.id && <View style={s.radioDot} />}
-              </View>
-            </TouchableOpacity>
-          ))}
-        </View>
+          <View style={s.options}>
+            {GOALS.map(opt => (
+              <TouchableOpacity
+                key={opt.id}
+                style={[s.option, goal === opt.id && s.optionActive]}
+                onPress={() => setGoal(opt.id)}
+                activeOpacity={0.8}
+              >
+                <Text style={s.optionEmoji}>{opt.emoji}</Text>
+                <View style={{ flex: 1 }}>
+                  <Text style={s.optionLabel}>{opt.label}</Text>
+                  <Text style={s.optionDesc}>{opt.desc}</Text>
+                </View>
+                <View style={[s.radio, goal === opt.id && s.radioActive]}>
+                  {goal === opt.id && <View style={s.radioDot} />}
+                </View>
+              </TouchableOpacity>
+            ))}
+          </View>
 
-        <View style={s.fieldWrap}>
-          <Text style={s.label}>Target Weight (kg)</Text>
-          <TextInput
-            style={s.input}
-            value={targetWeight}
-            onChangeText={setTargetWeight}
-            placeholder="e.g. 75"
-            placeholderTextColor="#555"
-            keyboardType="numeric"
-          />
-        </View>
+          <View style={s.fieldWrap}>
+            <Text style={s.label}>Target Weight (kg)</Text>
+            <TextInput
+              style={s.input}
+              value={targetWeight}
+              onChangeText={setTargetWeight}
+              placeholder="e.g. 75"
+              placeholderTextColor="#555"
+              keyboardType="numeric"
+              returnKeyType="done"
+            />
+          </View>
 
-        <TouchableOpacity style={s.nextBtn} onPress={handleNext} activeOpacity={0.8}>
-          <Text style={s.nextBtnText}>Next</Text>
-          <Feather name="chevron-right" size={18} color="#000" />
-        </TouchableOpacity>
-      </ScrollView>
+          <TouchableOpacity style={s.nextBtn} onPress={handleNext} activeOpacity={0.8}>
+            <Text style={s.nextBtnText}>Next</Text>
+            <Feather name="chevron-right" size={18} color="#000" />
+          </TouchableOpacity>
+
+          <Text style={s.swipeHint}>Swipe left to continue</Text>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
@@ -91,8 +123,8 @@ const s = StyleSheet.create({
   title:    { color: WHITE, fontSize: 24, fontWeight: "700", marginBottom: 4 },
   subtitle: { color: MUTED, fontSize: 14, marginBottom: 24 },
 
-  options:  { gap: 12, marginBottom: 24 },
-  option:   { backgroundColor: "#1C1C1E", borderWidth: 1.5, borderColor: BORDER, borderRadius: 16, padding: 16, flexDirection: "row", alignItems: "center", gap: 12 },
+  options:      { gap: 12, marginBottom: 24 },
+  option:       { backgroundColor: CARD, borderWidth: 1.5, borderColor: BORDER, borderRadius: 16, padding: 16, flexDirection: "row", alignItems: "center", gap: 12 },
   optionActive: { backgroundColor: "rgba(199,240,0,0.08)", borderColor: GREEN },
   optionEmoji:  { fontSize: 22 },
   optionLabel:  { color: WHITE, fontSize: 14, fontWeight: "600" },
@@ -103,8 +135,10 @@ const s = StyleSheet.create({
 
   fieldWrap: { marginBottom: 32 },
   label:     { color: MUTED, fontSize: 12, marginBottom: 6 },
-  input:     { backgroundColor: "#1C1C1E", borderWidth: 1, borderColor: BORDER, borderRadius: 16, color: WHITE, paddingHorizontal: 16, paddingVertical: 14, fontSize: 15 },
+  input:     { backgroundColor: CARD, borderWidth: 1, borderColor: BORDER, borderRadius: 16, color: WHITE, paddingHorizontal: 16, paddingVertical: 14, fontSize: 15 },
 
-  nextBtn:     { backgroundColor: GREEN, paddingVertical: 16, borderRadius: 16, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8 },
+  nextBtn:     { backgroundColor: GREEN, paddingVertical: 16, borderRadius: 16, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 12 },
   nextBtnText: { color: "#000", fontSize: 15, fontWeight: "700" },
+
+  swipeHint: { color: "#333", fontSize: 12, textAlign: "center" },
 });

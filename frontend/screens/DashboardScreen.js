@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import {
+  ActivityIndicator,
   Animated,
   SafeAreaView,
   ScrollView,
@@ -8,6 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { SkeletonBox } from "../components/Skeleton";
 import { LinearGradient } from "expo-linear-gradient";
 import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import Svg, { Circle } from "react-native-svg";
@@ -64,11 +66,14 @@ function ConcentricRings({ outer, outerMax, middle, middleMax, inner, innerMax }
 }
 
 export default function DashboardScreen({ navigation }) {
-  const [userName, setUserName]          = useState("");
+  const [userName, setUserName]           = useState("");
   const [annIdx, setAnnIdx]              = useState(0);
   const [announcements, setAnnouncements] = useState(DEFAULT_ANNOUNCEMENTS);
   const [calorieData, setCalorie]        = useState({ calories: 0, protein: 0, goal: 2200, proteinGoal: 160 });
   const [todayWorkout, setWorkout]       = useState(null);
+  const [todayExCount, setTodayExCount]  = useState(0);
+  const [dataLoaded, setDataLoaded]      = useState(false);
+  const EX_GOAL = 5;
   const bounceAnim = useRef(new Animated.Value(0)).current;
   const email = getUserEmail();
 
@@ -97,9 +102,20 @@ export default function DashboardScreen({ navigation }) {
     } catch { /* keep default */ }
   };
 
+  const fetchTodayExercises = async () => {
+    try {
+      const r = await authFetch(`${BASE_URL}/api/workouts`);
+      if (!r.ok) return;
+      const all = await r.json();
+      const today = new Date().toLocaleDateString("en-US", { month: "numeric", day: "numeric", year: "numeric" });
+      setTodayExCount(all.filter(w => w.date === today).length);
+    } catch {}
+  };
+
   const fetchAll = useCallback(async () => {
     if (!email) return;
-    await Promise.all([fetchProfile(), fetchCalories(), fetchTodayWorkout(), fetchAnnouncements()]);
+    await Promise.all([fetchProfile(), fetchCalories(), fetchTodayWorkout(), fetchAnnouncements(), fetchTodayExercises()]);
+    setDataLoaded(true);
   }, [email]);
 
   useEffect(() => { fetchAll(); }, [fetchAll]);
@@ -155,14 +171,25 @@ export default function DashboardScreen({ navigation }) {
     return "Good evening";
   };
 
-  const firstName   = userName ? userName.split(" ")[0] : "there";
-  const cals        = calorieData.calories || 0;
-  const prot        = calorieData.protein  || 0;
-  const workoutMin  = 38;
-  const workoutMax  = 45;
+  const firstName = userName ? userName.split(" ")[0] : "there";
+  const cals      = calorieData.calories || 0;
+  const prot      = calorieData.protein  || 0;
   const exercises   = todayWorkout?.day?.exercises?.slice(0, 4)
     ?.map(ex => (typeof ex === "object" ? ex.name : ex))
     || ["Bench Press", "OHP", "Incline DB", "Tricep Dip"];
+
+  if (!dataLoaded) {
+    return (
+      <SafeAreaView style={s.container}>
+        <View style={{ paddingHorizontal: 16, paddingTop: 24, gap: 16 }}>
+          <SkeletonBox height={20} width={160} borderRadius={10} />
+          <SkeletonBox height={120} borderRadius={24} />
+          <SkeletonBox height={160} borderRadius={24} />
+          <SkeletonBox height={60}  borderRadius={16} />
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   return (
     <SafeAreaView style={s.container}>
@@ -204,15 +231,15 @@ export default function DashboardScreen({ navigation }) {
         {/* ── Activity Rings ── */}
         <View style={s.ringsCard}>
           <ConcentricRings
-            outer={cals}      outerMax={calorieData.goal}
-            middle={workoutMin} middleMax={workoutMax}
-            inner={prot}      innerMax={calorieData.proteinGoal}
+            outer={cals}          outerMax={calorieData.goal}
+            middle={todayExCount} middleMax={EX_GOAL}
+            inner={prot}          innerMax={calorieData.proteinGoal}
           />
           <View style={s.ringsInfo}>
             {[
-              { dot: GREEN,  label: "Move",    value: `${cals.toLocaleString()}`, unit: `/ ${calorieData.goal.toLocaleString()} kcal` },
-              { dot: ORANGE, label: "Workout", value: `${workoutMin}`,            unit: `/ ${workoutMax} min` },
-              { dot: BLUE,   label: "Protein", value: `${prot}g`,                unit: `/ ${calorieData.proteinGoal}g` },
+              { dot: GREEN,  label: "Calories", value: `${cals.toLocaleString()}`, unit: `/ ${calorieData.goal.toLocaleString()} kcal` },
+              { dot: ORANGE, label: "Train",    value: `${todayExCount}`,         unit: `/ ${EX_GOAL} exercises` },
+              { dot: BLUE,   label: "Protein",  value: `${prot}g`,               unit: `/ ${calorieData.proteinGoal}g` },
             ].map(({ dot, label, value, unit }) => (
               <View key={label} style={s.ringRow}>
                 <View style={[s.ringDot, { backgroundColor: dot }]} />
@@ -248,12 +275,8 @@ export default function DashboardScreen({ navigation }) {
               <Text style={s.statText}>{todayWorkout?.day?.exercises?.length || 6} exercises</Text>
             </View>
             <View style={s.statItem}>
-              <Feather name="clock" size={12} color={MUTED} />
-              <Text style={s.statText}>52 min</Text>
-            </View>
-            <View style={s.statItem}>
-              <Feather name="zap" size={12} color={MUTED} />
-              <Text style={s.statText}>340 kcal</Text>
+              <Feather name="activity" size={12} color={MUTED} />
+              <Text style={s.statText}>{todayExCount} logged today</Text>
             </View>
           </View>
           <TouchableOpacity style={s.startBtn} onPress={() => navigation.navigate("WorkoutLog")}>
@@ -268,8 +291,10 @@ export default function DashboardScreen({ navigation }) {
             <MaterialCommunityIcons name="robot-outline" size={18} color={GREEN} />
           </View>
           <Text style={s.insightText}>
-            <Text style={s.insightLabel}>AI Insight: </Text>
-            {"You've hit your protein goal 5 days in a row — great consistency"}
+            <Text style={s.insightLabel}>Tip: </Text>
+            {cals >= calorieData.goal
+              ? "You've hit your calorie goal today — great work!"
+              : `${(calorieData.goal - cals).toLocaleString()} kcal remaining to reach your daily goal`}
           </Text>
         </View>
 

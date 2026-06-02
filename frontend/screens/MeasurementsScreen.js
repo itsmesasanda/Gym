@@ -1,5 +1,15 @@
-import React, { useState } from "react";
-import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import React, { useRef, useState } from "react";
+import {
+  KeyboardAvoidingView,
+  PanResponder,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather } from "@expo/vector-icons";
 
@@ -26,77 +36,99 @@ export default function MeasurementsScreen({ navigation, route }) {
     if (!height || !weight) { alert("Enter height and weight"); return; }
     navigation.navigate("DailyTargets", {
       email, goal, targetWeight,
-      height: Number(height),
-      weight: Number(weight),
+      height:        Number(height),
+      weight:        Number(weight),
       activityLevel: activity,
     });
   };
 
+  const pan = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (_, g) => Math.abs(g.dx) > 20 && Math.abs(g.dx) > Math.abs(g.dy),
+      onPanResponderRelease: (_, g) => {
+        if (g.dx < -60) handleNext();
+        if (g.dx >  60) navigation.goBack();
+      },
+    })
+  ).current;
+
   return (
     <SafeAreaView style={s.container} edges={["top", "bottom"]}>
-      <ScrollView contentContainerStyle={s.scroll} keyboardShouldPersistTaps="handled">
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
+      >
+        <ScrollView
+          contentContainerStyle={s.scroll}
+          keyboardShouldPersistTaps="handled"
+          {...pan.panHandlers}
+        >
+          {/* Progress */}
+          <View style={s.progressRow}>
+            {[1, 2, 3].map(i => (
+              <View key={i} style={[s.progressSeg, { backgroundColor: i <= 2 ? GREEN : BORDER }]} />
+            ))}
+          </View>
 
-        {/* Progress bar */}
-        <View style={s.progressRow}>
-          {[1, 2, 3].map(i => (
-            <View key={i} style={[s.progressSeg, { backgroundColor: i <= 2 ? GREEN : BORDER }]} />
-          ))}
-        </View>
+          <Text style={s.step}>Step 2 of 3</Text>
+          <Text style={s.title}>Your Measurements</Text>
+          <Text style={s.subtitle}>Help us calculate your targets</Text>
 
-        <Text style={s.step}>Step 2 of 3</Text>
-        <Text style={s.title}>Your Measurements</Text>
-        <Text style={s.subtitle}>Help us calculate your targets</Text>
+          <View style={s.fieldWrap}>
+            <Text style={s.label}>Height (cm)</Text>
+            <TextInput
+              style={s.input}
+              value={height}
+              onChangeText={setHeight}
+              placeholder="e.g. 175"
+              placeholderTextColor="#555"
+              keyboardType="numeric"
+              returnKeyType="next"
+            />
+          </View>
 
-        <View style={s.fieldWrap}>
-          <Text style={s.label}>Height (cm)</Text>
-          <TextInput
-            style={s.input}
-            value={height}
-            onChangeText={setHeight}
-            placeholder="e.g. 175"
-            placeholderTextColor="#555"
-            keyboardType="numeric"
-          />
-        </View>
+          <View style={s.fieldWrap}>
+            <Text style={s.label}>Current Weight (kg)</Text>
+            <TextInput
+              style={s.input}
+              value={weight}
+              onChangeText={setWeight}
+              placeholder="e.g. 70"
+              placeholderTextColor="#555"
+              keyboardType="numeric"
+              returnKeyType="done"
+            />
+          </View>
 
-        <View style={s.fieldWrap}>
-          <Text style={s.label}>Current Weight (kg)</Text>
-          <TextInput
-            style={s.input}
-            value={weight}
-            onChangeText={setWeight}
-            placeholder="e.g. 70"
-            placeholderTextColor="#555"
-            keyboardType="numeric"
-          />
-        </View>
+          <Text style={[s.label, { marginBottom: 12 }]}>Activity Level</Text>
+          <View style={s.options}>
+            {ACTIVITIES.map(opt => (
+              <TouchableOpacity
+                key={opt.id}
+                style={[s.option, activity === opt.id && s.optionActive]}
+                onPress={() => setActivity(opt.id)}
+                activeOpacity={0.8}
+              >
+                <View style={{ flex: 1 }}>
+                  <Text style={s.optionLabel}>{opt.label}</Text>
+                  <Text style={s.optionDesc}>{opt.desc}</Text>
+                </View>
+                <View style={[s.radio, activity === opt.id && s.radioActive]}>
+                  {activity === opt.id && <View style={s.radioDot} />}
+                </View>
+              </TouchableOpacity>
+            ))}
+          </View>
 
-        <Text style={[s.label, { marginBottom: 12 }]}>Activity Level</Text>
-        <View style={s.options}>
-          {ACTIVITIES.map(opt => (
-            <TouchableOpacity
-              key={opt.id}
-              style={[s.option, activity === opt.id && s.optionActive]}
-              onPress={() => setActivity(opt.id)}
-              activeOpacity={0.8}
-            >
-              <View style={{ flex: 1 }}>
-                <Text style={s.optionLabel}>{opt.label}</Text>
-                <Text style={s.optionDesc}>{opt.desc}</Text>
-              </View>
-              <View style={[s.radio, activity === opt.id && s.radioActive]}>
-                {activity === opt.id && <View style={s.radioDot} />}
-              </View>
-            </TouchableOpacity>
-          ))}
-        </View>
+          <TouchableOpacity style={s.nextBtn} onPress={handleNext} activeOpacity={0.8}>
+            <Text style={s.nextBtnText}>Next</Text>
+            <Feather name="chevron-right" size={18} color="#000" />
+          </TouchableOpacity>
 
-        <TouchableOpacity style={s.nextBtn} onPress={handleNext} activeOpacity={0.8}>
-          <Text style={s.nextBtnText}>Next</Text>
-          <Feather name="chevron-right" size={18} color="#000" />
-        </TouchableOpacity>
-
-      </ScrollView>
+          <Text style={s.swipeHint}>Swipe left to continue · Swipe right to go back</Text>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
@@ -125,6 +157,8 @@ const s = StyleSheet.create({
   radioActive:  { backgroundColor: GREEN },
   radioDot:     { width: 8, height: 8, borderRadius: 4, backgroundColor: "#000" },
 
-  nextBtn:     { backgroundColor: GREEN, paddingVertical: 16, borderRadius: 16, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8 },
+  nextBtn:     { backgroundColor: GREEN, paddingVertical: 16, borderRadius: 16, flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 8, marginBottom: 12 },
   nextBtnText: { color: "#000", fontSize: 15, fontWeight: "700" },
+
+  swipeHint: { color: "#333", fontSize: 12, textAlign: "center" },
 });

@@ -1,5 +1,5 @@
-import React from "react";
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React, { useRef } from "react";
+import { PanResponder, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { getUserToken, setUserEmail } from "../utils/session";
@@ -30,6 +30,16 @@ export default function DailyTargetsScreen({ navigation, route }) {
   const goalLabel = { muscle_gain: "Muscle Gain", fat_loss: "Fat Loss", maintenance: "Maintenance" }[goal] || goal;
   const actLabel  = { low: "Low", moderate: "Moderate", high: "High" }[activityLevel] || activityLevel;
 
+  const pan = useRef(
+    PanResponder.create({
+      onMoveShouldSetPanResponder: (_, g) => Math.abs(g.dx) > 20 && Math.abs(g.dx) > Math.abs(g.dy),
+      onPanResponderRelease: (_, g) => {
+        if (g.dx < -60) handleSave();
+        if (g.dx >  60) navigation.goBack();
+      },
+    })
+  ).current;
+
   const handleSave = async () => {
     try {
       const token = getUserToken();
@@ -54,7 +64,7 @@ export default function DailyTargetsScreen({ navigation, route }) {
 
   return (
     <SafeAreaView style={s.container} edges={["top", "bottom"]}>
-      <ScrollView contentContainerStyle={s.scroll}>
+      <ScrollView contentContainerStyle={s.scroll} {...pan.panHandlers}>
 
         {/* Progress bar — all 3 active */}
         <View style={s.progressRow}>
