@@ -141,7 +141,9 @@ export const getTodayLogs = async (req, res) => {
   try {
     if (!req.user?.email) return res.status(401).json({ success: false, message: "Unauthorized" });
     const userId = req.user.email;
-    const { start, end } = getDayRange();
+    // Use client-supplied date if provided (handles timezone offsets)
+    const clientDate = req.query.date ? new Date(req.query.date) : new Date();
+    const { start, end } = getDayRange(isNaN(clientDate) ? new Date() : clientDate);
 
     const [meals, { calorieGoal, proteinGoal }] = await Promise.all([
       MealLog.find({ userId, timestamp: { $gte: start, $lte: end } }).sort({ timestamp: -1 }),
