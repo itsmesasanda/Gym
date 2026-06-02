@@ -1,15 +1,29 @@
 {
   "expo": {
-    "name": "gym-app",
+    "name": "GymApp",
     "slug": "gym-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    }
+      "supportsTablet": false,
+      "bundleIdentifier": "com.itsmesasanda.gymapp"
+    },
+    "android": {
+      "package": "com.itsmesasanda.gymapp",
+      "adaptiveIcon": {
+        "backgroundColor": "#000000"
+      },
+      "permissions": []
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c06d5220-0456-4f5c-929c-3879ee330d6f"
+      }
+    },
+    "owner": "sasandakalhara"
   }
 }
