@@ -8,18 +8,17 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "newArchEnabled": false,
     "android": {
       "package": "com.itsmesasanda.gymapp",
       "adaptiveIcon": {
         "backgroundColor": "#000000"
       },
-      "permissions": [],
-      "newArchEnabled": false
+      "permissions": []
     },
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "com.itsmesasanda.gymapp",
-      "newArchEnabled": false
+      "bundleIdentifier": "com.itsmesasanda.gymapp"
     },
     "plugins": [
       [
