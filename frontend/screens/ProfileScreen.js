@@ -135,7 +135,7 @@ export default function ProfileScreen({ navigation }) {
 
   return (
     <SafeAreaView style={s.container} edges={["top"]}>
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 60 }}>
+      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 60 }} keyboardShouldPersistTaps="handled">
 
         {/* ── Header ── */}
         <LinearGradient

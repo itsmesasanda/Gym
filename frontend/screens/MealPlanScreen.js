@@ -260,7 +260,7 @@ const openLogModal = (meal) => {
   if (view === "home") {
     return (
       <SafeAreaView style={s.container}>
-        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false}>
+        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
           <Text style={s.pageTitle}>Meal Recommendations</Text>
           <Text style={s.pageSubtitle}>Get 5 AI-matched meals based on your targets.</Text>
 
@@ -369,7 +369,7 @@ const openLogModal = (meal) => {
     return (
       <SafeAreaView style={s.container}>
         {renderLogModal()}
-        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false}>
+        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
 
           <TouchableOpacity onPress={() => { setView("home"); setSelectedPlan(null); }} style={s.backRow}>
             <Text style={s.backText}>← Back to recommendations</Text>

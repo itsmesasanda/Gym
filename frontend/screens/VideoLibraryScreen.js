@@ -64,7 +64,7 @@ export default function VideoLibraryScreen() {
 
   return (
     <View style={s.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
 
         {/* Search Bar */}
         <View style={s.searchBox}>

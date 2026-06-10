@@ -35,9 +35,19 @@ async def generate_embedding(text: str, **_kwargs) -> list[float]:
         List of 384 floats.
     """
     model = _get_model()
-    embeddings = list(model.embed([text]))
-    vector = embeddings[0].tolist()
-    logger.debug(f"Embedding generated (dim={len(vector)})")
+    try:
+        embeddings = list(model.embed([text]))
+        vector = embeddings[0].tolist()
+    except Exception as exc:
+        logger.error(f"[embedder] Embedding generation failed: {exc}")
+        raise RuntimeError(f"Embedding generation failed: {exc}") from exc
+
+    if len(vector) != 384:
+        # Wrong dimensions = silent Pinecone mismatch later; fail loud here instead.
+        logger.error(f"[embedder] Unexpected embedding dim={len(vector)} (expected 384)")
+        raise RuntimeError(f"Embedding has {len(vector)} dims, expected 384")
+
+    logger.debug(f"[embedder] Embedding generated (dim={len(vector)})")
     return vector
 
 

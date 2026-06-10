@@ -2,8 +2,9 @@ import logging
 import os
 import re
 import time
+from typing import Optional
 
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, Depends, Header, HTTPException, Request
 from fastapi.responses import JSONResponse
 from pydantic import ValidationError
 
@@ -23,6 +24,24 @@ from app.validator import validate_macro_inputs
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
+
+
+# ── Optional API-key guard ─────────────────────────────────────────────────────
+# This service is publicly reachable on Railway. When RAG_API_KEY is set, every
+# /recommend call must present a matching X-API-Key header. It is opt-in so the
+# service keeps working until the key is provisioned on both ends (backend + here).
+RAG_API_KEY = os.getenv("RAG_API_KEY")
+
+
+async def require_api_key(
+    x_api_key: Optional[str] = Header(default=None, alias="X-API-Key"),
+):
+    if RAG_API_KEY and x_api_key != RAG_API_KEY:
+        logger.warning("[auth] Rejected /recommend call with invalid or missing API key.")
+        raise HTTPException(
+            status_code=401,
+            detail={"success": False, "errors": [{"message": "Invalid or missing API key"}]},
+        )
 
 
 CUISINE_KEYWORDS = {
@@ -86,6 +105,7 @@ def parse_context(context):
     },
     summary="Get 5 meal recommendations",
     tags=["Recommendations"],
+    dependencies=[Depends(require_api_key)],
 )
 async def recommend(body: RecommendRequest):
     start = time.time()
@@ -121,7 +141,9 @@ async def recommend(body: RecommendRequest):
             goal=body.goal.value if body.goal else None,
         )
         query_vector = await generate_embedding(query_text)
+        logger.info(f"[embed] Query embedded -> {len(query_vector)} dims.")
     except RuntimeError as exc:
+        logger.error(f"[embed] Embedding failed: {exc}")
         raise HTTPException(
             status_code=503,
             detail={"success": False, "errors": [{"message": str(exc)}]},
@@ -187,17 +209,30 @@ async def recommend(body: RecommendRequest):
         meals_raw  = parse_llm_response(raw_response)
         meals_rich = enrich_meals(meals_raw, body.calories)
     except ValueError as exc:
+        logger.error(f"[parse] Failed to parse/enrich LLM output: {exc}")
         raise HTTPException(
             status_code=500,
             detail={"success": False, "errors": [{"message": str(exc)}]},
         )
 
+    # Build the typed response. enrich_meals guarantees all fields, but guard the
+    # serialization step so a stray bad value surfaces as a clear log + 500 rather
+    # than an unhandled crash with an empty body.
+    try:
+        meal_results = [MealResult(**m) for m in meals_rich]
+    except ValidationError as exc:
+        logger.error(f"[respond] MealResult validation failed: {exc} | data={meals_rich}")
+        raise HTTPException(
+            status_code=500,
+            detail={"success": False, "errors": [{"message": "Failed to format meal results."}]},
+        )
+
     duration_ms = int((time.time() - start) * 1000)
-    logger.info(f"RAG pipeline complete | {len(meals_rich)} meals | {duration_ms}ms")
+    logger.info(f"[respond] RAG pipeline complete | {len(meal_results)} meals | {duration_ms}ms")
 
     return RecommendResponse(
         success=True,
-        meals=[MealResult(**m) for m in meals_rich],
+        meals=meal_results,
         metadata=PipelineMetadata(
             candidates_retrieved=len(matches),
             pipeline_duration_ms=duration_ms,

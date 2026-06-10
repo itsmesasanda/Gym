@@ -138,7 +138,7 @@ export default function WorkoutPlanScreen() {
   if (view === "home") {
     return (
       <SafeAreaView style={s.container}>
-        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false}>
+        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
           <Text style={s.pageTitle}>AI Plans</Text>
           <Text style={s.pageSubtitle}>Generate a 7-day workout plan tailored to your profile.</Text>
 
@@ -228,7 +228,7 @@ export default function WorkoutPlanScreen() {
     const v = selectedPlan.validation || {};
     return (
       <SafeAreaView style={s.container}>
-        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false}>
+        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
 
           {/* Back */}
           <TouchableOpacity onPress={() => { setView("home"); setSelectedPlan(null); }} style={s.backRow}>

@@ -25,7 +25,8 @@ import {
   updateMealLog,
 } from "../services/calorieApi";
 import { getUserEmail } from "../utils/session";
-import { RAG_URL } from "../config";
+import { authFetch } from "../utils/authFetch";
+import { BASE_URL } from "../config";
 
 const BG      = "#000000";
 const CARD    = "#1C1C1E";
@@ -260,9 +261,10 @@ export default function CaloriesScreen() {
     setAiError("");
     setAiResults(null);
     try {
-      const res = await fetch(`${RAG_URL}/recommend`, {
+      // Goes through the authenticated backend (not the Python service directly),
+      // so the request is behind auth + rate limiting and no RAG URL is exposed.
+      const res = await authFetch(`${BASE_URL}/api/meal-plans/preview`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           calories: targetCal,
           protein:  targetPro > 0 ? targetPro : undefined,
@@ -270,11 +272,13 @@ export default function CaloriesScreen() {
           context:  aiContext.trim() || undefined,
         }),
       });
-      const json = await res.json();
-      if (!res.ok || !json.success) throw new Error(json?.detail?.[0]?.message || "RAG service error");
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || !json.success) {
+        throw new Error(json?.message || "Could not get recommendations. Please try again.");
+      }
       setAiResults(json.meals);
     } catch (err) {
-      setAiError(err.message);
+      setAiError(err.message || "Something went wrong.");
     } finally {
       setAiLoading(false);
     }
@@ -749,7 +753,7 @@ export default function CaloriesScreen() {
 
             {/* Results */}
             {aiResults && (
-              <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 4 }}>
+              <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 4 }} keyboardShouldPersistTaps="handled">
                 <View style={{ gap: 10 }}>
                   {aiResults.map(meal => {
                     const e           = aiEdits[meal.rank] || {};

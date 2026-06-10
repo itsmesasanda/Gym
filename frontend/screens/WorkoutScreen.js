@@ -236,7 +236,7 @@ export default function WorkoutScreen({ navigation, route }) {
   if (showLog) {
     return (
       <SafeAreaView style={s.container} edges={["top"]}>
-        <ScrollView style={s.scroll} contentContainerStyle={{ paddingBottom: 80 }}>
+        <ScrollView style={s.scroll} contentContainerStyle={{ paddingBottom: 80 }} keyboardShouldPersistTaps="handled">
           <TouchableOpacity style={s.backRow} onPress={closeLog}>
             <Feather name="arrow-left" size={18} color={MUTED} />
             <Text style={s.backText}>Back</Text>
@@ -294,7 +294,7 @@ export default function WorkoutScreen({ navigation, route }) {
   if (editEx !== null && viewedPlan) {
     return (
       <SafeAreaView style={s.container} edges={["top"]}>
-        <ScrollView style={s.scroll} contentContainerStyle={{ paddingBottom: 80 }}>
+        <ScrollView style={s.scroll} contentContainerStyle={{ paddingBottom: 80 }} keyboardShouldPersistTaps="handled">
           <TouchableOpacity style={s.backRow} onPress={() => setEditEx(null)}>
             <Feather name="arrow-left" size={18} color={MUTED} />
             <Text style={s.backText}>Back</Text>
@@ -356,7 +356,7 @@ export default function WorkoutScreen({ navigation, route }) {
 
       {/* ══ TODAY ══════════════════════════════════════════════ */}
       {tab === "today" && (
-        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
+        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }} keyboardShouldPersistTaps="handled">
 
           {currentPlan ? (
             <>
@@ -424,7 +424,7 @@ export default function WorkoutScreen({ navigation, route }) {
 
       {/* ══ HISTORY ════════════════════════════════════════════ */}
       {tab === "history" && (
-        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
+        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }} keyboardShouldPersistTaps="handled">
 
           {/* Weeks */}
           {histLevel === "weeks" && (
@@ -491,7 +491,7 @@ export default function WorkoutScreen({ navigation, route }) {
 
       {/* ══ PLAN ═══════════════════════════════════════════════ */}
       {tab === "plan" && (
-        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
+        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }} keyboardShouldPersistTaps="handled">
 
           {planView === "list" && (
             plans.length === 0 ? (
@@ -568,7 +568,7 @@ export default function WorkoutScreen({ navigation, route }) {
 
       {/* ══ PROGRESS ═══════════════════════════════════════════ */}
       {tab === "progress" && (
-        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
+        <ScrollView style={s.scroll} showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }} keyboardShouldPersistTaps="handled">
 
           <Text style={[s.sectionLabel, { marginBottom: 12 }]}>Select Exercise</Text>
 

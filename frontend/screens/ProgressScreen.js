@@ -456,7 +456,7 @@ const BodyStatsTab = ({ refreshCallback }) => {
   );
 
   return (
-    <ScrollView style={bodyStatsStyles.content} showsVerticalScrollIndicator={false}>
+    <ScrollView style={bodyStatsStyles.content} showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
       <View style={bodyStatsStyles.sectionHeader}>
         <Text style={bodyStatsStyles.sectionTitle}>Body Measurements</Text>
         <ActionButton onPress={() => { setNewLogData({ height: '', weight: '', waist: '', date: getTodayDateStr() }); setEditingMeasurementId(null); setIsCreating(true); setIsLogToday(true); setShowLogModal(true); }} style={bodyStatsStyles.logButton}>

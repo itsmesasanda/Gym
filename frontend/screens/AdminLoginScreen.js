@@ -10,6 +10,7 @@ import {
 
 import { BASE_URL } from "../config";
 import { useAdminAuth } from "../context/AdminAuthContext";
+import DismissKeyboard from "../components/DismissKeyboard";
 
 export default function AdminLoginScreen({ navigation }) {
   const { login } = useAdminAuth();
@@ -53,7 +54,8 @@ export default function AdminLoginScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <DismissKeyboard>
+      <View style={styles.container}>
       <Text style={styles.title}>Admin Access</Text>
       <Text style={styles.subtitle}>Sign in to manage users, meals, workouts, videos, and calorie logs.</Text>
 
@@ -82,7 +84,8 @@ export default function AdminLoginScreen({ navigation }) {
       <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate("Login")}>
         <Text style={styles.backText}>Back to user login</Text>
       </TouchableOpacity>
-    </View>
+      </View>
+    </DismissKeyboard>
   );
 }
 
