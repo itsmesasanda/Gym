@@ -14,6 +14,7 @@ import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { clearUserEmail, getUserEmail, getUserToken } from "../utils/session";
 import { BASE_URL } from "../config";
 import { fetchWithTimeout, parseJsonSafe } from "../services/http";
+import { SkeletonBox, SkeletonCircle, SkeletonList } from "../components/Skeleton";
 
 const GREEN = "#C7F000";
 const BG    = "#000000";
@@ -123,7 +124,18 @@ export default function ProfileScreen({ navigation }) {
   const goalLabel = { muscle_gain: "Muscle Gain", fat_loss: "Fat Loss", maintenance: "Maintenance" }[user?.goal] || user?.goal || "—";
   const actLabel  = { low: "Low (1–2x/wk)", moderate: "Moderate (3–4x/wk)", high: "High (5+/wk)" }[user?.activityLevel] || user?.activityLevel || "—";
 
-  if (loading) return <View style={s.center}><Text style={s.loadingText}>Loading…</Text></View>;
+  if (loading) return (
+    <SafeAreaView style={s.container} edges={["top"]}>
+      <View style={{ padding: 20, gap: 16 }}>
+        {/* Avatar + name placeholders */}
+        <SkeletonCircle size={80} style={{ alignSelf: "center" }} />
+        <SkeletonBox height={20} width={160} borderRadius={8} style={{ alignSelf: "center" }} />
+        <SkeletonBox height={14} width={120} borderRadius={6} style={{ alignSelf: "center" }} />
+        {/* Stat / settings rows */}
+        <SkeletonList count={5} height={56} style={{ marginTop: 8 }} />
+      </View>
+    </SafeAreaView>
+  );
   if (error || !user) return (
     <View style={s.center}>
       <Text style={{ color: RED, marginBottom: 12 }}>{error || "Could not load profile."}</Text>
@@ -268,7 +280,7 @@ export default function ProfileScreen({ navigation }) {
               <Text style={s.prefLabel}>Notifications</Text>
               <Feather name="chevron-right" size={18} color={DIM} />
             </TouchableOpacity>
-            <TouchableOpacity style={s.prefRow} onPress={() => navigation.navigate("Streaks")}>
+            <TouchableOpacity style={s.prefRow} onPress={() => Alert.alert("Streaks — coming soon", "Streaks & milestones aren't available yet. Stay tuned!")}>
               <MaterialCommunityIcons name="trophy-outline" size={16} color={WHITE} style={s.prefIcon} />
               <Text style={s.prefLabel}>Streaks & Milestones</Text>
               <Feather name="chevron-right" size={18} color={DIM} />

@@ -9,6 +9,12 @@
       "**/*"
     ],
     "newArchEnabled": false,
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/c06d5220-0456-4f5c-929c-3879ee330d6f"
+    },
     "android": {
       "package": "com.itsmesasanda.gymapp",
       "adaptiveIcon": {
@@ -28,7 +34,8 @@
           "project": "react-native-x2",
           "organization": "sliit-s4"
         }
-      ]
+      ],
+      "expo-video"
     ],
     "extra": {
       "eas": {

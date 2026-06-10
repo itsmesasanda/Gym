@@ -27,6 +27,7 @@ import {
 import { getUserEmail } from "../utils/session";
 import { authFetch } from "../utils/authFetch";
 import { BASE_URL } from "../config";
+import { SkeletonBox, SkeletonCircle, SkeletonList } from "../components/Skeleton";
 
 const BG      = "#000000";
 const CARD    = "#1C1C1E";
@@ -365,11 +366,20 @@ export default function CaloriesScreen() {
   const maxBarCals    = Math.max(...weekData.map(d => d.calories), calorieGoal, 1);
 
   if (loading) {
+    // Skeleton mirrors the real layout: header, rings card, then meal cards.
     return (
-      <View style={s.center}>
-        <ActivityIndicator color={GREEN} />
-        <Text style={s.muted}>Loading...</Text>
-      </View>
+      <SafeAreaView style={s.container} edges={["top"]}>
+        <View style={{ paddingHorizontal: 20, paddingTop: 8, gap: 16 }}>
+          <SkeletonBox height={24} width={140} borderRadius={8} />
+          <View style={[s.ringsCard, { justifyContent: "space-around" }]}>
+            <SkeletonCircle size={90} />
+            <SkeletonCircle size={90} />
+            <SkeletonCircle size={90} />
+          </View>
+          <SkeletonBox height={14} width={120} borderRadius={6} />
+          <SkeletonList count={3} height={72} borderRadius={20} />
+        </View>
+      </SafeAreaView>
     );
   }
   if (error && !dailyStats) {

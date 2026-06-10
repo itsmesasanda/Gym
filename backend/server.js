@@ -79,9 +79,11 @@ const apiLimiter = rateLimit({
 app.use("/api/", apiLimiter);
 
 // Stricter limit on auth endpoints
-app.use("/api/users/login",      authLimiter);
-app.use("/api/users/register",   authLimiter);
-app.use("/api/admin/auth/login", authLimiter);
+app.use("/api/users/login",           authLimiter);
+app.use("/api/users/register",        authLimiter);
+app.use("/api/users/forgot-password", authLimiter);
+app.use("/api/users/reset-password",  authLimiter);
+app.use("/api/admin/auth/login",      authLimiter);
 
 // ── User (mobile app) routes ──────────────────────────────────────
 app.use("/api/users", userRoutes);

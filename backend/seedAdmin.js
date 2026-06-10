@@ -4,9 +4,12 @@ import dotenv from "dotenv";
 dotenv.config();
 import Admin from "./models/Admin.js";
 
-// Safety guard — never run seed scripts in production
-if (process.env.NODE_ENV === "production") {
-  console.error("ERROR: seedAdmin must not run in production. Aborting.");
+// Seeding in production is intentional but gated: you DO need to create the first
+// admin on Railway, but only deliberately. Set ALLOW_PROD_SEED=true to permit it.
+if (process.env.NODE_ENV === "production" && process.env.ALLOW_PROD_SEED !== "true") {
+  console.error(
+    "ERROR: refusing to seed in production. Re-run with ALLOW_PROD_SEED=true once you're sure."
+  );
   process.exit(1);
 }
 
@@ -18,6 +21,14 @@ const seed = async () => {
     console.error(
       "ERROR: SEED_ADMIN_EMAIL and SEED_ADMIN_PASSWORD must be set as environment variables.\n" +
       "Example: SEED_ADMIN_EMAIL=you@example.com SEED_ADMIN_PASSWORD=... node seedAdmin.js"
+    );
+    process.exit(1);
+  }
+
+  // Enforce a strong admin password — this account manages every user's data.
+  if (password.length < 12 || !/[A-Za-z]/.test(password) || !/\d/.test(password)) {
+    console.error(
+      "ERROR: SEED_ADMIN_PASSWORD must be at least 12 characters and include letters and numbers."
     );
     process.exit(1);
   }

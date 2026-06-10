@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather } from "@expo/vector-icons";
+import { useVideoPlayer, VideoView } from "expo-video";
 import { setUserEmail, setUserToken, setUserName } from "../utils/session";
 import { BASE_URL } from "../config";
 
@@ -22,11 +23,32 @@ const MUTED  = "#A1A1A6";
 const WHITE  = "#FFFFFF";
 const RED    = "#FF453A";
 
+// Module-scope so the asset is required once, not on every render.
+const LOGIN_VIDEO = require("../assets/login.mp4");
+
 export default function LoginScreen({ navigation }) {
   const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [error, setError]       = useState("");
+
+  // Looping, muted background video (assets/login.mp4)
+  const player = useVideoPlayer(LOGIN_VIDEO, (p) => {
+    p.loop = true;
+    p.muted = true;
+    p.play();
+  });
+
+  // Backstop: autoplay in the setup callback can be missed while the asset is
+  // still buffering. Re-trigger play() once the player reports it's ready.
+  useEffect(() => {
+    if (!player) return;
+    const sub = player.addListener("statusChange", ({ status }) => {
+      if (status === "readyToPlay") player.play();
+    });
+    player.play();
+    return () => sub.remove();
+  }, [player]);
 
   const handleLogin = async () => {
     if (!email || !password) { setError("Please fill in all fields."); return; }
@@ -48,7 +70,18 @@ export default function LoginScreen({ navigation }) {
   };
 
   return (
-    <SafeAreaView style={s.container} edges={["top", "bottom"]}>
+    <View style={s.root}>
+      {/* Full-screen background video + dark overlay for text legibility */}
+      <VideoView
+        style={StyleSheet.absoluteFill}
+        player={player}
+        contentFit="cover"
+        nativeControls={false}
+        pointerEvents="none"
+      />
+      <View style={s.overlay} pointerEvents="none" />
+
+      <SafeAreaView style={s.container} edges={["top", "bottom"]}>
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : undefined}>
         <ScrollView contentContainerStyle={s.scroll} keyboardShouldPersistTaps="handled">
 
@@ -98,6 +131,10 @@ export default function LoginScreen({ navigation }) {
               <TouchableOpacity style={s.primaryBtn} onPress={handleLogin} activeOpacity={0.8}>
                 <Text style={s.primaryBtnText}>Sign In</Text>
               </TouchableOpacity>
+
+              <TouchableOpacity style={s.forgotBtn} onPress={() => navigation.navigate("ForgotPassword")}>
+                <Text style={s.forgotText}>Forgot password?</Text>
+              </TouchableOpacity>
             </View>
           </View>
 
@@ -111,19 +148,20 @@ export default function LoginScreen({ navigation }) {
             <TouchableOpacity style={s.outlineBtn} onPress={() => navigation.navigate("Register")} activeOpacity={0.8}>
               <Text style={s.outlineBtnText}>Get Started</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={s.adminBtn} onPress={() => navigation.navigate("AdminLogin")}>
-              <Text style={s.adminBtnText}>Admin Panel →</Text>
-            </TouchableOpacity>
           </View>
 
         </ScrollView>
       </KeyboardAvoidingView>
-    </SafeAreaView>
+      </SafeAreaView>
+    </View>
   );
 }
 
 const s = StyleSheet.create({
-  container: { flex: 1, backgroundColor: BG },
+  root:      { flex: 1, backgroundColor: BG },
+  // Darken the video so the form and text stay readable
+  overlay:   { ...StyleSheet.absoluteFillObject, backgroundColor: "rgba(0,0,0,0.6)" },
+  container: { flex: 1, backgroundColor: "transparent" },
   scroll:    { flexGrow: 1, paddingHorizontal: 24, paddingTop: 12, paddingBottom: 32 },
 
   body:     { flex: 1, justifyContent: "center", paddingTop: 40 },
@@ -143,6 +181,8 @@ const s = StyleSheet.create({
 
   primaryBtn:     { backgroundColor: GREEN, paddingVertical: 16, borderRadius: 16, alignItems: "center", marginTop: 4 },
   primaryBtnText: { color: "#000", fontSize: 15, fontWeight: "700" },
+  forgotBtn:      { alignItems: "center", paddingVertical: 12 },
+  forgotText:     { color: MUTED, fontSize: 13, fontWeight: "600" },
 
   footer:       { marginTop: 32 },
   dividerRow:   { flexDirection: "row", alignItems: "center", gap: 12, marginBottom: 20 },
@@ -150,6 +190,4 @@ const s = StyleSheet.create({
   dividerText:  { color: MUTED, fontSize: 13 },
   outlineBtn:      { borderWidth: 1.5, borderColor: GREEN, paddingVertical: 16, borderRadius: 16, alignItems: "center", marginBottom: 12 },
   outlineBtnText:  { color: GREEN, fontSize: 15, fontWeight: "600" },
-  adminBtn:        { alignItems: "center", paddingVertical: 10 },
-  adminBtnText:    { color: "#6366f1", fontSize: 13, fontWeight: "600" },
 });

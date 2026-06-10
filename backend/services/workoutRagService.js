@@ -1,7 +1,11 @@
 import axios from "axios";
 
 const RAG_URL = process.env.RAG_SERVICE_URL || "http://127.0.0.1:8000";
+const RAG_API_KEY = process.env.WORKOUT_RAG_API_KEY || "";
 const RAG_TIMEOUT = 30000; // 30s — generation has up to 3 Groq retries
+
+// Forward the shared secret when configured (matches the service's RAG_API_KEY).
+const ragHeaders = () => (RAG_API_KEY ? { "X-API-Key": RAG_API_KEY } : undefined);
 
 /**
  * Generate a 7-day workout plan via the Python RAG service.
@@ -21,7 +25,7 @@ export const generateWorkoutPlan = async (userProfile) => {
         gender:        userProfile.gender || "any",
         injury:        userProfile.injury  || "none",
       },
-      { timeout: RAG_TIMEOUT }
+      { timeout: RAG_TIMEOUT, headers: ragHeaders() }
     );
 
     if (!response.data?.success) {
@@ -61,7 +65,7 @@ export const validateWorkoutPlan = async (plan, userProfile) => {
           injury:        userProfile.injury  || "none",
         },
       },
-      { timeout: 10000 }
+      { timeout: 10000, headers: ragHeaders() }
     );
 
     return {

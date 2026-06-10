@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 import { BASE_URL } from "../config";
 import { authFetch } from "../utils/authFetch";
+import { SkeletonList } from "../components/Skeleton";
 
 const GREEN  = "#C7F000";
 const BG     = "#000000";
@@ -54,7 +55,7 @@ export default function NotificationsScreen({ navigation }) {
 
       <ScrollView contentContainerStyle={s.list} showsVerticalScrollIndicator={false}>
         {loading ? (
-          <ActivityIndicator color={GREEN} style={{ marginTop: 40 }} />
+          <SkeletonList count={4} height={120} borderRadius={20} />
         ) : visible.length === 0 ? (
           <View style={s.empty}>
             <View style={s.emptyIconWrap}>

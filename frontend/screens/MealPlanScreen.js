@@ -15,6 +15,7 @@ import { BASE_URL } from "../config";
 import { getUserEmail } from "../utils/session";
 import { authFetch } from "../utils/authFetch";
 import { createMealLog, getCalorieUserId } from "../services/calorieApi";
+import { SkeletonList } from "../components/Skeleton";
 
 const API = BASE_URL;
 
@@ -322,7 +323,7 @@ const openLogModal = (meal) => {
           <Text style={s.sectionTitle}>Previous Recommendations</Text>
 
           {loadingList && plans.length === 0 ? (
-            <Text style={s.emptyText}>Loading…</Text>
+            <SkeletonList count={3} height={96} />
           ) : plans.length === 0 ? (
             <Text style={s.emptyText}>No recommendations yet. Try one above.</Text>
           ) : (

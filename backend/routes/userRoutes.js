@@ -4,6 +4,8 @@ import { protect } from "../middleware/authMiddleware.js";
 import {
   registerUser,
   loginUser,
+  requestPasswordReset,
+  resetPassword,
   getUserProfile,
   updateUserProfile,
   deleteUser,
@@ -13,6 +15,8 @@ const router = express.Router();
 
 router.post("/register", registerUser);
 router.post("/login", loginUser);
+router.post("/forgot-password", requestPasswordReset);
+router.post("/reset-password", resetPassword);
 router.get("/profile", protect, getUserProfile);
 router.put("/profile", protect, updateUserProfile);
 router.delete("/profile", protect, deleteUser);

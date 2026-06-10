@@ -1,5 +1,6 @@
 import os
-from fastapi import FastAPI, HTTPException
+from typing import Optional
+from fastapi import FastAPI, HTTPException, Depends, Header
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from app.schemas import UserProfile
@@ -21,6 +22,16 @@ app.add_middleware(
 
 client = Groq(api_key=os.environ["GROQ_API_KEY"])
 
+# Optional shared secret. When RAG_API_KEY is set, every protected endpoint requires
+# a matching X-API-Key header. Opt-in so the service keeps working until the key is
+# provisioned on both ends (this service + the backend that calls it).
+RAG_API_KEY = os.getenv("RAG_API_KEY")
+
+
+async def require_api_key(x_api_key: Optional[str] = Header(default=None, alias="X-API-Key")):
+    if RAG_API_KEY and x_api_key != RAG_API_KEY:
+        raise HTTPException(status_code=401, detail="Invalid or missing API key")
+
 class ChatRequest(BaseModel):
     message: str
 
@@ -32,7 +43,7 @@ class ValidateRequest(BaseModel):
 def health():
     return {"status": "ok"}
 
-@app.post("/generate")
+@app.post("/generate", dependencies=[Depends(require_api_key)])
 def generate(profile: UserProfile):
     try:
         plan = generate_workout_plan(profile.dict())
@@ -43,7 +54,7 @@ def generate(profile: UserProfile):
         print(f"[/generate] Error: {e}")
         raise HTTPException(status_code=500, detail="Generation failed")
 
-@app.post("/validate")
+@app.post("/validate", dependencies=[Depends(require_api_key)])
 def validate(request: ValidateRequest):
     try:
         result = validate_plan(request.plan, request.profile)
@@ -58,7 +69,7 @@ def validate(request: ValidateRequest):
         print(f"[/validate] Error: {e}")
         raise HTTPException(status_code=500, detail="Validation failed")
 
-@app.post("/chat")
+@app.post("/chat", dependencies=[Depends(require_api_key)])
 def chat(request: ChatRequest):
     try:
         injury_keywords = ["injury", "injured", "pain", "hurt", "knee", "back",

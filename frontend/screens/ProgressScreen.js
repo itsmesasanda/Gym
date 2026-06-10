@@ -23,6 +23,7 @@ import { fetchWithTimeout, parseJsonSafe } from '../services/http';
 import { getUserEmail } from '../utils/session';
 import { authFetch } from '../utils/authFetch';
 import { progressStyles as styles } from './progressStyles';
+import { SkeletonBox, SkeletonList } from '../components/Skeleton';
 import { bodyStatsStyles } from './bodyStatsStyles';
 import { overviewStyles } from './overviewStyles';
 
@@ -84,7 +85,18 @@ const OverviewTab = ({ exercises, bodyStats, refreshCounter, loading, error, onR
   }, [exercises, bodyStats, refreshCounter]);
 
   if (loading) {
-    return <Text style={overviewStyles.emptyText}>Loading overview...</Text>;
+    // Skeleton for the overview: a heading, two summary cards, then a chart block.
+    return (
+      <View style={{ paddingHorizontal: 16, paddingTop: 16, gap: 14 }}>
+        <SkeletonBox height={18} width={160} borderRadius={8} />
+        <View style={{ flexDirection: 'row', gap: 12 }}>
+          <SkeletonBox height={110} borderRadius={16} style={{ flex: 1 }} />
+          <SkeletonBox height={110} borderRadius={16} style={{ flex: 1 }} />
+        </View>
+        <SkeletonBox height={180} borderRadius={16} />
+        <SkeletonList count={2} height={70} />
+      </View>
+    );
   }
 
   if (error) {

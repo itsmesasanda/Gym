@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { clearUserEmail, getUserEmail, getUserName } from "../utils/session";
@@ -14,7 +14,7 @@ const SECTIONS = [
   {
     title: "GYM",
     items: [
-      { icon: { lib: "MaterialIcons",          name: "qr-code"       }, label: "QR Check-in",    screen: "QRCheckin"   },
+      { icon: { lib: "MaterialIcons",          name: "qr-code"       }, label: "QR Check-in",    screen: "QRCheckin", soon: true },
       { icon: { lib: "MaterialCommunityIcons", name: "crown-outline" }, label: "My Membership",  screen: "Profile"     },
       { icon: { lib: "Feather",               name: "credit-card"   }, label: "Payment Status", screen: "Profile"     },
     ],
@@ -32,7 +32,7 @@ const SECTIONS = [
     items: [
       { icon: { lib: "Feather",               name: "video"          }, label: "Video Library",  screen: "VideoLib"      },
       { icon: { lib: "Feather",               name: "book-open"      }, label: "Beginner Guide", screen: "BeginnerGuide" },
-      { icon: { lib: "MaterialCommunityIcons", name: "trophy-outline" }, label: "Streaks",        screen: "Streaks"       },
+      { icon: { lib: "MaterialCommunityIcons", name: "trophy-outline" }, label: "Streaks",        screen: "Streaks", soon: true },
     ],
   },
   {
@@ -64,6 +64,10 @@ export default function DrawerSidebarScreen({ navigation }) {
       navigation.navigate(screen);
     }
   };
+
+  // Features not yet wired to a backend — flagged as coming soon.
+  const comingSoon = (label) =>
+    Alert.alert(`${label} — coming soon`, "This feature isn't available yet. Stay tuned!");
 
   const handleLogout = () => {
     clearUserEmail();
@@ -104,13 +108,18 @@ export default function DrawerSidebarScreen({ navigation }) {
                 <TouchableOpacity
                   key={item.label}
                   style={s.item}
-                  onPress={() => go(item.screen)}
+                  onPress={() => (item.soon ? comingSoon(item.label) : go(item.screen))}
                   activeOpacity={0.7}
                 >
                   <View style={s.itemIcon}>
                     <ItemIcon lib={item.icon.lib} name={item.icon.name} size={16} color={WHITE} />
                   </View>
                   <Text style={s.itemLabel}>{item.label}</Text>
+                  {item.soon && (
+                    <Text style={{ color: GREEN, fontSize: 10, fontWeight: "700", marginRight: 6 }}>
+                      SOON
+                    </Text>
+                  )}
                   <Feather name="chevron-right" size={16} color="#333" />
                 </TouchableOpacity>
               ))}

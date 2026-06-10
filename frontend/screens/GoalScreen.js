@@ -11,7 +11,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Feather } from "@expo/vector-icons";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const GREEN  = "#C7F000";
 const BG     = "#000000";
@@ -21,9 +21,9 @@ const MUTED  = "#A1A1A6";
 const WHITE  = "#FFFFFF";
 
 const GOALS = [
-  { id: "muscle_gain", label: "Muscle Gain",  desc: "Build strength & size",   emoji: "💪" },
-  { id: "fat_loss",    label: "Fat Loss",     desc: "Lean out & get shredded", emoji: "🔥" },
-  { id: "maintenance", label: "Maintenance", desc: "Stay fit & healthy",       emoji: "⚖️" },
+  { id: "muscle_gain", label: "Muscle Gain",  desc: "Build strength & size",   icon: "arm-flex" },
+  { id: "fat_loss",    label: "Fat Loss",     desc: "Lean out & get shredded", icon: "fire" },
+  { id: "maintenance", label: "Maintenance", desc: "Stay fit & healthy",       icon: "scale-balance" },
 ];
 
 export default function GoalScreen({ navigation, route }) {
@@ -75,7 +75,12 @@ export default function GoalScreen({ navigation, route }) {
                 onPress={() => setGoal(opt.id)}
                 activeOpacity={0.8}
               >
-                <Text style={s.optionEmoji}>{opt.emoji}</Text>
+                <MaterialCommunityIcons
+                  name={opt.icon}
+                  size={24}
+                  color={goal === opt.id ? GREEN : WHITE}
+                  style={s.optionIcon}
+                />
                 <View style={{ flex: 1 }}>
                   <Text style={s.optionLabel}>{opt.label}</Text>
                   <Text style={s.optionDesc}>{opt.desc}</Text>
@@ -126,7 +131,7 @@ const s = StyleSheet.create({
   options:      { gap: 12, marginBottom: 24 },
   option:       { backgroundColor: CARD, borderWidth: 1.5, borderColor: BORDER, borderRadius: 16, padding: 16, flexDirection: "row", alignItems: "center", gap: 12 },
   optionActive: { backgroundColor: "rgba(199,240,0,0.08)", borderColor: GREEN },
-  optionEmoji:  { fontSize: 22 },
+  optionIcon:   { width: 28, textAlign: "center" },
   optionLabel:  { color: WHITE, fontSize: 14, fontWeight: "600" },
   optionDesc:   { color: MUTED, fontSize: 12, marginTop: 2 },
   radio:        { width: 20, height: 20, borderRadius: 10, backgroundColor: BORDER, alignItems: "center", justifyContent: "center" },

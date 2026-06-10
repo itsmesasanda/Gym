@@ -9,7 +9,8 @@ const groq = () => {
   return _groq;
 };
 
-const WORKOUT_RAG_URL = process.env.WORKOUT_RAG_URL || "http://localhost:8002";
+const WORKOUT_RAG_URL = process.env.WORKOUT_RAG_URL || process.env.RAG_SERVICE_URL || "http://localhost:8002";
+const WORKOUT_RAG_API_KEY = process.env.WORKOUT_RAG_API_KEY || "";
 const COACH_MODEL     = "meta-llama/llama-4-scout-17b-16e-instruct";
 const MAX_HISTORY     = 10;
 const DAILY_LIMIT     = 20;
@@ -101,7 +102,10 @@ const fetchWorkoutRAG = async (userProfile) => {
     gender:        userProfile?.gender       || "any",
     injury:        userProfile?.injury       || "none",
   };
-  const res = await axios.post(`${WORKOUT_RAG_URL}/generate`, profile, { timeout: 15000 });
+  const res = await axios.post(`${WORKOUT_RAG_URL}/generate`, profile, {
+    timeout: 15000,
+    headers: WORKOUT_RAG_API_KEY ? { "X-API-Key": WORKOUT_RAG_API_KEY } : undefined,
+  });
   return res.data?.data || null;
 };
 

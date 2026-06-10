@@ -46,6 +46,14 @@ const userSchema = mongoose.Schema(
     protein: {
       type: Number,
     },
+
+    // Password reset: bcrypt hash of the emailed 6-digit code + its expiry.
+    resetCodeHash: {
+      type: String,
+    },
+    resetCodeExpires: {
+      type: Date,
+    },
   },
   {
     timestamps: true,

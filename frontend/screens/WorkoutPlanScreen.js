@@ -13,6 +13,7 @@ import {
 import { BASE_URL } from "../config";
 import { getUserEmail } from "../utils/session";
 import { authFetch } from "../utils/authFetch";
+import { SkeletonList } from "../components/Skeleton";
 
 const API = BASE_URL;
 
@@ -173,7 +174,7 @@ export default function WorkoutPlanScreen() {
           <Text style={s.sectionTitle}>Your Saved Plans</Text>
 
           {loadingList && plans.length === 0 ? (
-            <Text style={s.emptyText}>Loading…</Text>
+            <SkeletonList count={3} height={108} />
           ) : plans.length === 0 ? (
             <Text style={s.emptyText}>No plans yet. Generate your first one above.</Text>
           ) : (

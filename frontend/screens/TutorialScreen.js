@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { PanResponder, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const GREEN = "#C7F000";
 const BG    = "#000000";
@@ -9,17 +10,17 @@ const MUTED = "#888888";
 
 const SLIDES = [
   {
-    emoji: "📊",
+    icon: "chart-box-outline",
     title: "Your Fitness Hub",
     description: "Track calories, workouts, and progress — all in one place. Your dashboard gives you a live view of your daily goals.",
   },
   {
-    emoji: "🤖",
+    icon: "robot-outline",
     title: "AI-Powered Plans",
     description: "Your AI coach builds personalized workout and nutrition plans based on your goals. Ask it anything, anytime.",
   },
   {
-    emoji: "📱",
+    icon: "qrcode-scan",
     title: "Check In Daily",
     description: "Scan your QR code at the gym entrance each visit. Build streaks, earn badges, and stay accountable.",
   },
@@ -59,7 +60,7 @@ export default function TutorialScreen({ navigation }) {
       {/* Illustration */}
       <View style={s.body}>
         <View style={s.illustration}>
-          <Text style={s.emoji}>{current.emoji}</Text>
+          <MaterialCommunityIcons name={current.icon} size={64} color={GREEN} />
         </View>
         <Text style={s.title}>{current.title}</Text>
         <Text style={s.desc}>{current.description}</Text>
@@ -102,7 +103,6 @@ const s = StyleSheet.create({
     shadowColor: GREEN, shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.15, shadowRadius: 40, elevation: 6,
   },
-  emoji:     { fontSize: 60 },
   title:     { color: WHITE, fontSize: 24, fontWeight: "800", textAlign: "center", marginBottom: 14 },
   desc:      { color: MUTED, fontSize: 14, textAlign: "center", lineHeight: 22, marginBottom: 16 },
   swipeHint: { color: "#2a2a2a", fontSize: 12 },

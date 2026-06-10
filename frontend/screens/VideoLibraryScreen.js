@@ -13,6 +13,7 @@ import {
 import { BASE_URL } from "../config";
 import { fetchWithTimeout, parseJsonSafe } from "../services/http";
 import { resolveThumbnailUri } from "../utils/videoValidation";
+import { SkeletonList } from "../components/Skeleton";
 
 const GREEN  = "#C7F000";
 const BG     = "#0D0D0D";
@@ -99,7 +100,7 @@ export default function VideoLibraryScreen() {
         </ScrollView>
 
         {loading && (
-          <Text style={s.loadingText}>Loading videos...</Text>
+          <SkeletonList count={3} height={220} borderRadius={16} style={{ marginTop: 4 }} />
         )}
 
         {!loading && error ? (
