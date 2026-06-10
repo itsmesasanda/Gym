@@ -1,8 +1,7 @@
-import * as Sentry from "sentry-expo";
+import * as Sentry from "@sentry/react-native";
 
 Sentry.init({
   dsn: "https://9bf02b0e74a8868456e4b504bb77bb51@o4511497384230912.ingest.us.sentry.io/4511497404612608",
-  enableInExpoDevelopment: false,
   debug: false,
 });
 

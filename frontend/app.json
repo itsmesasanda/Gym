@@ -8,20 +8,22 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": false,
-      "bundleIdentifier": "com.itsmesasanda.gymapp"
-    },
     "android": {
       "package": "com.itsmesasanda.gymapp",
       "adaptiveIcon": {
         "backgroundColor": "#000000"
       },
-      "permissions": []
+      "permissions": [],
+      "newArchEnabled": false
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.itsmesasanda.gymapp",
+      "newArchEnabled": false
     },
     "plugins": [
       [
-        "sentry-expo",
+        "@sentry/react-native/expo",
         {
           "url": "https://sentry.io/",
           "project": "react-native-x2",
