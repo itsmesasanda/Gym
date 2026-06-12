@@ -194,7 +194,9 @@ export default function DashboardScreen({ navigation }) {
   return (
     <SafeAreaView style={s.container}>
       <LinearGradient
-        colors={["#1A2400", "transparent"]}
+        colors={["rgba(199,240,0,0.22)", "rgba(199,240,0,0.05)", "transparent"]}
+        start={{ x: 0.5, y: 0 }}
+        end={{ x: 0.5, y: 1 }}
         style={s.topGradient}
         pointerEvents="none"
       />
