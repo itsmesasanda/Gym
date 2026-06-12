@@ -16,6 +16,7 @@ import { getUserEmail } from "../utils/session";
 import { authFetch } from "../utils/authFetch";
 import { createMealLog, getCalorieUserId } from "../services/calorieApi";
 import { SkeletonList } from "../components/Skeleton";
+import { reportError } from "../utils/report";
 
 const API = BASE_URL;
 
@@ -107,6 +108,7 @@ export default function MealPlanScreen() {
       setView("viewer");
     } catch (e) {
       Alert.alert("Error", e.message || "Something went wrong.");
+      reportError(e, { feature: "meal_recommend", calories: cal });
       setView("home");
     }
   };

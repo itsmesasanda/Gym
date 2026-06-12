@@ -28,6 +28,7 @@ import { getUserEmail } from "../utils/session";
 import { authFetch } from "../utils/authFetch";
 import { BASE_URL } from "../config";
 import { SkeletonBox, SkeletonCircle, SkeletonList } from "../components/Skeleton";
+import { reportError } from "../utils/report";
 
 const BG      = "#000000";
 const CARD    = "#1C1C1E";
@@ -280,6 +281,7 @@ export default function CaloriesScreen() {
       setAiResults(json.meals);
     } catch (err) {
       setAiError(err.message || "Something went wrong.");
+      reportError(err, { feature: "ai_picks", calories: targetCal });
     } finally {
       setAiLoading(false);
     }

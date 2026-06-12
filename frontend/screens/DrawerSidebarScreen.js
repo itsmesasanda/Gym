@@ -38,9 +38,10 @@ const SECTIONS = [
   {
     title: "ACCOUNT",
     items: [
-      { icon: { lib: "Feather", name: "bell"        }, label: "Notifications", screen: "Notifications" },
-      { icon: { lib: "Feather", name: "settings"    }, label: "Settings",      screen: "Profile"       },
-      { icon: { lib: "Feather", name: "help-circle" }, label: "Help",          screen: "Profile"       },
+      { icon: { lib: "Feather", name: "bell"          }, label: "Notifications",    screen: "Notifications" },
+      { icon: { lib: "Feather", name: "settings"      }, label: "Settings",         screen: "Profile"       },
+      { icon: { lib: "Feather", name: "alert-circle"  }, label: "Report a Problem", screen: "ReportProblem" },
+      { icon: { lib: "Feather", name: "help-circle"   }, label: "Help",             screen: "Profile"       },
     ],
   },
 ];

@@ -1,3 +1,5 @@
+import { addRequestBreadcrumb } from "../utils/report";
+
 const DEFAULT_TIMEOUT_MS = 8000;
 
 const timeoutMessage = (baseUrl) =>
@@ -10,6 +12,9 @@ export const fetchWithTimeout = async (url, options = {}, timeoutMs = DEFAULT_TI
   try {
     return await fetch(url, { ...options, signal: controller.signal });
   } catch (error) {
+    // Leave a trail so a later crash/report shows which requests failed first.
+    const target = typeof url === "string" ? url.split("?")[0] : "request";
+    addRequestBreadcrumb(target, { name: error?.name, message: error?.message });
     if (error?.name === "AbortError") {
       let parsedUrl = null;
       if (typeof url === "string") {

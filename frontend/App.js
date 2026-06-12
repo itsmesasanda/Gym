@@ -14,6 +14,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen              from "./screens/LoginScreen";
 import RegisterScreen           from "./screens/RegisterScreen";
 import ForgotPasswordScreen     from "./screens/ForgotPasswordScreen";
+import ReportProblemScreen      from "./screens/ReportProblemScreen";
 import GoalScreen               from "./screens/GoalScreen";
 import MeasurementsScreen       from "./screens/MeasurementsScreen";
 import DailyTargetsScreen       from "./screens/DailyTargetsScreen";
@@ -107,6 +108,7 @@ function AppNavigator() {
         <Stack.Screen name="CheckinConfirmation" component={CheckinConfirmationScreen} />
         <Stack.Screen name="AccessLocked"        component={AccessLockedScreen} />
         <Stack.Screen name="Notifications"       component={NotificationsScreen} />
+        <Stack.Screen name="ReportProblem"       component={ReportProblemScreen} />
         <Stack.Screen
           name="Drawer"
           component={DrawerSidebarScreen}

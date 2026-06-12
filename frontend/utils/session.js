@@ -1,4 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { setSentryUser } from "./report";
 
 // Source of truth — kept in memory, persisted to AsyncStorage on the side.
 let currentUserEmail = null;
@@ -13,7 +14,7 @@ let currentUserName  = null;
 export const hydrateSession = async () => {
   try {
     const stored = await AsyncStorage.getItem("userEmail");
-    if (stored) currentUserEmail = stored;
+    if (stored) { currentUserEmail = stored; setSentryUser(stored); }
 
     const token = await AsyncStorage.getItem("userToken");
     if (token) currentUserToken = token;
@@ -27,6 +28,7 @@ export const hydrateSession = async () => {
 
 export const setUserEmail = (email) => {
   currentUserEmail = email;
+  setSentryUser(email); // tag Sentry events with this user
   // Fire-and-forget persistence — UI doesn't wait
   if (email) {
     AsyncStorage.setItem("userEmail", email).catch((e) =>
@@ -79,6 +81,7 @@ export const clearUserEmail = () => {
   currentUserEmail = null;
   currentUserToken = null;
   currentUserName  = null;
+  setSentryUser(null); // stop attributing events to the logged-out user
   AsyncStorage.removeItem("userEmail").catch((e) =>
     console.error("clearUserEmail:", e)
   );
