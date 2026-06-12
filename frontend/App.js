@@ -7,6 +7,7 @@ Sentry.init({
 
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -119,6 +120,9 @@ function AppNavigator() {
 export default function App() {
   return (
     <AdminAuthProvider>
+      {/* Light icons on a solid black status bar (top); the bottom nav bar is
+          set black via app.json androidNavigationBar. */}
+      <StatusBar style="light" backgroundColor="#000000" translucent={false} />
       <AppNavigator />
     </AdminAuthProvider>
   );
