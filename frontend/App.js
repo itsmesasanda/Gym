@@ -22,7 +22,6 @@ import ProfileScreen            from "./screens/ProfileScreen";
 import CaloriesScreen           from "./screens/CaloriesScreen";
 import VideoLibraryScreen       from "./screens/VideoLibraryScreen";
 import WorkoutScreen            from "./screens/WorkoutScreen";
-import AdminLoginScreen         from "./screens/AdminLoginScreen";
 
 // New screens
 import AiCoachChatScreen        from "./screens/AiCoachChatScreen";
@@ -36,10 +35,8 @@ import DrawerSidebarScreen      from "./screens/DrawerSidebarScreen";
 import TutorialScreen           from "./screens/TutorialScreen";
 
 import TabNavigator       from "./navigation/TabNavigator";
-import AdminTabNavigator  from "./navigation/AdminTabNavigator";
 
 import { hydrateSession, getUserEmail } from "./utils/session";
-import { AdminAuthProvider, useAdminAuth } from "./context/AdminAuthContext";
 
 const Stack = createNativeStackNavigator();
 
@@ -50,15 +47,6 @@ const LoadingScreen = () => (
     <ActivityIndicator size="large" color="#C7F000" />
   </View>
 );
-
-const ProtectedAdminTabs = ({ navigation }) => {
-  const { token, loading } = useAdminAuth();
-  useEffect(() => {
-    if (!loading && !token) navigation.replace("AdminLogin");
-  }, [loading, navigation, token]);
-  if (loading || !token) return <LoadingScreen />;
-  return <AdminTabNavigator />;
-};
 
 function AppNavigator() {
   const [ready, setReady]           = useState(false);
@@ -82,7 +70,6 @@ function AppNavigator() {
       >
         {/* ── Auth Flow ── */}
         <Stack.Screen name="Login"        component={LoginScreen} />
-        <Stack.Screen name="AdminLogin"   component={AdminLoginScreen} />
         <Stack.Screen name="Register"     component={RegisterScreen} />
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         <Stack.Screen name="Goal"         component={GoalScreen} />
@@ -92,7 +79,6 @@ function AppNavigator() {
 
         {/* ── Main App ── */}
         <Stack.Screen name="Tabs"      component={TabNavigator} />
-        <Stack.Screen name="AdminTabs" component={ProtectedAdminTabs} />
 
         {/* ── Stack Screens ── */}
         <Stack.Screen name="CalorieLog"       component={CalorieLogScreen} />
@@ -121,11 +107,11 @@ function AppNavigator() {
 
 export default function App() {
   return (
-    <AdminAuthProvider>
+    <>
       {/* Light icons on a solid black status bar (top); the bottom nav bar is
           set black via app.json androidNavigationBar. */}
       <StatusBar style="light" backgroundColor="#000000" translucent={false} />
       <AppNavigator />
-    </AdminAuthProvider>
+    </>
   );
 }

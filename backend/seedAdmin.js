@@ -1,56 +1,53 @@
+/**
+ * Bootstraps a single super admin (the platform owner) so you can sign in to
+ * the super-admin panel and create real gyms there. No demo gyms, members, or
+ * content are created.
+ *
+ *   npm run seed
+ *
+ * Credentials come from env (recommended) or fall back to the defaults below.
+ * Change the password after first login.
+ *   SUPER_ADMIN_EMAIL, SUPER_ADMIN_PASSWORD, SUPER_ADMIN_NAME
+ */
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
-dotenv.config();
+
 import Admin from "./models/Admin.js";
 
-// Seeding in production is intentional but gated: you DO need to create the first
-// admin on Railway, but only deliberately. Set ALLOW_PROD_SEED=true to permit it.
-if (process.env.NODE_ENV === "production" && process.env.ALLOW_PROD_SEED !== "true") {
-  console.error(
-    "ERROR: refusing to seed in production. Re-run with ALLOW_PROD_SEED=true once you're sure."
+dotenv.config();
+
+const EMAIL    = (process.env.SUPER_ADMIN_EMAIL || "super@gym.app").toLowerCase().trim();
+const PASSWORD = process.env.SUPER_ADMIN_PASSWORD || "Admin@12345";
+const NAME     = process.env.SUPER_ADMIN_NAME || "Platform Owner";
+
+const run = async () => {
+  const uri = process.env.MONGO_URI || process.env.MONGO_URL || process.env.MONGODB_URL;
+  if (!uri) {
+    console.error("FATAL: No MongoDB URI found. Set MONGO_URI.");
+    process.exit(1);
+  }
+
+  await mongoose.connect(uri);
+  console.log("Connected to MongoDB");
+
+  const password = await bcrypt.hash(PASSWORD, 12);
+  await Admin.findOneAndUpdate(
+    { email: EMAIL },
+    { name: NAME, email: EMAIL, password, role: "super_admin", gymId: null },
+    { upsert: true, new: true, setDefaultsOnInsert: true }
   );
-  process.exit(1);
-}
 
-const seed = async () => {
-  const email    = process.env.SEED_ADMIN_EMAIL;
-  const password = process.env.SEED_ADMIN_PASSWORD;
+  console.log("\n✅ Super admin ready.\n");
+  console.log(`  Email     →  ${EMAIL}`);
+  console.log(`  Password  →  ${process.env.SUPER_ADMIN_PASSWORD ? "(from SUPER_ADMIN_PASSWORD env)" : PASSWORD + "   ← change this after login"}`);
+  console.log("\n  Sign in to the super-admin panel, then create your gyms there.\n");
 
-  if (!email || !password) {
-    console.error(
-      "ERROR: SEED_ADMIN_EMAIL and SEED_ADMIN_PASSWORD must be set as environment variables.\n" +
-      "Example: SEED_ADMIN_EMAIL=you@example.com SEED_ADMIN_PASSWORD=... node seedAdmin.js"
-    );
-    process.exit(1);
-  }
-
-  // Enforce a strong admin password — this account manages every user's data.
-  if (password.length < 12 || !/[A-Za-z]/.test(password) || !/\d/.test(password)) {
-    console.error(
-      "ERROR: SEED_ADMIN_PASSWORD must be at least 12 characters and include letters and numbers."
-    );
-    process.exit(1);
-  }
-
-  try {
-    await mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/gymapp");
-    console.log("Connected to DB...");
-
-    const existing = await Admin.findOne({ email });
-    if (existing) {
-      console.log("Admin user already exists.");
-    } else {
-      const hashedPassword = await bcrypt.hash(password, 12);
-      const newAdmin = new Admin({ email, password: hashedPassword, role: "admin" });
-      await newAdmin.save();
-      console.log("Admin user created successfully!");
-    }
-    process.exit(0);
-  } catch (err) {
-    console.error("Error seeding admin:", err.message);
-    process.exit(1);
-  }
+  await mongoose.disconnect();
+  process.exit(0);
 };
 
-seed();
+run().catch((err) => {
+  console.error("Seed failed:", err);
+  process.exit(1);
+});

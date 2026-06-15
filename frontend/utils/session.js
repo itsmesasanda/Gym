@@ -5,6 +5,7 @@ import { setSentryUser } from "./report";
 let currentUserEmail = null;
 let currentUserToken = null;
 let currentUserName  = null;
+let currentUserGym   = null; // { id, name, code, branding } — the member's gym
 
 /**
  * Read the persisted email from AsyncStorage into memory.
@@ -21,6 +22,9 @@ export const hydrateSession = async () => {
 
     const name = await AsyncStorage.getItem("userName");
     if (name) currentUserName = name;
+
+    const gym = await AsyncStorage.getItem("userGym");
+    if (gym) currentUserGym = JSON.parse(gym);
   } catch (e) {
     console.error("hydrateSession:", e);
   }
@@ -77,10 +81,26 @@ export const setUserName = (name) => {
 
 export const getUserName = () => currentUserName;
 
+export const setUserGym = (gym) => {
+  currentUserGym = gym || null;
+  if (gym) {
+    AsyncStorage.setItem("userGym", JSON.stringify(gym)).catch((e) =>
+      console.error("setUserGym persist:", e)
+    );
+  } else {
+    AsyncStorage.removeItem("userGym").catch((e) =>
+      console.error("setUserGym remove:", e)
+    );
+  }
+};
+
+export const getUserGym = () => currentUserGym;
+
 export const clearUserEmail = () => {
   currentUserEmail = null;
   currentUserToken = null;
   currentUserName  = null;
+  currentUserGym   = null;
   setSentryUser(null); // stop attributing events to the logged-out user
   AsyncStorage.removeItem("userEmail").catch((e) =>
     console.error("clearUserEmail:", e)
@@ -90,5 +110,8 @@ export const clearUserEmail = () => {
   );
   AsyncStorage.removeItem("userName").catch((e) =>
     console.error("clearUserName:", e)
+  );
+  AsyncStorage.removeItem("userGym").catch((e) =>
+    console.error("clearUserGym:", e)
   );
 };

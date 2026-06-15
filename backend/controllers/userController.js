@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import Gym from "../models/Gym.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
@@ -20,30 +21,80 @@ const validatePassword = (pw) => {
   return null;
 };
 
+const isEmail = (s) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+
+const normalizeGymCode = (s) => (s || "").toUpperCase().replace(/\s+/g, "").trim();
+
+const gymPublic = (gym) =>
+  gym ? { id: gym._id, name: gym.name, code: gym.code, branding: gym.branding } : null;
+
+// Resolve a gym code to an active gym, or return a user-facing error message.
+const resolveGym = async (code) => {
+  const normalized = normalizeGymCode(code);
+  if (!normalized) return { error: "Gym code is required" };
+  const gym = await Gym.findOne({ code: normalized });
+  if (!gym) return { error: "Invalid gym code" };
+  if (gym.status === "disabled") return { error: "This gym is currently unavailable" };
+  return { gym };
+};
+
 export const registerUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, gymCode } = req.body;
 
-    if (!name || !email || !password) {
-      return res.status(400).json({ message: "Name, email, and password are required" });
-    }
+    const trimmedName     = (name || "").trim();
+    const normalizedEmail = (email || "").toLowerCase().trim();
+
+    // Field-by-field validation with specific, user-facing messages.
+    if (!trimmedName)              return res.status(400).json({ message: "Please enter your name" });
+    if (trimmedName.length < 2)    return res.status(400).json({ message: "Name must be at least 2 characters" });
+    if (!normalizedEmail)          return res.status(400).json({ message: "Email is required" });
+    if (!isEmail(normalizedEmail)) return res.status(400).json({ message: "Enter a valid email address" });
+    if (!password)                 return res.status(400).json({ message: "Password is required" });
 
     const pwErr = validatePassword(password);
     if (pwErr) return res.status(400).json({ message: pwErr });
 
-    // Generic response to prevent email enumeration
-    const exists = await User.findOne({ email: email.toLowerCase().trim() });
+    // Validate the gym code before touching the user record, so the response is
+    // identical whether or not the email already exists (a gym code's validity
+    // isn't secret, but account existence must stay hidden).
+    const { gym, error: gymError } = await resolveGym(gymCode);
+    if (gymError) return res.status(400).json({ message: gymError });
+
+    const exists = await User.findOne({ email: normalizedEmail });
     if (exists) {
-      // Same 201 shape — attacker can't distinguish existing vs new account
+      // Unclaimed admin-created (record-only) account — no password means the
+      // member has never used the app. Claim it: set the chosen password. Keep
+      // the gym the admin already assigned; only fall back to the entered code
+      // if the record somehow has no gym yet. Front-desk bio is preserved;
+      // onboarding then updates the fitness fields on this same linked record.
+      if (!exists.password) {
+        exists.name     = trimmedName || exists.name;
+        exists.password = await bcrypt.hash(password, 12);
+        if (!exists.gymId) exists.gymId = gym._id;
+        await exists.save();
+        const linkedGym = exists.gymId ? await Gym.findById(exists.gymId) : gym;
+        return res.status(201).json({
+          _id:   exists._id,
+          name:  exists.name,
+          email: exists.email,
+          token: generateToken(exists._id),
+          gym:   gymPublic(linkedGym),
+        });
+      }
+      // Real, already-claimed account — same 201 shape as a new signup so an
+      // attacker can't distinguish existing vs new accounts (no enumeration).
       return res.status(201).json({ message: "Account created. Please log in." });
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
     const user = await User.create({
-      name:     name.trim(),
-      email:    email.toLowerCase().trim(),
+      name:     trimmedName,
+      email:    normalizedEmail,
       password: hashedPassword,
+      gymId:    gym._id,
+      source:   "app",
     });
 
     res.status(201).json({
@@ -51,6 +102,7 @@ export const registerUser = async (req, res) => {
       name:  user.name,
       email: user.email,
       token: generateToken(user._id),
+      gym:   gymPublic(gym),
     });
   } catch (error) {
     console.error("registerUser error:", error);
@@ -69,11 +121,14 @@ export const loginUser = async (req, res) => {
     const user = await User.findOne({ email: email.toLowerCase().trim() });
 
     if (user && await user.matchPassword(password)) {
+      // Auto-detect the member's gym from their account — no gym code needed.
+      const gym = user.gymId ? await Gym.findById(user.gymId) : null;
       return res.json({
         _id:   user._id,
         name:  user.name,
         email: user.email,
         token: generateToken(user._id),
+        gym:   gymPublic(gym),
       });
     }
 
@@ -152,7 +207,7 @@ export const resetPassword = async (req, res) => {
   }
 };
 
-const calcTargets = ({ weight, height, activityLevel, goal }) => {
+export const calcTargets = ({ weight, height, activityLevel, goal }) => {
   if (!weight || !height) return null;
   const BMR        = 10 * weight + 6.25 * height - 5 * 25 + 5;
   const multiplier = activityLevel === "low" ? 1.2 : activityLevel === "high" ? 1.9 : 1.55;
@@ -234,6 +289,23 @@ export const getUserProfile = async (req, res) => {
   } catch (error) {
     console.error("getUserProfile error:", error);
     res.status(500).json({ message: "Could not retrieve profile" });
+  }
+};
+
+// GET /api/users/checkin-token — the logged-in member's QR check-in token,
+// generated on first request. The app renders this as a QR for the gym to scan.
+export const getCheckinToken = async (req, res) => {
+  try {
+    const user = req.user?.save ? req.user : await User.findById(req.user?._id || req.user?.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+    if (!user.checkinToken) {
+      user.checkinToken = crypto.randomBytes(24).toString("hex");
+      await user.save();
+    }
+    res.json({ token: user.checkinToken, payload: `GYMCHK:${user.checkinToken}` });
+  } catch (error) {
+    console.error("getCheckinToken error:", error);
+    res.status(500).json({ message: "Could not load check-in token" });
   }
 };
 

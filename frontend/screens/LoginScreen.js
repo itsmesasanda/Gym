@@ -12,7 +12,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather } from "@expo/vector-icons";
 import { useVideoPlayer, VideoView } from "expo-video";
-import { setUserEmail, setUserToken, setUserName } from "../utils/session";
+import { setUserEmail, setUserToken, setUserName, setUserGym } from "../utils/session";
 import { BASE_URL } from "../config";
 
 const GREEN  = "#C7F000";
@@ -63,6 +63,7 @@ export default function LoginScreen({ navigation }) {
       setUserEmail(data.email);
       setUserToken(data.token || null);
       setUserName(data.name || null);
+      setUserGym(data.gym || null); // auto-detected from the account
       navigation.replace("Tabs");
     } catch {
       setError("Network error. Check backend connection.");

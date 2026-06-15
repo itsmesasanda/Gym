@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Feather, MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 
@@ -36,7 +36,7 @@ function CustomTabBar({ state, descriptors, navigation }) {
             <TouchableOpacity
               key="qr"
               style={s.qrWrap}
-              onPress={() => Alert.alert("QR Check-in — coming soon", "Gym check-in isn't available yet. Stay tuned!")}
+              onPress={() => navigation.navigate("QRCheckin")}
               activeOpacity={0.85}
             >
               <View style={s.qrBtn}>

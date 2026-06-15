@@ -8,24 +8,16 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import userRoutes               from "./routes/userRoutes.js";
-import adminAuthRoutes          from "./routes/adminAuthRoutes.js";
-import userManagementRoutes     from "./routes/userManagementRoutes.js";
-import workoutManagementRoutes  from "./routes/workoutManagementRoutes.js";
-import videoManagementRoutes    from "./routes/videoManagementRoutes.js";
-import mealManagementRoutes     from "./routes/mealManagementRoutes.js";
 import mealLogRoutes            from "./routes/mealLogRoutes.js";
-import adminMealLogRoutes       from "./routes/adminMealLogRoutes.js";
-import reportRoutes             from "./routes/reportRoutes.js";
 import workoutPlanRoutes        from "./routes/workoutPlanRoutes.js";
 import progressTrackingRoutes   from "./routes/progressTrackingRoutes.js";
 import mealPlanRoutes           from "./routes/mealPlanRoutes.js";
-import eventManagementRoutes    from "./routes/eventManagementRoutes.js";
-import announcementManagementRoutes from "./routes/announcementManagementRoutes.js";
 import userContentRoutes        from "./routes/userContentRoutes.js";
 import coachRoutes              from "./routes/coachRoutes.js";
-import { createVideo, deleteVideo, getVideos, updateVideo } from "./controllers/videoController.js";
+import adminRoutes              from "./routes/admin/index.js";
+import superRoutes             from "./routes/super/index.js";
+import { getVideos } from "./controllers/videoController.js";
 import { getAllWorkouts, createWorkout, updateWorkout, deleteWorkout } from "./controllers/workoutController.js";
-import adminAuthMiddleware      from "./middleware/adminAuthMiddleware.js";
 import { protect }              from "./middleware/authMiddleware.js";
 
 const app = express();
@@ -40,7 +32,7 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || "")
   .filter(Boolean);
 
 // Always allow localhost for dev; production origins come from env
-const devOrigins = ["http://localhost:3000", "http://localhost:8081", "http://localhost:19006"];
+const devOrigins = ["http://localhost:3000", "http://localhost:5173", "http://localhost:5174", "http://localhost:8081", "http://localhost:19006"];
 const corsOrigins = [...new Set([...devOrigins, ...allowedOrigins])];
 
 app.use(cors({
@@ -103,22 +95,14 @@ app.use("/api/meal-plans",    mealPlanRoutes);
 // ── Progress tracking ─────────────────────────────────────────────
 app.use("/api/progress", progressTrackingRoutes);
 
-// ── Video library ─────────────────────────────────────────────────
-app.get("/api/videos",        getVideos);
-app.post("/api/videos",       adminAuthMiddleware, createVideo);
-app.put("/api/videos/:id",    adminAuthMiddleware, updateVideo);
-app.delete("/api/videos/:id", adminAuthMiddleware, deleteVideo);
+// ── Video library (public read; admin CRUD lives under /api/admin) ───
+app.get("/api/videos", getVideos);
 
-// ── Admin routes ──────────────────────────────────────────────────
-app.use("/api/admin/auth",           adminAuthRoutes);
-app.use("/api/admin/users",          userManagementRoutes);
-app.use("/api/admin/workouts",       workoutManagementRoutes);
-app.use("/api/admin/videos",         videoManagementRoutes);
-app.use("/api/admin/meals",          mealManagementRoutes);
-app.use("/api/admin/events",         eventManagementRoutes);
-app.use("/api/admin/announcements",  announcementManagementRoutes);
-app.use("/api/admin/meal-logs",      adminMealLogRoutes);
-app.use("/api/admin/reports",        reportRoutes);
+// ── Admin panel (Phase 2) — secure, gym-scoped ──────────────────────
+app.use("/api/admin", adminRoutes);
+
+// ── Super admin (platform control plane) — super_admin role only ────
+app.use("/api/super", superRoutes);
 
 app.get("/", (_req, res) => res.json({ status: "ok" }));
 

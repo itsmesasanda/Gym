@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather } from "@expo/vector-icons";
-import { setUserEmail, setUserToken } from "../utils/session";
+import { setUserEmail, setUserToken, setUserGym } from "../utils/session";
 import { BASE_URL } from "../config";
 
 const GREEN  = "#C7F000";
@@ -23,6 +23,7 @@ const WHITE  = "#FFFFFF";
 const RED    = "#FF453A";
 
 export default function RegisterScreen({ navigation }) {
+  const [gymCode, setGymCode]   = useState("");
   const [name, setName]         = useState("");
   const [email, setEmail]       = useState("");
   const [password, setPassword] = useState("");
@@ -30,20 +31,40 @@ export default function RegisterScreen({ navigation }) {
   const [showPass, setShowPass] = useState(false);
   const [error, setError]       = useState("");
 
+  // Returns the first validation problem (specific message), or null if all good.
+  // Rules mirror the backend so the user never gets a surprise rejection.
+  const validateForm = () => {
+    if (!gymCode.trim())        return "Please enter your gym code.";
+    if (!name.trim())           return "Please enter your full name.";
+    if (name.trim().length < 2) return "Name must be at least 2 characters.";
+    if (!email.trim())          return "Please enter your email.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) return "Enter a valid email address.";
+    if (!password)              return "Please enter a password.";
+    if (password.length < 8)    return "Password must be at least 8 characters.";
+    if (!/\d/.test(password))   return "Password must contain at least one number.";
+    if (password !== confirm)   return "Passwords do not match.";
+    return null;
+  };
+
   const handleRegister = async () => {
-    if (!name || !email || !password || !confirm) { setError("Please fill in all fields."); return; }
-    if (password !== confirm)   { setError("Passwords do not match."); return; }
-    if (password.length < 6)    { setError("Password must be at least 6 characters."); return; }
+    const validationError = validateForm();
+    if (validationError) { setError(validationError); return; }
     try {
       const res = await fetch(`${BASE_URL}/api/users/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          password,
+          gymCode: gymCode.trim(),
+        }),
       });
       const data = await res.json();
       if (!res.ok) { setError(data.message || "Registration failed"); return; }
       setUserEmail(data.email);
       setUserToken(data.token || null);
+      if (data.gym) setUserGym(data.gym);
       navigation.navigate("Goal", { email: data.email });
     } catch {
       setError("Network error. Try again.");
@@ -70,11 +91,12 @@ export default function RegisterScreen({ navigation }) {
 
           <View style={s.form}>
             {[
-              { label: "Full Name",         value: name,     setter: setName,     placeholder: "John Doe",            kb: "default",       secure: false },
-              { label: "Email",             value: email,    setter: setEmail,    placeholder: "you@email.com",       kb: "email-address", secure: false },
-              { label: "Password",          value: password, setter: setPassword, placeholder: "Min. 6 characters",   kb: "default",       secure: true  },
-              { label: "Confirm Password",  value: confirm,  setter: setConfirm,  placeholder: "Re-enter password",   kb: "default",       secure: true  },
-            ].map(({ label, value, setter, placeholder, kb, secure }, i) => (
+              { label: "Gym Code",          value: gymCode,  setter: setGymCode,  placeholder: "e.g. POWERFIT",       kb: "default",       secure: false, cap: "characters" },
+              { label: "Full Name",         value: name,     setter: setName,     placeholder: "John Doe",            kb: "default",       secure: false, cap: "words" },
+              { label: "Email",             value: email,    setter: setEmail,    placeholder: "you@email.com",       kb: "email-address", secure: false, cap: "none" },
+              { label: "Password",          value: password, setter: setPassword, placeholder: "Min. 8 chars, 1 number", kb: "default",     secure: true,  cap: "none" },
+              { label: "Confirm Password",  value: confirm,  setter: setConfirm,  placeholder: "Re-enter password",   kb: "default",       secure: true,  cap: "none" },
+            ].map(({ label, value, setter, placeholder, kb, secure, cap }) => (
               <View key={label} style={s.fieldWrap}>
                 <Text style={s.label}>{label}</Text>
                 <View style={s.inputWrap}>
@@ -85,10 +107,10 @@ export default function RegisterScreen({ navigation }) {
                     placeholder={placeholder}
                     placeholderTextColor="#555"
                     keyboardType={kb}
-                    autoCapitalize={kb === "email-address" ? "none" : "words"}
+                    autoCapitalize={cap}
                     secureTextEntry={secure && !showPass}
                   />
-                  {secure && i === 2 && (
+                  {label === "Password" && (
                     <TouchableOpacity style={s.eyeBtn} onPress={() => setShowPass(v => !v)}>
                       <Feather name={showPass ? "eye-off" : "eye"} size={18} color={MUTED} />
                     </TouchableOpacity>

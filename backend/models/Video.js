@@ -3,6 +3,13 @@ import { isValidThumbnailUrl, isValidYouTubeUrl } from "../utils/videoValidation
 
 const VideoSchema = new mongoose.Schema(
   {
+    // Owning gym (null = legacy/global). Admin writes scope by gymId.
+    gymId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Gym",
+      default: null,
+      index: true,
+    },
     title: {
       type: String,
       required: true,

@@ -323,37 +323,3 @@ export const getMonthlyLogs = async (req, res) => {
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
-
-export const getAllMealLogs = async (req, res) => {
-  try {
-    const logs = await MealLog.find().sort({ timestamp: -1 }).limit(200);
-    res.json(logs);
-  } catch (err) {
-    console.error("[getAllMealLogs] error:", err);
-    res.status(500).json({ error: "Internal server error" });
-  }
-};
-
-export const getMealLogSummary = async (req, res) => {
-  try {
-    const { start, end } = getDayRange();
-    const todaysLogs = await MealLog.find({ timestamp: { $gte: start, $lte: end } });
-    const allLogs = await MealLog.find().limit(10000);
-    const uniqueUsers = new Set(allLogs.map((log) => log.userId));
-
-    res.json({
-      today: {
-        totals: getTotals(todaysLogs),
-        mealCount: todaysLogs.length,
-      },
-      allTime: {
-        totals: getTotals(allLogs),
-        mealCount: allLogs.length,
-        users: uniqueUsers.size,
-      },
-    });
-  } catch (err) {
-    console.error("[getMealLogSummary] error:", err);
-    res.status(500).json({ error: "Internal server error" });
-  }
-};

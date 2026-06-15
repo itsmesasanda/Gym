@@ -8,6 +8,7 @@ import {
   resetPassword,
   getUserProfile,
   updateUserProfile,
+  getCheckinToken,
   deleteUser,
 } from "../controllers/userController.js";
 
@@ -19,6 +20,7 @@ router.post("/forgot-password", requestPasswordReset);
 router.post("/reset-password", resetPassword);
 router.get("/profile", protect, getUserProfile);
 router.put("/profile", protect, updateUserProfile);
+router.get("/checkin-token", protect, getCheckinToken);
 router.delete("/profile", protect, deleteUser);
 
 export default router;

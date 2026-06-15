@@ -2,6 +2,13 @@ import mongoose from "mongoose";
 
 const announcementSchema = new mongoose.Schema(
   {
+    // Owning gym (null = platform-wide / legacy). Admin writes scope by gymId.
+    gymId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Gym",
+      default: null,
+      index: true,
+    },
     title: {
       type: String,
       required: true,
